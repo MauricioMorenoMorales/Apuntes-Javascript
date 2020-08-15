@@ -72,3 +72,18 @@ try{
 }finally{
      console.log('El bloque finally se ejecutara siempre al final de un bloque try catch')
 }
+//////// --------------------------------------Prototipos--------------------------------------
+const animal = {
+     nombre: 'Snoopy',
+     sonar(){
+          console.log('Hago sonidos por que estoy vivo')
+     }
+}
+const animal2 = {
+     nombre: 'Lola',
+     sonar(){
+          console.log('Hago sonidos por que estoy vivo')
+     }
+}
+console.log(animal)
+console.log(animal2)
