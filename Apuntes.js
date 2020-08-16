@@ -152,7 +152,7 @@ lolaBunny.sonar()
 lolaBunny.saludar()
 
 //// -----------------------------------------Clases-----------------------------------------
-
+////-----------Setters y getters
 //Función constructora
 class Animal{
      constructor(nombre,genero){
@@ -174,6 +174,7 @@ class Perro extends Animal{
      constructor(nombre,genero,tamanho){
           super(nombre,genero);
           this.tamanho = tamanho;
+          this.raza = null;
      }
      sonar(){
           console.log('Soy un perro y mi sonido es un ladrido')
@@ -184,6 +185,12 @@ class Perro extends Animal{
      static queEres(){
           console.log('No sé gg')
      }
+     get getRaza(){
+          return this.raza;
+     }
+     set setRaza(raza){
+          this.raza = raza
+     }
 }
 
 
@@ -193,4 +200,100 @@ console.log(mimi)
 console.log(scooby)
 mimi.saludar();
 scooby.sonar();
-Perro.q
+Perro.queEres();
+console.log(scooby.getRaza)
+scooby.setRaza = "Gran danés"
+console.log(scooby.getRaza)
+
+//-----------------------------Object console-----------------------------
+
+console.log(console);
+console.error('esto es un error');
+console.warn('Esto es un aviso')
+console.info('Esto es un mensaje informativo')
+console.log('un registro de lo que ha pasado en nuestra aplicacion')
+
+let nombre = 'jon',
+     apellido = 'mircha',
+     edad = 35
+
+console.log(nombre);
+console.log(apellido);
+console.log(edad);
+console.log(nombre, apellido, edad);
+console.log(`Hola mi nombre es %s %s y tengo %d años`,nombre,apellido,edad)
+
+console.groupCollapsed('Curso de jonmircha de javascript')
+console.log('Curso de Flexbox')
+console.log('Curso de Node')
+console.log('Curso de React')
+console.log('Curso de PHP')
+console.log('Curso de css')
+console.groupEnd();
+
+console.log(console);
+console.table(Object.entries(console).sort())
+
+const numeros = [1,2,3,4,5,6]
+     vocales = ['a','b','c','d','e']
+
+console.table(numeros);
+console.table(vocales);
+
+const perro = {
+     nombre: 'boni',
+     raza: 'Boxer',
+     color: 'cafe'
+}
+console.table(perro);
+
+console.time('Cuanto tiempo tarda mi codigo');
+const arreglo = Array(1000000);
+
+for (let i = 0; i < Array.length; i++){
+     arreglo[i] = i
+}
+console.timeEnd('Cuanto tiempo tarda mi codigo')
+
+for(let i = 0; i <= 100; i++){
+     console.count('Codigo for');
+     console.log(i)
+}
+let x = 3,
+     y = 2,
+     pruebaXY = 'Se espera que x siempre sea menor que y'
+
+console.assert(x<y,(x,y,pruebaXY));
+
+////// ------------------------------Date------------------------------
+console.log(Date())
+
+let fecha = new Date();
+console.log(fecha);
+//dia del mes
+console.log(fecha.getDate());
+//dia de la semana DLM MI J V S -> 0123456
+console.log(fecha.getDay());
+//MES Ene Feb Marz.....
+// Dic -> 0 1 2 3 4 5 6 7 8 9
+console.log(fecha.getMonth());
+console.log(fecha.getFullYear());
+console.log(fecha.getHours());
+console.log(fecha.getMinutes());
+console.log('1#####################')
+console.log(fecha.getSeconds());
+console.log(fecha.getMilliseconds());
+console.log(fecha.toString());
+console.log(fecha.toDateString());
+console.log('2#####################')
+console.log(fecha.toLocaleString());
+console.log(fecha.toLocaleDateString());
+console.log(fecha.toLocaleTimeString());
+console.log(fecha.getTimezoneOffset());
+console.log('3#####################')
+console.log(fecha.getUTCDate());
+console.log(fecha.getUTCHours());
+console.log(Date.now());
+let cumplejon = new Date(1984,4,23);
+console.log(cumplejon)
+
