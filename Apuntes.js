@@ -297,3 +297,92 @@ console.log(Date.now());
 let cumplejon = new Date(1984,4,23);
 console.log(cumplejon)
 
+// ----------------------------Objeto Math----------------------------
+
+console.log(Math)
+console.log(Math.PI);
+console.log(Math.abs(-7.8));
+console.log(Math.ceil(7.2));
+console.log(Math.floor(7.8));
+console.log(Math.round(7.49));
+console.log(Math.sqrt(81));
+console.log(Math.pow(2,5));
+console.log(Math.sign(-0.3)) //-1 0 1
+console.log(Math.random());
+console.log(Math.round(Math.random() * 1000));
+
+// -----------------------Operador de Cortocircuito-----------------------
+function saludar(nombre){
+     nombre = nombre || 'Desconocido'
+     console.log(`Hola ${nombre}`)
+}
+saludar('jon');
+saludar();
+
+console.log('Cadena'||'Valor de la derecha')
+console.log(19||'Valor de la derecha')
+console.log(true||'Valor de la derecha')
+console.log([]||'Valor de la derecha')
+console.log({}||'Valor de la derecha')
+console.log(false||'Valor de la derecha')
+console.log(null||'Valor de la derecha')
+console.log(undefined||'Valor de la derecha')
+console.log(''||'Valor de la derecha')
+console.log(-2||'Valor de la derecha')
+console.log(0||'Valor de la derecha')
+
+console.log('Cadena'&&'Valor de la derecha')
+console.log(19&&'Valor de la derecha')
+console.log(true&&'Valor de la derecha')
+console.log([]&&'Valor de la derecha')
+console.log({}&&'Valor de la derecha')
+console.log(false&&'Valor de la derecha')
+console.log(null&&'Valor de la derecha')
+console.log(undefined&&'Valor de la derecha')
+console.log(''&&'Valor de la derecha')
+console.log(-2&&'Valor de la derecha')
+console.log(0&&'Valor de la derecha')
+
+//// ---------------------------Ingreso de datos---------------------------
+
+let alerta = alert('Hola esto es una alerta')
+let confirmacion = confirm('Hola esto es una confirmación') //Devuelve True o False
+let aviso = prompt('Hola esto es un aviso y permite al usuario agregar un valor')
+
+console.log(alerta)
+console.log(confirmacion)
+console.log(aviso)
+
+// --------------------------Expresiones Regulares--------------------------
+
+let cadena = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum dolor maxime cupiditate pariatur nam repellat optio dolorem eligendi vero non similique adipisci tenetur ipsam quia quaerat quidem, fugiat libero rem sit? Deleniti repellendus saepe laboriosam?'
+
+let expReg = new RegExp('lorem','ig');
+console.log(expReg.test(cadena));
+console.log(expReg.exec(cadena))
+
+let expReg2 = /lorem/ig;
+let exReg3 = /\[]/ig;
+let exReg3 = /lorem{3}/ig;
+
+// ----------------------Funciones anonimas autoejecutables----------------------
+
+(function(){
+     console.log('versión clásica')
+});
+
+((function(){
+     console.log('Versión Crockford')
+})());
+
++function(){
+     console.log('Versión Unaria')
+}
+!function(){
+     console.log('Versión Facebook')
+}();
+
+function xd(){
+     console.log('xd')
+}
+xd();
