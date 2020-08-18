@@ -369,7 +369,7 @@ let exReg3 = /lorem{3}/ig;
 
 (function(){
      console.log('versión clásica')
-});
+})();
 
 ((function(){
      console.log('Versión Crockford')
@@ -382,7 +382,8 @@ let exReg3 = /lorem{3}/ig;
      console.log('Versión Facebook')
 }();
 
-function xd(){
-     console.log('xd')
-}
-xd();
+(function(d,w,c){
+     c.log(d)
+     c.log(w)
+
+})('documento','window',console)
