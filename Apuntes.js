@@ -387,3 +387,70 @@ let exReg3 = /lorem{3}/ig;
      c.log(w)
 
 })('documento','window',console)
+
+//------------------------------------Callback------------------------------------
+debugger
+function cuadradoCallback(value,callback){
+     setTimeout(() => {
+          callback(value, value * value)
+     }, 0|Math.random() * 100);
+}
+
+cuadradoCallback(0,(value,result) =>{
+     console.log('Inicia callback')
+     console.log(`Callback ${value},${result}`)
+     cuadradoCallback(1,(value,result) =>{
+          console.log(`Callback ${value},${result}`)
+          cuadradoCallback(2,(value,result) =>{
+               console.log(`Callback ${value},${result}`)
+               cuadradoCallback(3,(value,result) =>{
+                    console.log(`Callback ${value},${result}`)
+                    cuadradoCallback(4,(value,result) =>{
+                         console.log(`Callback ${value},${result}`)
+                         console.warn('Callback hell 👹😈')
+                    })
+               })
+          })
+     })
+})
+
+// ----------------------------------Promesas----------------------------------
+function cuadradoPromise(value) {
+     return new Promise((resolve, reject) => {
+          setTimeout(() => {
+               resolve(
+                    {
+                         value: value,
+                         result: value * value
+                    }
+               );
+          }, 0 | Math.random() * 100);
+     });
+}
+
+cuadradoPromise(0)
+     .then((obj)=>{
+          console.log('Inicia promise');
+          console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
+          return cuadradoPromise(1)
+     })
+     .then((obj)=>{
+          console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
+          return cuadradoPromise(2)
+     })
+     .then((obj)=>{
+          console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
+          return cuadradoPromise(3)
+     })
+     .then((obj)=>{
+          console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
+          return cuadradoPromise(4)
+     })
+     .then((obj)=>{
+          console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
+          return cuadradoPromise(5)
+     })
+     .then((obj)=>{
+          console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
+     })
+     .catch()
