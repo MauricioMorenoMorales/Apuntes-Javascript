@@ -516,3 +516,17 @@ console.log(array[0]);
 console.log(set.has('hola'));
 console.log(set.has('gg'))
 
+//! ----------------------------------------Maps----------------------------------------
+let mapa = new Map();
+mapa.set('Nombre','Jon');
+mapa.set('Apellido','MirCha');
+mapa.set('edad',35);
+mapa.set('Genero','Masculino');
+
+console.log(mapa);
+console.log(mapa.size);
+console.log(mapa.has('correo'));
+console.log(mapa.has('nombre'));
+console.log(mapa.has('edad'));
+
+mapa.set('nombre','Jonathan MirCha');
