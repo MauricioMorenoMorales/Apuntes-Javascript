@@ -1,9 +1,9 @@
 
-/////------------------------------Boolean------------------------------
-////Truthy & Falsy
-//// Null Undefined NaN
+//!------------------------------Boolean------------------------------
+////!Truthy & Falsy
+////! Null Undefined NaN
 
-/////////--------------------------Array-------------------------------
+////!--------------------------Array-------------------------------
 
 const c = Array.of('X','Y','Z',0,9,3,4);
 
@@ -13,7 +13,7 @@ const colores = ['Verde','rojo','azul','morado'];
 colores.push('negro')
 colores.pop()
 
-/////////////-----------------Object-------------------------------
+////!-----------------Object-------------------------------
 const jon = {
      nombre: 'jon',
      apellido: 'mircha',
@@ -44,9 +44,9 @@ console.log(Object.keys(jon))
 console.log(Object.values(jon))
 console.log(jon.hasOwnProperty('nombre'))
 
-/////////---------------------Control de Flujo------------------------------
+//!---------------------Control de Flujo------------------------------
 
-//////////////-----------------------------For--------------------------------
+//!-----------------------------For--------------------------------
 const jon = {
      nombre: 'jon',
      apellido: 'mircha',
@@ -61,7 +61,7 @@ for (const elemento of cadena) {
      console.log(elemento)
 }
 
-/////--------------------------------Detección de errores--------------------------------
+//!--------------------------------Detección de errores--------------------------------
 try{
      console.log('En el try se agrega el codigo a evaluar')
      noExiste
@@ -72,7 +72,7 @@ try{
 }finally{
      console.log('El bloque finally se ejecutara siempre al final de un bloque try catch')
 }
-//////// --------------------------------------Prototipos--------------------------------------
+//! --------------------------------------Prototipos--------------------------------------
 /*const animal = {
      nombre: 'Snoopy',
      sonar(){
@@ -123,7 +123,7 @@ Animal.prototype.saludar = function(){
 // lolaBunny.sonar()
 // lolaBunny.saludar()
 
-// ---------------------------------------Herencia---------------------------------------
+//! ---------------------------------------Herencia---------------------------------------
 
 function Perro(nombre, genero,tamanho){
      this.super = Animal;
@@ -151,9 +151,9 @@ snoopy.saludar()
 lolaBunny.sonar()
 lolaBunny.saludar()
 
-//// -----------------------------------------Clases-----------------------------------------
-////-----------Setters y getters
-//Función constructora
+//! -----------------------------------------Clases-----------------------------------------
+//!-----------Setters y getters
+//? Función constructora
 class Animal{
      constructor(nombre,genero){
           this.nombre = nombre;
@@ -205,7 +205,7 @@ console.log(scooby.getRaza)
 scooby.setRaza = "Gran danés"
 console.log(scooby.getRaza)
 
-//-----------------------------Object console-----------------------------
+//!-----------------------------Object console-----------------------------
 
 console.log(console);
 console.error('esto es un error');
@@ -265,7 +265,7 @@ let x = 3,
 
 console.assert(x<y,(x,y,pruebaXY));
 
-////// ------------------------------Date------------------------------
+//! ------------------------------Date------------------------------
 console.log(Date())
 
 let fecha = new Date();
@@ -297,7 +297,7 @@ console.log(Date.now());
 let cumplejon = new Date(1984,4,23);
 console.log(cumplejon)
 
-// ----------------------------Objeto Math----------------------------
+//! ----------------------------Objeto Math----------------------------
 
 console.log(Math)
 console.log(Math.PI);
@@ -311,7 +311,7 @@ console.log(Math.sign(-0.3)) //-1 0 1
 console.log(Math.random());
 console.log(Math.round(Math.random() * 1000));
 
-// -----------------------Operador de Cortocircuito-----------------------
+//! -----------------------Operador de Cortocircuito-----------------------
 function saludar(nombre){
      nombre = nombre || 'Desconocido'
      console.log(`Hola ${nombre}`)
@@ -343,7 +343,7 @@ console.log(''&&'Valor de la derecha')
 console.log(-2&&'Valor de la derecha')
 console.log(0&&'Valor de la derecha')
 
-//// ---------------------------Ingreso de datos---------------------------
+//! ---------------------------Ingreso de datos---------------------------
 
 let alerta = alert('Hola esto es una alerta')
 let confirmacion = confirm('Hola esto es una confirmación') //Devuelve True o False
@@ -353,7 +353,7 @@ console.log(alerta)
 console.log(confirmacion)
 console.log(aviso)
 
-// --------------------------Expresiones Regulares--------------------------
+//! --------------------------Expresiones Regulares--------------------------
 
 let cadena = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum dolor maxime cupiditate pariatur nam repellat optio dolorem eligendi vero non similique adipisci tenetur ipsam quia quaerat quidem, fugiat libero rem sit? Deleniti repellendus saepe laboriosam?'
 
@@ -365,7 +365,7 @@ let expReg2 = /lorem/ig;
 let exReg3 = /\[]/ig;
 let exReg3 = /lorem{3}/ig;
 
-// ----------------------Funciones anonimas autoejecutables----------------------
+//! ----------------------Funciones anonimas autoejecutables----------------------
 
 (function(){
      console.log('versión clásica')
@@ -388,7 +388,7 @@ let exReg3 = /lorem{3}/ig;
 
 })('documento','window',console)
 
-//------------------------------------Callback------------------------------------
+//!------------------------------------Callback------------------------------------
 debugger
 function cuadradoCallback(value,callback){
      setTimeout(() => {
@@ -414,7 +414,8 @@ cuadradoCallback(0,(value,result) =>{
      })
 })
 
-// ----------------------------------Promesas----------------------------------
+//! ----------------------------------Promesas----------------------------------
+
 function cuadradoPromise(value) {
      return new Promise((resolve, reject) => {
           setTimeout(() => {
@@ -454,3 +455,64 @@ cuadradoPromise(0)
           console.log(`La promesa necibe el valor ${obj.value}, y el resultado ${obj.result}`);
      })
      .catch()
+
+//! --------------------------------------Symbols--------------------------------------
+
+let id = Symbol('id');
+let id2 = Symbol('id2')
+
+console.log(id === id2);
+console.log(id, id2);
+console.log(typeof id, typeof id2);
+const NOMBRE = Symbol();
+const SALUDAR = Symbol();
+
+const persona = {
+     [NOMBRE]: 'jon',
+     edad: 35
+}
+console.log(persona);
+
+persona.NOMBRE = 'Jonata MirCha'
+console.log(persona);
+console.log(persona.NOMBRE);
+console.log(persona[NOMBRE])
+
+persona[SALUDAR] = function(){
+     console.log(`Hola`);
+}
+
+console.log(persona);
+persona[SALUDAR]();
+
+//! -----------------------------------------Sets-----------------------------------------
+
+const set = new Set([1,2,3,4,5,6,5,4,true,false,false,{},{},'hola','HOLA'])
+
+console.log(set)
+console.log(set.size);
+
+const set2 = new Set();
+set2.add(123);
+set2.add(123);
+set2.add(22);
+set2.add(3);
+set2.add(true);
+set2.add(false);
+set2.add(false);
+set2.add('Hola');
+
+console.log(set2);
+
+console.log('Recorriendo set');
+for(item of set){
+     console.log(item);
+}
+
+set2.forEach(item => console.log((item)));
+let array = Array.from(set);
+console.log(array[0]);
+
+console.log(set.has('hola'));
+console.log(set.has('gg'))
+
