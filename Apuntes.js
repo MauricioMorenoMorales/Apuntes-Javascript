@@ -530,3 +530,95 @@ console.log(mapa.has('nombre'));
 console.log(mapa.has('edad'));
 
 mapa.set('nombre','Jonathan MirCha');
+
+console.log(mapa.get('nombre'));
+
+mapa.delete('apellido');
+
+console.log(mapa);
+
+mapa.set(19,'diecinueve');
+mapa.set(false,'falso');
+mapa.set({},{});
+
+for(let [key,value] of mapa){
+     console.log(`Llave ${key}, Valor: ${value}`)
+}
+
+const mapa2 = new Map([
+     ['nombrem','kenai'],
+     ['edad',7],
+     ['animal','perro'],
+     [null,'nulo']
+])
+
+const llavesMapa2 = [...mapa2.keys()];
+const valoresMapa2 = [...mapa2.values()];
+
+console.log(llavesMapa2);
+console.log(valoresMapa2);
+
+//! --------------------------------Weak Sets & Weak Maps--------------------------------
+
+const weakSet = new WeakSet();
+
+let valor1 = {'valor1':1};
+let valor2 = {'valor1':2};
+let valor3 = {'valor1':3};
+
+weakSet.add(valor1);
+weakSet.add(valor2);
+
+console.log(weakSet);
+
+console.log(weakSet.has(valor1));
+console.log(weakSet.has(valor2));
+
+weakSet.delete(valor2);
+console.log(weakSet);
+
+weakSet.add(valor2);
+weakSet.add(valor3);
+console.log(weakSet);
+
+setInterval(() => console.log(weakSet), 1000);
+
+setTimeout(() => {
+     valor1 = null;
+     valor2 = null;
+     valor3 = null;
+}, 6000);
+
+//? -----------------------Weak map-----------------------
+
+let weakMap = new Map();
+
+let llave1 = {};
+let llave2 = {};
+let llave3 = {};
+
+weakMap.set(llave1,1);
+weakMap.set(llave2,2);
+console.log(weakMap);
+
+console.log(weakMap.has(llave1));
+console.log(weakMap.has(llave3));
+
+console.log(weakMap.get(llave1));
+console.log(weakMap.get(llave2));
+console.log(weakMap.get(llave3));
+
+weakMap.delete(llave2);
+console.log(weakMap);
+
+weakMap.set(llave2,2);
+weakMap.set(llave3,3);
+console.log(weakMap);
+
+setInterval(() => console.log(weakMap), 1000);
+
+setTimeout(() => {
+     llave1 = null;
+     llave2 = null;
+     llave3 = null;
+}, 6000);
