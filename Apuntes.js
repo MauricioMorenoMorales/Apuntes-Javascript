@@ -389,7 +389,6 @@ let exReg3 = /lorem{3}/ig;
 })('documento','window',console)
 
 //!------------------------------------Callback------------------------------------
-debugger
 function cuadradoCallback(value,callback){
      setTimeout(() => {
           callback(value, value * value)

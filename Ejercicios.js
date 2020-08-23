@@ -3,7 +3,7 @@
 !3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
 !4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.*/
 
-//----------------------------------------Ejercicio1----------------------------------------
+//*----------------------------------------Ejercicio1----------------------------------------
 const cuentaCaracteres = (cadena = '') => {
      (!cadena)
           ? console.error('No introdujiste una cadena')
@@ -13,7 +13,7 @@ const cuentaCaracteres = (cadena = '') => {
 }
 cuentaCaracteres(2)
 cuentaCaracteres("这是寻找正确操作的测试")
-//----------------------------------------Ejercicio2----------------------------------------
+//*----------------------------------------Ejercicio2----------------------------------------
 const recortaCaracteres = (cadena = '', longitud = '') => {
      if (!cadena) return console.error('No introdujiste una cadena')
      if (typeof cadena === 'number') return console.error('No puedes introducir numeros en la cadena')
@@ -30,7 +30,7 @@ recortaCaracteres('不好',-1)
 recortaCaracteres('大家好，叫我毛，很好高兴认识你',3)
 recortaCaracteres('我很喜欢小猫，我有两个，很可爱',5)
 
-//----------------------------------------Ejercicio3----------------------------------------
+//*----------------------------------------Ejercicio3----------------------------------------
 const separaCadenas = (cadena = '') => {
      (!cadena)
           ? console.error('No introdujiste una cadena')
@@ -42,7 +42,7 @@ separaCadenas('Hola mundo')
 separaCadenas()
 separaCadenas(1243)
 separaCadenas('我 现在 在 学习 这个，这是 一点 难')
-//----------------------------------------Ejercicio4----------------------------------------
+//*----------------------------------------Ejercicio4----------------------------------------
 /*const repetidor = (cadena = '', veces = '') => {
      (!cadena)
      ? console.error('No introdujiste una cadena')
@@ -84,7 +84,7 @@ repetidor('我很喜欢小猫，我有两个，很可爱', 5)
      !8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
 
 */
-//----------------------------------------Ejercicio5----------------------------------------
+//*----------------------------------------Ejercicio5----------------------------------------
 const invierteCadenas = (cadena = '') =>
      (!cadena)
           ? console.warn('Debes de introducir una cadena')
@@ -95,7 +95,7 @@ const invierteCadenas = (cadena = '') =>
 
 invierteCadenas('大家好我是毛')
 invierteCadenas(1234)
-//----------------------------------------Ejercicio6----------------------------------------
+//*----------------------------------------Ejercicio6----------------------------------------
 debugger
 const textoEnCadena = (cadena = '', texto = '') => {
      if (!cadena) return console.warn('Debes de introducir un texto en la función')
@@ -112,7 +112,7 @@ const textoEnCadena = (cadena = '', texto = '') => {
      return console.info(`La palabra ${texto} se repite ${contador} veces`)
 }
 textoEnCadena('hola mundo adios mundo digo mundo muchas veces jaja mundo', 'mundo')
-//----------------------------------------Ejercicio7----------------------------------------
+//*----------------------------------------Ejercicio7----------------------------------------
 debugger
 const detectaPalindromo = (texto = '') => {
      if (!texto) return console.log('Debes de introducir un texto en la función');
@@ -123,4 +123,44 @@ const detectaPalindromo = (texto = '') => {
           : console.log(`El texto ${texto} leido alrevés sería ${palindromo}, por lo tanto no es un palindromo`)
 }
 detectaPalindromo('bob')
-//----------------------------------------Ejercicio8----------------------------------------
+//*----------------------------------------Ejercicio8----------------------------------------
+/*
+!9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+!10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+!11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+*/
+//*----------------------------------------Ejercicio9----------------------------------------
+//
+const numeroAleatorio = () => {return console.log(Math.round(Math.random() * 100 + 500))};
+
+numeroAleatorio();
+//*----------------------------------------Ejercicio10----------------------------------------
+const capicua = (numero = undefined) => {
+     if(!numero) return console.error('Tienes que introducir un numero')
+     if(typeof numero !== 'number') return console.error('Tienes que introducir un numero no texto')
+
+     numero = numero.toString();
+     let capicua = numero.split('').reverse().join('');
+     return(numero === capicua)
+          ? console.info(`El numero ${numero} leido alrevés es ${capicua} por lo tanto es capicua`)
+          : console.warn(`El numero ${numero} leido alrevés es ${capicua} por lo tanto no es capicua`)
+}
+
+capicua();
+capicua('不好')
+capicua(22);
+capicua(501);
+//*----------------------------------------Ejercicio11----------------------------------------
+const factorial = (numero = undefined) => {
+     if(!numero && numero !== 0) return console.error('Tienes que introducir un numero')
+     if(typeof numero !== 'number') return console.error('Tienes que introducir un numero no texto')
+     if(numero < 1) return console.error('Tienes que introducir un numero mayor o igual a uno')
+
+     let factorial = 1
+     for(let i = numero; i > 1; i--){
+          factorial*=i;
+     }
+     return console.info(`El numero ${numero} tiene un factorial de ${factorial}`)
+}
+factorial(3);
+factorial(1);
