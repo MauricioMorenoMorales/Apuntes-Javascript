@@ -1,4 +1,4 @@
-/*
+
 //! -----------------------------------DOM-----------------------------------
 
 console.log(window.document);
@@ -69,7 +69,7 @@ console.log($linkDOM.dataset.description);
 console.log($linkDOM.hasAttribute('data-id'));
 
 console.clear();
-*/
+
 //! -----------------------------------DOM-----------------------------------
 const $linkDOM = document.querySelector('.link-dom');
 
