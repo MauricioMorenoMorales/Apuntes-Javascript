@@ -621,3 +621,11 @@ setTimeout(() => {
      llave2 = null;
      llave3 = null;
 }, 6000);
+//! ----------------------------------Iterables & iterators----------------------------------
+
+const iterable = [1,2,3,4,5];
+
+//? Accedemos al iterador del iterable
+const iterador = iterable[Symbol.iterator]();
+
+console.log(iterable);

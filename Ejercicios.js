@@ -57,7 +57,6 @@ separaCadenas('我 现在 在 学习 这个，这是 一点 难')
                     : for (let i =0; i<veces; i++){
                          console.log(cadena)
                     }
-                    
 }*/
 const repetidor = (cadena = '', veces = '') => {
      if (!cadena) return console.error('No introdujiste una cadena')
@@ -96,7 +95,6 @@ const invierteCadenas = (cadena = '') =>
 invierteCadenas('大家好我是毛')
 invierteCadenas(1234)
 //*----------------------------------------Ejercicio6----------------------------------------
-debugger
 const textoEnCadena = (cadena = '', texto = '') => {
      if (!cadena) return console.warn('Debes de introducir un texto en la función')
      if (!texto) return console.warn('No ingresaste la palabra a evaluar')
@@ -164,3 +162,9 @@ const factorial = (numero = undefined) => {
 }
 factorial(3);
 factorial(1);
+
+/*
+!12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+!13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+!14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+*/
