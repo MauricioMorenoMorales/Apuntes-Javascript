@@ -304,19 +304,20 @@ afterbegin(primer hijo)
 beforeend(ultimo hijo)
 afterend(hermano siguiente)
 _____________________________________
+*/
 //! -----------------------------------DOM Modificando Elementos-----------------------------------
 const $cards = document.querySelector('.cards'),
      $newCard = document.createElement('figure');
 
-/*$newCard.innerHTML = `
-     <img src="https://placeimg.com/200/200/any" alt="Any">
-     <figcaption></figcaption>
-`;*/
-let $contentCard = `
-     <img src="https://placeimg.com/200/200/any" alt="Any">
-     <figcaption></figcaption>
-`;
-$newCard.classList.add('card');
+// $newCard.innerHTML = `
+//      <img src="https://placeimg.com/200/200/any" alt="Any">
+//      <figcaption></figcaption>
+// `;
+// let $contentCard = `
+//      <img src="https://placeimg.com/200/200/any" alt="Any">
+//      <figcaption></figcaption>
+// `;
+// $newCard.classList.add('card');
 
 //$cards.insertAdjacentElement('afterend',$newCard);
 $newCard.insertAdjacentHTML('beforeend',$contentCard);
@@ -327,3 +328,44 @@ $cards.insertAdjacentElement('afterbegin',$newCard);
 //$cards.append($newCard);
 //$cards.before($newCard);
 $cards.after($newCard);
+
+//! -----------------------------------DOM Manejadores de eventos-----------------------------------
+function holaMundo(){
+     alert('Hola Mundo');
+     console.log(event)
+}
+
+const $eventoSemantico = document.getElementById('evento-semantico'),
+     $eventoMultiple = document.getElementById("Evento-multiple"),
+     $evetonConParametro = document.getElementById("evento-con-parametro"),
+     $removerEvento = document.getElementById("remover-evento")
+
+function saludarParametro(nombre = "desconocido"){
+     alert(`Hola ${nombre}`)
+}
+
+$eventoSemantico.onclick = holaMundo;
+$eventoSemantico.onclick = function (e){
+     console.log(e);
+     console.log(event);
+}
+
+$eventoMultiple.addEventListener('click',holaMundo);
+$eventoMultiple.addEventListener('click',(e)=>{
+     console.log(e);
+     console.log(e.type);
+     console.log(e.target);
+     console.log(event);
+})
+$evetonConParametro.addEventListener('click',()=>{
+     saludarParametro('jon')
+});
+
+const removerDobleClick = (e)=>{
+     alert(`removiendo el evento ${e.type}`);
+     console.log(e);
+     $removerEvento.removeEventListener('dblclick',removerDobleClick);
+     $removerEvento.disabled = true;
+}
+
+$removerEvento.addEventListener('dblclick',removerDobleClick);
