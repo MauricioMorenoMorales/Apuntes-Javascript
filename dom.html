@@ -9,11 +9,19 @@
                --yellow-color: #F7DF1E;
                --dark-color: #222;
           }
+          .cards{
+               display: flex;
+               flex-wrap: wrap;
+          }
           .card {
                display: inline-block;
+               display: flex;
+               flex-direction: column;
           }
           .card figcaption {
                padding: 1rem;
+               background-color: #222;
+               color: #F7DF1E;
           }
           .rotate-45 {
                transform: rotate(45deg);
@@ -71,6 +79,14 @@
                <figcaption>nature</figcaption>
           </figure>
      </section>
+     <template>
+          <figure id="template-card">
+               <figure class="card">
+                    <img>
+                    <figcaption>xd</figcaption>
+               </figure>
+          </figure>
+     </template>
      <script src="./js/dom.js"></script>
 </body>
 </html>
