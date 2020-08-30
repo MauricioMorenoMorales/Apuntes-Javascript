@@ -1,0 +1,19 @@
+{
+  "name": "fylo_data_storage",
+  "version": "1.0.0",
+  "description": "Proyecto frontend mentor",
+  "main": "Apuntes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauricioMorenoMorales/Apuntes-Javascript.git"
+  },
+  "author": "Mauricio Moreno Morales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MauricioMorenoMorales/Apuntes-Javascript/issues"
+  },
+  "homepage": "https://github.com/MauricioMorenoMorales/Apuntes-Javascript#readme"
+}

@@ -369,3 +369,56 @@ const removerDobleClick = (e)=>{
 }
 
 $removerEvento.addEventListener('dblclick',removerDobleClick);
+
+//! -----------------------------------BOM Propiedades y eventos-----------------------------------
+window.addEventListener('resize',(e)=>{
+     console.clear();
+     console.log(window.innerWidth);
+     console.log(window.innerHeight);
+     console.log(window.outerWidth);
+     console.log(window.outerHeight);
+     console.log(window.scrollX);
+     console.log(window.scrollY);
+     console.log(e);
+});
+
+window.addEventListener('scroll',(e)=>{
+     console.clear();
+     console.log('***********Eventos Scroll***********')
+     console.log(window.scrollX);
+     console.log(window.scrollY);
+     console.log(e)
+});
+
+window.addEventListener('load',(e)=>{
+     console.clear();
+     console.log('***********Eventos Load***********')
+     console.log(window.scrollX);
+     console.log(window.scrollY);
+     console.log(e)
+});
+
+document.addEventListener('DOMContentLoader',(e)=>{
+     console.log('*********Evento DOMContentLoaded*********')
+});
+//! -----------------------------------BOM Metodos----------------------------------
+window.alert('Alerta');
+window.confirm('Confirmación');
+window.prompt('Aviso');
+
+const $btnAbrir = document.getElementById("Abrir-ventana"),
+     $btnCerrar = document.getElementById("cerrar-ventana"),
+     $btnImprimir = document.getElementById("imprimir-ventana");
+
+let ventana;
+
+$btnAbrir.addEventListener(
+     "click",
+     (e)=> (ventana = window.open("https://jonmircha.com"))
+);
+$btnCerrar.addEventListener('click',(e)=>{
+     //window.close();
+     ventana.close();
+});
+
+$btnImprimir.addEventListener('click',(e)=> window.print());
