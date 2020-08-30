@@ -388,6 +388,39 @@ let exReg3 = /lorem{3}/ig;
 
 })('documento','window',console)
 
+//!------------------------------------JavaScript Síncrono------------------------------------
+console.log('Inicio');
+
+function dos(){
+     console.log('Dos');
+};
+
+function uno(){
+     console.log('Uno');
+     dos();
+     console.log('Tres');
+}
+uno();
+console.log('Fin'); //?Resulatdo Inicio Uno Dos Tres FIN
+
+//!------------------------------------Javascript Asincrono------------------------------------
+
+console.log('Inicio');
+
+function dos(){
+     setTimeout(() => {
+          console.log('Dos');
+     }, 1000);
+}
+function uno(){
+     setTimeout(() => {
+          console.log('Uno');
+     }, 1000);
+     console.log('Tres');
+}
+uno();
+console.log('Fin'); //? Inicio Tres Fin Uno Dos
+
 //!------------------------------------Callback------------------------------------
 function cuadradoCallback(value,callback){
      setTimeout(() => {
