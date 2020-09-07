@@ -451,12 +451,7 @@ cuadradoCallback(0,(value,result) =>{
 function cuadradoPromise(value) {
      return new Promise((resolve, reject) => {
           setTimeout(() => {
-               resolve(
-                    {
-                         value: value,
-                         result: value * value
-                    }
-               );
+               resolve({value: value,result: value * value});
           }, 0 | Math.random() * 100);
      });
 }
