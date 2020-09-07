@@ -152,38 +152,50 @@ var dario = {
      apellido: 'Yakovlev',
      edad: 22
 }
-function cumpleanhos(persona){
-     persona.edad += 1             //Altera al objeto
-}
-cumpleanhos(sacha)
-console.log(sacha)
-console.log(cumpleanhos(sacha))
-cl(sacha)
+// function cumpleanhos(persona){
+//      persona.edad += 1             //Altera al objeto
+// }
+//? const cumpleanhos = (persona) => persona.edad +=1 //Misma Función pero en arrow function
+// cumpleanhos(sacha)
+// console.log(sacha)
+// console.log(cumpleanhos(sacha))
+// cl(sacha)
 
 function cumpleanhos(persona){
      return{
-          ...persona,
+          ...persona,              //Desglosa objeto y crea otro nuevo y así no altera al objeto original
           edad: persona.edad + 1
      }
      edad += 1
 }
+cl(cumpleanhos(sacha))
+cl(sacha)
 ////////////////////////////Si modificamos el valor de un valor en una funcion, esta afectara a el valor global
 
 // -----------------------------------------11 Comparaciones en Javascript-----------------------------------------
-var x = 4 
+const cl = console.log
+var x = 4
 var y = '4'
+cl(x == y) //Da True
+cl(x === y) //Da False
 var sacha = {
      nombre: 'Sacha'
 }
 var otraPersona = {
      nombre: 'Sacha'
 }
+cl(sacha == otraPersona) //Ambos dan False
+cl(sacha === otraPersona)
 ///////////////////////////////////Comparar dos objetos dara false, para que de true tiene que ser nativo
 var otraPersonaTambien = sacha
+cl(sacha == otraPersonaTambien) // Estos dan True
+cl(sacha === otraPersonaTambien)
 ///////////////////////////////da true
-var otraPersonaTambien = {
+var otraPersonaTambien2 = {
      ...sacha
 }
+cl(sacha == otraPersonaTambien2) // Estos dan False
+cl(sacha === otraPersonaTambien2)
 /////////////////////Da false por que ocupa otro espacio en memoria
 
 //--------------------------------------------------12 Condicionales--------------------------------------------------
