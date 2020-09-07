@@ -1,3 +1,4 @@
+///////////------------------------------Arrays-------------------------------------
 var sacha = {
      nombre: 'Sacha',
      apellido: 'Lifszyc',
@@ -32,7 +33,7 @@ var paula = {
      apellido: 'Barros',
      altura: 1.76
 }
-// var personas = [sacha, alan, martin, dario, vicky, paula]
+var personas = [sacha, alan, martin, dario, vicky, paula]
 
 for (var i = 0; i < personas.length; i++){
      var persona = personas[i]
@@ -74,15 +75,19 @@ var paula = {
      apellido: 'Barros',
      altura: 1.76
 }
-const esAlta = ({ altura }) => altura > 1.8
+//!Para filtrar se necesita un array y una condicion
+
+//* const es alta = (persona) => {return persona.altura > 18} Esto se puede simplificar así ↓
+//* var personasAltas = personas.filter(function(){return persona.altura > 18}) otra alternativa para filtrar
+const esAlta = ({ altura }) => altura > 1.8 //Versión desglosada
 
 var personas = [sacha, alan, martin, dario, vicky, paula]
 
-var personas_altas = personas.filter(esAlta)
+var personas_altas = personas.filter(esAlta) //Filter lleva una condición a la que le pasaremos la función, se creara un nuevo array con nombre personas-altas
 
 console.log(personas_altas)
 
-const esBaja = ({ altura }) => altura<1.80
+const esBaja = ({ altura }) => altura < 1.80
 
 var personas_bajas = personas.filter(esBaja)
 
