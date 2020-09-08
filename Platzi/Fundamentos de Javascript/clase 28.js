@@ -20,7 +20,6 @@ class desarrollador extends persona{
      constructor(nombre,apellido,altura){
           super(nombre,apellido,altura)
      }
-
      saludar(fn){
           // var nombre = this.nombre
           // var apellido = this.apellido
@@ -32,7 +31,7 @@ class desarrollador extends persona{
      }
 }
 
-function responderSaludo(nombre,apellido,esDev){
+function responderSaludo(nombre,apellido,esDev = false){
      console.log(`Buen día ${nombre} ${apellido}`)
      if(esDev){
           console.log(`Ah mirá, no sabía que eras desarrollador`)
