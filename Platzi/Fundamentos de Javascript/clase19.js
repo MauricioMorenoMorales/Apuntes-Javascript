@@ -94,6 +94,7 @@ var personas_bajas = personas.filter(esBaja)
 console.log(personas_bajas)
 
 /////-----------------------------------Transformar un array-----------------------------------
+
 var sacha = {
      nombre: 'Sacha',
      apellido: 'Lifszyc',
@@ -132,7 +133,7 @@ var personas = [sacha, alan, martin, dario, vicky, paula]
 
 
 // const pasar_altura_a_cms = persona => { 
-//      // personas.altura = personas.altura * 100
+//      personas.altura = personas.altura * 100
 //      return {
 //           ...persona,
 //      altura: persona.altura * 100
@@ -140,13 +141,14 @@ var personas = [sacha, alan, martin, dario, vicky, paula]
 // }
 
 const pasar_altura_a_cms = persona => ({ 
-          ...persona,
+          ...persona,                        // los parametros van dentro de llaves ya que retorna un objeto
      altura: persona.altura * 100
 })
 
-var personas_cms = personas.map(pasar_altura_a_cms)
+var personas_cms = personas.map(pasar_altura_a_cms) //Esta funcion crea un nuevo array mapeado
 
 console.log(personas_cms)
+console.log(personas);
 
 //////////// ----------------------22Reducir un array a un valor----------------------
 var sacha = {
@@ -191,37 +193,28 @@ var paula = {
 }
 var personas = [sacha, alan, martin, dario, vicky, paula]
 
-// // var acum = 0
-
-// // for (var i = 0 ; i < personas.length; i++){
-// //      acum = acum + personas[i].libros
-// // }、
-
 var acum = 0
 
-// // const reducer = (acum, personas) => {
-// //      return acum + personas.libros
-// // } esto se escribiria mejor como la función de abajo
+const reducir = (acumn, {libros})  => {
+     acum + libros
+}
 
-const reducer = (acumn, {libros})  => acum + libros
-
-
-var total_de_libros = personas.reduce(reducer, 0)
+var total_de_libros = personas.reduce(reducir, 0) //Requiere una funcion y el valor inicial del acumulador
 
 console.log(`En total todos tienen ${total_de_libros} libros`)
 
 //////// -------------------------------23 Clases en javaScript-------------------------------
 
-function persona(nombre, apellido, altura){
+function persona(nombre, apellido, altura){ //Recibe todos los atributos que tendra y se agregara abajo
      // var obj = {} si no pones 'new' a la instancia se crea un nuevo objeto
      // obj.nombre 
-     this.nombre = nombre
+     this.nombre = nombre //Esta es la forma de agregar los parametros
      this.apellido = apellido
      this.altura = altura
-     return this
+     return this //!Recuerda el this
 }
 
-persona.prototype.saludar = function (){
+persona.prototype.saludar = function (){ //Esta forma se crean funciones dentro de una clase
      console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
 }
 persona.prototype.daraltura = function(){
@@ -233,7 +226,7 @@ persona.prototype.daraltura = function(){
      }
 }
 
-var sacha = new persona('sacha','Lifszyc',175)
+var sacha = new persona('sacha','Lifszyc',175) //!Esto ejecuta la funcion persona
 var felipe = new persona('Felipe','gonzalez',193)
 var ernesto = new persona('Ernesto','eslava',186)
 var fernando = new persona('Fernando','bahena',172)
