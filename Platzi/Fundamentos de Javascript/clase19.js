@@ -283,7 +283,6 @@ var fernando = new persona('Fernando','bahena',172)
 
 ///////////////// ---------------------26 La verdad oculta sobre las clases---------------------
 function persona(nombre, apellido, altura){
-
      this.nombre = nombre
      this.apellido = apellido
      this.altura = altura
@@ -352,5 +351,3 @@ function persona(nombre, apellido, altura){
      this.altura = altura
      return this
 }
-
-

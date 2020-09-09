@@ -23,6 +23,7 @@ const dos = (opcional = 'un lugar indefinido')=>{
      }, 1000);
      console.log(`Función 2 llamada desde ${opcional}`)
 }
+
 uno();
 dos();
 uno('Llamado externo');
@@ -57,4 +58,3 @@ cuadradoPromise(0)
           console.log(`El valor de ${obj.value} da el resultado ${obj.result}`)
           return cuadradoPromise(5)
      })
-     .catch()
