@@ -1,0 +1,17 @@
+{
+  "name": "asincronismo",
+  "version": "1.0.0",
+  "description": "trabajar con asincronismos en javascript",
+  "main": "src/index.js",
+  "scripts": {
+    "callback": "node src/callback/indexj.js",
+    "callback:challenge": "node src/callback/challenge.js"
+  },
+  "keywords": [
+    "callbacks",
+    "promises",
+    "async"
+  ],
+  "author": "MIT",
+  "license": "MIT"
+}

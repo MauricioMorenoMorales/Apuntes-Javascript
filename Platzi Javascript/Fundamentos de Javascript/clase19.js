@@ -1,3 +1,10 @@
+//? Arrays
+//? Transformar un array
+//? Reducir un array
+//? Clases en javascript
+//? Modificando un prototipo
+//? This 27 Clases javascript
+
 ///////////------------------------------Arrays-------------------------------------
 var sacha = {
      nombre: 'Sacha',
@@ -80,6 +87,7 @@ var paula = {
 //* const es alta = (persona) => {return persona.altura > 18} Esto se puede simplificar así ↓
 //* var personasAltas = personas.filter(function(){return persona.altura > 18}) otra alternativa para filtrar
 const esAlta = ({ altura }) => altura > 1.8 //Versión desglosada
+//! Si la funcion filtro retorna un positivo se añadira a la nueva variable que se crea con el filter
 
 var personas = [sacha, alan, martin, dario, vicky, paula]
 
@@ -94,7 +102,7 @@ var personas_bajas = personas.filter(esBaja)
 console.log(personas_bajas)
 
 /////-----------------------------------Transformar un array-----------------------------------
-
+//! Revisar!!!
 var sacha = {
      nombre: 'Sacha',
      apellido: 'Lifszyc',
@@ -157,21 +165,18 @@ var sacha = {
      altura: 1.72,
      libros: 111
 }
-
 var alan = {
      nombre: 'Alan',
      apellido: 'Perez',
      altura: 1.86,
      libros: 78
 }
-
 var martin = {
      nombre: 'Martin',
      apellido: 'Gomez',
      altura: 1.85,
      libros: 132
 }
-
 var dario = {
      nombre: 'Dario',
      apellido: 'Juarez',
@@ -184,7 +189,6 @@ var vicky = {
      altura: 1.56,
      libros:91
 }
-
 var paula = {
      nombre: 'Paula',
      apellido: 'Barros',
@@ -194,9 +198,14 @@ var paula = {
 var personas = [sacha, alan, martin, dario, vicky, paula]
 
 var acum = 0
+//! -------------------------Se podria hacer un bucle for primero
+// for (let i = 0; i < personas.length; i++){
+//      acum = acum + personas[i].libros
+// }
+// console.log(`En total todos tienen ${acum} libros`);
 
-const reducir = (acumn, {libros})  => {
-     acum + libros
+const reducir = (acum, {libros})  => {
+     return acum + libros //! Recuerda siempre el return si no no hace nada la funcion y retorna undefined
 }
 
 var total_de_libros = personas.reduce(reducir, 0) //Requiere una funcion y el valor inicial del acumulador
@@ -238,7 +247,7 @@ ernesto.daraltura()
 
 function persona(nombre, apellido, altura){
      // var obj = {} si no pones 'new' a la instancia se crea un nuevo objeto
-     // obj.nombre 
+     // obj.nombre
      this.nombre = nombre
      this.apellido = apellido
      this.altura = altura
@@ -248,8 +257,12 @@ function persona(nombre, apellido, altura){
 persona.prototype.saludar = function (){
      console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
 }
-persona.prototype.soyAlto = () => this.altura > 180
-//Esta función no funcionará xd
+persona.prototype.soyAlto = function(){
+     return this.altura > 180          //!Tiene que estar la inicializacion antes del llamado
+}                                       //!Que esten juntas todas las funciones
+
+//? persona.prototype.soyAlto= () => this.altura > 180
+//Esta versión no funcionara por que una arrow function alude a el contexto this superior
 
 var sacha = new persona('sacha','Lifszyc',175)
 var felipe = new persona('Felipe','gonzalez',193)
@@ -343,11 +356,3 @@ class desarrollador extends persona{
      }
 }
 
-
-
-function persona(nombre, apellido, altura){
-     this.nombre = nombre
-     this.apellido = apellido
-     this.altura = altura
-     return this
-}

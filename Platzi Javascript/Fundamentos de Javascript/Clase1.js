@@ -8,8 +8,9 @@ var nombreEnMayusculas = nombre.toUpperCase()
 var nombreEnMinusculas = nombre.toLowerCase()
 var primeraLetraDelNombre = nombre.charAt()
 var cantidadLetrasDelNombre = nombre.length
+
 var nombreCompleto = `${nombre} ${apellido}`
-var str =  nombre.substr(1,2) 
+var str =  nombre.substr(1,2)
 var reto = nombre.substr(nombre.length-1,1)
 
 // -----------------------------------------------5 Variables Numeros-----------------------------------------------
@@ -28,7 +29,6 @@ peso -= 2
 var sandwich = 1
 // Opcion 1 peso = peso + sandwich
 peso += sandwich
-
 
 var jugarAlFutbol = 3
 // Opcion 1 peso = peso - jugarAlFutbol
@@ -80,7 +80,9 @@ function imprimirNombreEnMayusculas(nombre){
      nombre = nombre.toUpperCase()
      console.log(nombre)
 }
+
 imprimirNombreEnMayusculas(nombre)
+
 // -----------------------------------------------------------------------8 Objetos-----------------------------------------------------------------------
 var nombreMauricio = 'Mauricio'
 var nombreDario = 'Dario'
@@ -90,7 +92,9 @@ function imprimirNombreEnMayusculas(nombre){
      console.log(nombre)
 }
 imprimirNombreEnMayusculas(nombre)
+
 // ------------------------------para ahorrar esto mejor haz esto
+
 var sacha = {
      nombre: 'sacha',
      apellido: 'Lifszyc',
@@ -108,18 +112,22 @@ function imprimirNombreEnMayusculas({ apellido }){ //Desestructura del objeto el
 
 imprimirNombreEnMayusculas(dario)
 imprimirNombreEnMayusculas(sacha)
+
 // -----------------------------------------------------------------9 Desestructurar Objetos-----------------------------------------------------------------
+
 var sacha = {
      nombre: 'sacha',
      apellido: 'Lifszyc',
      edad: 28
 }
+
 //Nombre sería ((KEY)) Apellido sería ((VALOR))
 var dario = {
      nombre: 'Dario',
      apellido: 'Yakovlev',
      edad: 22
 }
+
 function imprimirNombreEnMayusculas(persona){
      //nombre = persona.nombre
      var {nombre} = persona //Desestructura la key de {nombre} en una variable llamada ''nombre''
@@ -134,10 +142,12 @@ function imprimir_nombre_y_edad(persona){
      var {edad} = persona //Desestructura la key de {edad} en una variable llamada ''edad''
      console.log(`Hola mi nombre es ${nombre} y mi tengo ${edad} años`)
 }
+
 imprimir_nombre_y_edad(dario);
 imprimir_nombre_y_edad(sacha)
 
 // -------------------------------------10 Parametros como referencia o como valor-------------------------------------
+
 //! IMPORTANTE
 // Parámetros como referencia o como valor
 // Si tienes pensado usar tecnologías como Flux o Redux, pon mucha atención a este video. Nunca debes modificar el estado del objeto sino crear otro.
@@ -147,11 +157,13 @@ var sacha = {
      apellido: 'Lifszyc',
      edad: 28
 }
+
 var dario = {
      nombre: 'Dario',
      apellido: 'Yakovlev',
      edad: 22
 }
+
 // function cumpleanhos(persona){
 //      persona.edad += 1             //Altera al objeto
 // }
@@ -168,11 +180,13 @@ function cumpleanhos(persona){
      }
      edad += 1
 }
+
 cl(cumpleanhos(sacha))
 cl(sacha)
 ////////////////////////////Si modificamos el valor de un valor en una funcion, esta afectara a el valor global
 
 // -----------------------------------------11 Comparaciones en Javascript-----------------------------------------
+
 const cl = console.log
 var x = 4
 var y = '4'
@@ -199,6 +213,7 @@ cl(sacha === otraPersonaTambien2)
 /////////////////////Da false por que ocupa otro espacio en memoria
 
 //--------------------------------------------------12 Condicionales--------------------------------------------------
+
 var sacha = {
      nombre: 'sacha',
      apellido: 'Lifszyc',
@@ -250,8 +265,11 @@ function imprimir_profesiones(persona){
           console.log(`no es un volador de drones`)
      }
 }
+
 imprimir_profesiones(sacha)
+
 //---------------------------------------13 Funciones que retornan valores---------------------------------------
+
 var sacha = {
      nombre: 'sacha',
      apellido: 'Lifszyc',
@@ -263,6 +281,7 @@ var sacha = {
      guitarrista:false,
      drone: true
 }
+
 var juan = {
      nombre: 'juan',
      apellido: '李',
@@ -288,5 +307,6 @@ function imprimirSiEsMayorDeEdad(persona) {
           console.log(`${persona.nombre} es menor de edad`)
      }
 }
+
 console.log(MayorDeEdad(juan))
 imprimirSiEsMayorDeEdad(juan)
