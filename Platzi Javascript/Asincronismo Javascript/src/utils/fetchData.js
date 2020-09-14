@@ -17,3 +17,10 @@ const  fetchData = (url_api) => {
 }
 
 module.exports = fetchData;
+
+// => API
+//data.info.count
+// => ${API}${data.results[0].id}
+//data.name
+// => data.origin.url
+//data.dimension

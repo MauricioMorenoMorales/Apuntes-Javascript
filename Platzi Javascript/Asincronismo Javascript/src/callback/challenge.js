@@ -29,3 +29,11 @@ fetchData(API, function(error1, data1){
         })
     })
 })
+
+//API
+//data1.results[0].id
+//data2.origin.url
+
+//.info.count
+//.name
+//.dimension
