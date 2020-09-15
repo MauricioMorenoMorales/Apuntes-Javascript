@@ -190,8 +190,7 @@ console.log('Hola mi nombre es Sacha '); //!Aqui si se necesita cuando una linea
 `${nombre} es un desarrollador`
 
 function calcularDoble(numero){
-     return; //!Aqui necesita el inicio de el corchete obligatoriamente
-     {
+     return{ //!Aqui necesita el inicio de el corchete obligatoriament{
           original: numero, doble: numero * 2
      }
 }
