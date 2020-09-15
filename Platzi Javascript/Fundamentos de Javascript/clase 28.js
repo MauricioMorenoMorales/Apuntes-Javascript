@@ -41,7 +41,6 @@ function responderSaludo(nombre,apellido,esDev = false){
 var felipe = new persona('Felipe','gonzalez',193)
 var ernesto = new persona('Ernesto','eslava',186)
 var fernando = new desarrollador('Fernando','bahena',172)
-
 felipe.saludar(responderSaludo)
 ernesto.saludar()
 fernando.saludar(responderSaludo)

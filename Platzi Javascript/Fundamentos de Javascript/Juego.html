@@ -83,6 +83,10 @@
         .hide {
             display: none;
         }
+
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
 </head>
 
@@ -94,17 +98,18 @@
         <div id="verde" class="color verde right" data-color="verde"></div>
         <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script>
         const btnEmpezar = document.getElementById('btnEmpezar'),
             celeste = document.getElementById('celeste'),
             violeta = document.getElementById('violeta'),
             naranja = document.getElementById('naranja'),
             verde = document.getElementById('verde'),
-            ULTIMO_NIVEL = 20
-
+            ULTIMO_NIVEL = 1
 
         class Juego{
             constructor(){
+                this.inicializar = this.inicializar.bind(this)
                 this.inicializar()
                 this.generarSecuencia()
                 setTimeout(() => {
@@ -115,6 +120,7 @@
             inicializar(){ 
                 this.siguienteNivel = this.siguienteNivel.bind(this)
                 this.elegirColor = this.elegirColor.bind(this)
+                this.toggleBtnEmpezar()
                 btnEmpezar.classList.add('hide')
                 this.nivel = 1
                 this.colores = {
@@ -122,6 +128,14 @@
                     violeta,
                     naranja,
                     verde
+                }
+            }
+
+            toggleBtnEmpezar(){
+                if(btnEmpezar.classList.contains('hide')){
+                    btnEmpezar.classList.remove('hide')
+                }else{
+                    btnEmpezar.classList.add('hide')
                 }
             }
 
@@ -188,7 +202,7 @@
                 this.colores.naranja.addEventListener('click', this.elegirColor)
             }
 
-            eliminarEventosClick(){ 
+            eliminarEventosClick(){
                 this.colores.celeste.removeEventListener('click', this.elegirColor)
                 this.colores.verde.removeEventListener('click', this.elegirColor)
                 this.colores.violeta.removeEventListener('click', this.elegirColor)
@@ -205,7 +219,7 @@
                         this.nivel++
                         this.eliminarEventosClick()
                         if(this.nivel === (ULTIMO_NIVEL + 1)){
-                            //Win
+                            this.ganoElJuego()
                         }else{
                             setTimeout(() => {
                                 this.siguienteNivel()
@@ -213,8 +227,21 @@
                         }
                     }
                 }else{
-                    //* Perdio
+                    this.perdioElJuego()
                 }
+            }
+            ganoElJuego(){
+                swal('Platzi','Felicitaciones, ganaste el juego!','Success')
+                    .then(() => {
+                        this.inicializar()
+                    })
+            }
+            perdioElJuego(){
+                swal('Platzi','Lo lamentamos, perdiste','Error')
+                    .then(() => {
+                        this.eliminarEventosClick()
+                        this.inicializar()
+                    })
             }
         }
         function empezarJuego(){
