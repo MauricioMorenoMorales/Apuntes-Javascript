@@ -54,11 +54,13 @@ console.log(education);
 console.log(globalVar)
 
 /////////////////////////____________________Arrow Functions Promesas y parametros en objetos____________________
+// Parametros en objeto
+
 let name ='oscar';
 let age = 32
 
 obj = {
-     name: name, 
+     name: name,
      age: age       //Así se construia un objeto en base a las variables antes
 }
 
@@ -145,7 +147,7 @@ console.log(generatorHello.next().value);
 console.log(generatorHello.next().value);
 console.log(generatorHello.next().value);
 
-/////////////////----------------------------------Es 7
+//! -----------------------ES7 Includes and **-----------------------
 let numbers = [1,2,3,4,5,6,7];
 if(numbers.includes(7)){
      console.log('Sí se encuentra el valor 7')
@@ -159,7 +161,7 @@ let result = base**exponente
 
 console.log(result);
 
-/////////////////////---------------------------------Es 8
+//! -----------------------ES8 Object entries and padd----------------------
 // Object.entries
 const data = {
      frontend: 'Juan',
@@ -178,7 +180,7 @@ console.log(string.padStart(7, 'hi'));
 console.log(string.padEnd(7, ' hi'));
 console.log('food'.padEnd(12, '56789012345'))
 
-///////////////////------------------------------Async Await
+//* ------------------------------Async Await------------------------------
 const helloWorld = () => {
      return new Promise((resolve, reject) => {
           (true)
@@ -203,7 +205,7 @@ const anotherFunction = async () => {
      }
 }
 anotherFunction();
-/////////////////--------------------------------------- ES9
+//! -----------------------ES9  rest spread properties, finally, ReGex----------------------
 const obj = {
      name: 'oscar',
      age: 32,
@@ -211,7 +213,7 @@ const obj = {
 }
 let {country, ...all} = obj; //Country se desestructuro, en all se guardan las demas entries
 console.log(country)
-console.log(all)
+console.log(all.age)
 
 /////////////
 
@@ -249,7 +251,9 @@ const day = match[3]
 
 console.log(year,month,day);
 
-////////////////////--------------------------------------ES10
+//! ----------------------- ES9 ----------------------
+
+//* Array flat
 let array = [1,2,3, [1,2,3,[1,2,3]]];
 console.log(array.flat(2));
 
@@ -263,7 +267,9 @@ console.log(hello.trimStart());
 let hello = 'Hello World           '
 console.log(hello)
 console.log(hello.trimEnd());
-///////////////////////////
+
+//* Optional catch binding
+
 try{
 
 }catch(error){
@@ -275,7 +281,9 @@ try{
 }catch{
      error
 }
-///////////////////////////////////
+
+//*Symbol
+
 let entries = [["name", "oscar"], ["age", 32]];
 
 console.log(Object.fromEntries(entries));
