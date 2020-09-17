@@ -4,7 +4,9 @@ function NewFunction(name, age, country){
      var country = country || 'mexico';
      console.log(name, age, country);
 }
-//// es6
+
+//! ------------------------------Es6------------------------------
+
 function NewFunction2(name = 'oscar', age = 32, country = 'mexico'){
      console.log(name, age, country)
 }
@@ -18,7 +20,9 @@ let epicPhrase = hello + world;
 console.log(epicPhrase);
 let epicPhrase2 = `${hello} ${world}`;
 console.log(epicPhrase2);
-////Saltos de linea
+
+//*-----------------------------------------Saltos de linea
+
 let lorem = 'Qui consequatur comodi ipsun vel duis yet minima \n'
 + 'Otra frase que necesitamos'
 
@@ -26,24 +30,32 @@ let lorem2 = `otra frase que necesitamos
 ahora es otra frase epica`; 
 console.log(lorem);
 console.log(lorem2);
-/////////////////////////////////////////////// Destructuring
+
+//* ------------------------------------------Destructuring
+
 let person = {
      'name': 'oscar',
      'age': 32,
      'country': 'mx'
 }
 console.log(person.name, person.age)
-////Se escribe mejor como abajo
+
+//Se escribe mejor como abajo
+
 let {name, age, country} = person;
 console.log(name, age, country);
-//////////////////////////////////////////////Spread-operator
+
+//* ---------------------------------------------Spread Operator
+
 let team1 =['Oscar', 'Julian','Ricardo']
 let team2 = ['Valeria', 'Yesica' , 'Camila']
 
 let education = ['David', ...team1, ...team2];
 
 console.log(education);
-///////////////////////////////////////////////
+
+//* Scope---------------------------------------------------------
+
 {
      var globalVar = 'global var';
 }
@@ -53,8 +65,9 @@ console.log(education);
 }
 console.log(globalVar)
 
-/////////////////////////____________________Arrow Functions Promesas y parametros en objetos____________________
-// Parametros en objeto
+//! -----------------------Arrow Functions Parametros en objetos promises -----------------------
+
+//* Parametros en objeto--------------------------------------------
 
 let name ='oscar';
 let age = 32
@@ -66,29 +79,37 @@ obj = {
 
 obj2 = {name, age}; //Asi se construye un objeto ahora
 console.log(obj2);
-/////////////////Arrow Functions
+
+//* Arrow Functions----------------------------------------------------
 
 const names = [
      {name: 'oscar', age:32,},
      {name: 'yesica', age: 27}
 ]
-let lisOfNames = names.map(
+let listOfNames = names.map(
      function (item){
           console.log(item.name)
 })
+console.log(listOfNames)
 
 let listOfNames2 = names.map(item => console.log(item.name))
+listOfNames2()
 
 const listOfNames3 = (name, age, country) => {
      console.log(item.name)
 }
+listOfNames3()
 
 const listOfNames4 = name => {
      console.log(name)
 }
+listOfNames4()
+
 var num = 3
 const square = num => num * num
-////////////Promesas
+square(num)
+
+//* Promises-----------------------------------------------------
 
 const helloPromise = () => {
      return new Promise ((resolve, reject) => {
@@ -109,8 +130,9 @@ helloPromise()
 // // reject() - comportamiento al fallar la promesa
 // // .then (⇒) - obtener el valor del resolve
 // // .error(⇒) - obtener el valor del rejec
-//!__________________________________
-/////////////---------------------------------Clases modulos y generadores
+
+//! -------------------Clases modulos y generadores-------------------
+
 class calculator {
      constructor(){
           this.valueA = 0;
@@ -125,7 +147,8 @@ class calculator {
 const calc = new calculator();
 console.log(calc.sumar(2,2))
 
-/////////Modulos
+//* Modulos---------------------------------------------------------
+
 import hello from './module'
 console.log(hello());
 
@@ -133,7 +156,8 @@ import {hello, bye as byeGreeting} from './module'
 console.log(hello())
 console.log(byeGreeting)
 
-////////////////////Generadores
+//* Generadores------------------------------------------------------
+
 function* helloWorld(){
      if(true){
           yield 'Hello'
@@ -205,7 +229,9 @@ const anotherFunction = async () => {
      }
 }
 anotherFunction();
+
 //! -----------------------ES9  rest spread properties, finally, ReGex----------------------
+
 const obj = {
      name: 'oscar',
      age: 32,
@@ -213,6 +239,7 @@ const obj = {
 }
 let {country, ...all} = obj; //Country se desestructuro, en all se guardan las demas entries
 console.log(country)
+console.log(all)
 console.log(all.age)
 
 /////////////
