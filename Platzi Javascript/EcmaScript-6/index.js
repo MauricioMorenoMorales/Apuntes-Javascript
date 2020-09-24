@@ -90,24 +90,21 @@ let listOfNames = names.map(
      function (item){
           console.log(item.name)
 })
-console.log(listOfNames)
 
 let listOfNames2 = names.map(item => console.log(item.name))
-listOfNames2()
 
-const listOfNames3 = (name, age, country) => {
-     console.log(item.name)
+const listOfNames3 = (name, age) => {
+     console.log(name)
+     console.log(age)
 }
-listOfNames3()
 
 const listOfNames4 = name => {
      console.log(name)
 }
-listOfNames4()
 
 var num = 3
 const square = num => num * num
-square(num)
+console.log(square(num))
 
 //* Promises-----------------------------------------------------
 

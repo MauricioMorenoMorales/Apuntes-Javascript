@@ -12,4 +12,4 @@ class calculator{
 }
 
 const calc = new calculator();
-calc.sumar(2,2)
+// calc.sumar(2,2)
