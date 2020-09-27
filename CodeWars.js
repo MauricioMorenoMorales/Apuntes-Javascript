@@ -44,3 +44,11 @@ function fakebin(string){
     return response
 }
 console.log(fakebin('0123456789'))
+
+//! Hacer un saludo con nombre, y con por defecto como mundo
+
+function hello(name = 'World'){
+    return `Hello ${name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()}`
+}
+console.log(hello())
+console.log(hello('mauRicio'))
