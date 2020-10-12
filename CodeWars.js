@@ -87,4 +87,34 @@ const invertArray = (array) => {
 }
 console.log(invertArray([1, 0, -3, 5, -4, 6 ]))
 
-const invertirArrayClever = (array) => array.map(x => 0 -x)
+const invertirArrayCLEVER = array => array.map(x => 0 -x)
+
+//! Suma cada numero inferior a el numero dado
+
+const summation = num => {
+    let result = 0
+    for(var i = 0; i <= num; i++){
+         result += i
+    }
+    return result
+}
+console.log(summation(3))
+
+const summationCLEVER = n => n * (n + 1) / 2
+console.log(summationCLEVER(8))
+
+//! Retorna el numero más pequeño en un Array
+
+function nextId(ids){
+    var x = 0
+    while(ids.includes(x)) x++
+    return x
+}
+console.log(nextId([0,1,2,3,5,6,7,11]))
+
+function nextId2(ids){
+    const used = new Set(ids)
+    for (let i = 0; i <= ids.length; i++){
+        if(!used.has(i)) return i
+    }
+}

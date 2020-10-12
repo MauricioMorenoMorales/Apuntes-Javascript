@@ -1,5 +1,9 @@
-const invertArray = (array) => {
-     return array.map(x => 0 -x)
+const summation = num => {
+     let result = 0
+     for(var i = 0; i <= num; i++){
+          result += i
+     }
+     return result
 }
 
-console.log(invertArray([1, 0, -3, 5, -4, 6 ]))
+console.log(summation(3))
