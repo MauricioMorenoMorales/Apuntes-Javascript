@@ -1,15 +1,5 @@
-class calculator{
-     constructor(){
-          this.valueA = 0;
-          this.valueB = 0;
-          return this
-     }
-     sumar(valueA, valueB){
-          this.valueA = valueA
-          this.valueB = valueB
-          return console.log(valueA + valueB)
-     }
+const invertArray = (array) => {
+     return array.map(x => 0 -x)
 }
 
-const calc = new calculator();
-// calc.sumar(2,2)
+console.log(invertArray([1, 0, -3, 5, -4, 6 ]))

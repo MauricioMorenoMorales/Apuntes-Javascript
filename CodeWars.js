@@ -52,3 +52,39 @@ function hello(name = 'World'){
 }
 console.log(hello())
 console.log(hello('mauRicio'))
+
+//! Calcula la caida de una hoja con una regla de 3
+
+function sakuraFall(v){
+    return v * 5 / 80
+}
+console.log(sakuraFall(10))
+
+//! Retorna el doble de un entero
+
+const doubleInteger = i => i * 2
+console.log(doubleInteger(2))
+
+//! Calcula litros por hora tomados de ejercicio
+
+const litres = (time) => Math.floor(time * 0.5)
+console.log(litres(11.8))
+
+//! Si tu nombre empieza con la letra R entonces tocas el banjo
+
+const areYouPlayingBanjo = (name) => {
+    return name + (name[0].toLowerCase() === 'r' ? ' plays' : ' does not play') + " banjo"
+}
+
+const name = 'Mauricio'
+
+console.log(areYouPlayingBanjo('Mauricio'))
+
+//! Si un numero es negativo conviertelo a positivo y a la inversa
+
+const invertArray = (array) => {
+    return array.map( x => x === 0 ? x : -x )
+}
+console.log(invertArray([1, 0, -3, 5, -4, 6 ]))
+
+const invertirArrayClever = (array) => array.map(x => 0 -x)
