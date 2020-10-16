@@ -118,3 +118,24 @@ function nextId2(ids){
         if(!used.has(i)) return i
     }
 }
+
+//! Convierte velocidad km/h a cm/s redondeados hacia abajo
+
+const cockroachSpeed = (s) =>{
+    const SegundosenUnaHora = 3600
+    const centimetrosenUnKilometro = 100000
+    return Math.floor((s * centimetrosenUnKilometro) / SegundosenUnaHora)
+}
+
+//! ----------------------- Crea un generador de rango
+
+function generateRange(min, max, step){
+    let response = []
+    for (let i = min; i <= max ; i += step) {
+         response.push(i)
+    }
+    return response
+}
+console.log(generateRange(2,10,2))
+
+//! Función que calcula los segundos pasados de media noche

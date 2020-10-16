@@ -18,5 +18,8 @@
   "homepage": "https://github.com/MauricioMorenoMorales/Apuntes-Javascript#readme",
   "dependencies": {
     "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^6.2.1"
   }
 }

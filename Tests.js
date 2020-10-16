@@ -1,9 +1,6 @@
-const summation = num => {
-     let result = 0
-     for(var i = 0; i <= num; i++){
-          result += i
-     }
-     return result
-}
+const CapitalizeWord = (word) =>
+     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 
-console.log(summation(3))
+console.log(CapitalizeWord('mauricio'))
+console.log(CapitalizeWord('otrowey'))
+console.log(CapitalizeWord('alejandro'))
