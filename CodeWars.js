@@ -138,4 +138,87 @@ function generateRange(min, max, step){
 }
 console.log(generateRange(2,10,2))
 
-//! Función que calcula los segundos pasados de media noche
+//! Función que calcula los milisegundos pasados de media noche
+
+const past = (h = 0, m = 0, s = 0) => ((h * 3600) + (m * 60) + (s)) * 1000
+console.log(past(1,1,3))
+
+//! Obten la media de un array redondeado hacia abajo
+
+const getAverage = (marks) => {
+    let total = 0
+    marks.forEach(element => {
+         (total += element)
+    });
+    return Math.floor(total / marks.length)
+}
+console.log(getAverage([0,1,2,3,4,5,6,7,8,9,10]))
+
+//! Hacer una función que retorne Capitalizaciones
+
+const CapitalizeWord = word =>
+     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+
+const CapitalizeWordClever = word =>
+    word[0].toUpperCase() + word.slice(1).toLowerCase()
+
+console.log(CapitalizeWordClever('mauricio'))
+
+//! Haz varias funciones que manejen la temperatura
+
+function weatherInfo (temp) {
+    var c = convertToCelsius(temp);
+    if (c <= 0)
+      return (c + " is freezing temperature");
+    else
+      return (c + " is above freezing temperature");
+  }
+  function convertToCelsius (temperature) {
+    var celsius = (temperature - 32) * (5/9);
+    return celsius;
+  }
+console.log(weatherInfo(100))
+console.log(convertToCelsius(100))
+
+//! Si los parametros son de un cuadrado retorna el area, si no el perimetro
+
+const areaOrPerimeter = (l, w) => {
+    return(l === w)
+         ? l * w
+         : (l * 2) + (w * 2)
+}
+const areaOrPerimeterCLEVER = (l, w) => {
+    return(l === w) ? l * w : 2 * (l + w)
+}
+
+//! Haz una funcion que repita un string determinada cantidad de veces
+
+const repeatStr = (n,s) => {
+    let response = ''
+    for (let i = 0; i < n; i++) {
+       response += s
+    }
+    return response
+}
+
+const repeatStrCLEVER = (n, s) => s.repeat(n)
+
+//! Haz una función que retorne un patron CortoLargoCorto de sus parametros
+
+function solution(a, b) { //? Para strings
+    return (a.length < b.length)
+        ? a + b + a
+        : b + a + b
+}
+function ShortLongShort(a, b){ //? Para Numeros
+    let long = 0
+    let short = 0
+    if(a < b){
+         short = a
+         long = b
+    }else{
+         short = b
+         long = a
+    }
+    return `${short}${long}${short}`
+}

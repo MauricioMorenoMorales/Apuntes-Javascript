@@ -1,6 +1,14 @@
-const CapitalizeWord = (word) =>
-     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+function ShortLongShort(a, b){
+     let long = 0
+     let short = 0
+     if(a < b){
+          short = a
+          long = b
+     }else{
+          short = b
+          long = a
+     }
+     return `${short}${long}${short}`
+}
 
-console.log(CapitalizeWord('mauricio'))
-console.log(CapitalizeWord('otrowey'))
-console.log(CapitalizeWord('alejandro'))
+console.log(ShortLongShort(5,7))
