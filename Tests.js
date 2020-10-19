@@ -1,14 +1,10 @@
-function ShortLongShort(a, b){
-     let long = 0
-     let short = 0
-     if(a < b){
-          short = a
-          long = b
-     }else{
-          short = b
-          long = a
-     }
-     return `${short}${long}${short}`
+const expressionMatter = (a, b, c) => {
+  Math.max(
+    a + b + c,
+    a * b * c,
+    a * (b + c),
+    (a + b) * c,
+    a + b * c,
+    a * b + c,
+  )
 }
-
-console.log(ShortLongShort(5,7))

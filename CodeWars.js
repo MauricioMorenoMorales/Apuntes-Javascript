@@ -222,3 +222,110 @@ function ShortLongShort(a, b){ //? Para Numeros
     }
     return `${short}${long}${short}`
 }
+
+// ! -----------------------Fake Binary-----------------------
+
+const fakeBin = (x) =>
+     x.split('').map((e) => e < 5 ? 0 : 1).join('')
+
+console.log(fakeBin('4938493'))
+
+// ! -----------------------Verifica las calificaciones-----------------------
+
+const checkExam = (array1, array2) => {
+    let calificacion = 0
+    for (let i = 0; i < array1.length; i++) {
+         (array2[i] === "")
+              ? calificacion += 0
+              :(array1[i] === array2[i])
+                   ? calificacion += 4
+                   : calificacion -= 1
+    }
+    return(calificacion < 1)
+         ? 0
+         : calificacion
+}
+console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]));
+console.log(checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]));
+console.log(checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]));
+console.log(checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]));
+
+//! #--------------------Ejercicio de descuentos--------------------
+
+function calculatePercentage(normPrice, discount, holyday){
+    let saving = normPrice * discount / 100
+    return(Math.floor(holyday / saving))
+}
+
+const dutyFree = (normPrice, discount, holyday) =>
+
+//! Ejercicio cuantos numeros es divisible algo
+
+function findMultiples(integer, limit){
+    let response = []
+    for (let i = integer; i <= limit; i += integer) {
+      response.push[i]
+    }
+    return response
+}
+findMultiples(2,5) // => [5,10,15,20,25]
+
+//! Funcion que retorne un saludo en varios idiomas
+
+const greetInManyLanguages = (language = 'english') => {
+    let GreetingsDataBase = {
+      english: 'Welcome',
+      czech: 'Vitejte',
+      danish: 'Velkomst',
+      dutch: 'Welkom',
+      estonian: 'Tere tulemast',
+      finnish: 'Tervetuloa',
+      flemish: 'Welgekomen',
+      french: 'Bienvenue',
+      german: 'Willkommen',
+      irish: 'Failte',
+      italian: 'Benvenuto',
+      latvian: 'Gaidits',
+      lithuanian: 'Laukiamas',
+      polish: 'Witamy',
+      spanish: 'Bienvenido',
+      swedish: 'Valkommen',
+      welsh: 'Croeso'
+    }
+    return GreetingsDataBase[language] || GreetingsDataBase['english']
+  }
+
+//! Retorna el llamado de un planeta
+
+function getPlanetName(id){
+    return {
+        1: 'Mercury',
+        2: 'Venus',
+        3: 'Earth',
+        4: 'Mars',
+        5: 'Jupiter',
+        6: 'Saturn',
+        7: 'Uranus',
+        8: 'Neptune'
+    }[id]
+}
+
+//! Retorna el primer numero no consecutivo de un array
+
+function firstNonConsecutive(arr) {
+    for (let i = 0; i < arr.length - 1; ++i) {
+      if (arr[i] + 1 !== arr[i + 1]) {
+        return arr[i + 1]
+      }
+    }
+    return null
+  }
+
+//! Retorna una derivada
+
+const derive = (coefficient, exponent) =>
+  `${coefficient * exponent}x^${exponent - 1}`
+
+console.log(derive(7,8)) // => "56x^7"
+console.log(derive(7,8)) // => "45x^8"
+
