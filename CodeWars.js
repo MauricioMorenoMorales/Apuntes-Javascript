@@ -359,7 +359,7 @@ function paperworkCLEVER(n, m) {
 return n > 0 && m > 0 ? n * m : 0
 }
 
-//! Verifica si un array posee un numero
+//! ----------------Verifica si un array posee un numero----------------
 
 const check = (array, x) =>
   (array.includes(x)) ? true : false
@@ -379,3 +379,74 @@ const positiveSum = (arr) => {
 }
 console.log(positiveSum([1,-2,3,4,5]))
 
+//! Metodo para String que alterne mayusculas y minusculas de un String
+
+String.prototype.toAlternatingCase = function() {
+  return this.split("").map((a) => a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase()).join('')
+} //TODO Las arrow functions no funcionan por que posee un this
+console.log('Hola que onda'.toAlternatingCase())
+
+//! Metodo para tipo de dato String para verificar si se esta completamente en mayuscula
+
+String.prototype.isUpperCase = function(){
+  return this === this.toUpperCase()
+}
+console.log('HOLA MUNDO'.isUpperCase())
+
+//! Metodo que cambie las letras especiales del idioma polaco a letras inglesas
+
+function correctPolishLetters (string) {
+  const polishLetters = {
+    "ą": "a",
+    "ć": "c",
+    "ę": "e",
+    "ł": "l",
+    "ń": "n",
+    "ó": "o",
+    "ś": "s",
+    "ź": "z",
+    "ż": "z",
+  }
+  return string.split('').map((c) => polishLetters[c] || c ).join('')
+}
+console.log(correctPolishLetters("Jędrzej Błądziński 1"))
+
+//! Funcion que retorne la cantidad de veces que se repite una letra en un string
+
+function strCount(str, letter) {
+  let response = 0
+  for (const i of str) {
+    if (i === letter) { response += 1}
+  }
+  return response
+}
+
+const strCountCLEVER = (str, letter) => str.split(letter).length - 1
+
+//! Has una funcion que retorne si un numero es par o impar
+
+const testEven = (n) => (n % 2) == 0
+
+//! Funcion que determine si se tiene la cantidad necesaria de gasolina para llegar a cierto punto
+
+const zeroFuel = (distanceToPump, milesPerGalon, fuellLeft) =>
+  ((milesPerGalon * fuellLeft) >= (distanceToPump))
+
+//! Recibe datos de la edad de ciertas personas y retorna [valorMinimo, valorMaximo, diferencia]
+
+const differenceInAges = (ages) =>{
+    let maxAge = -Infinity
+    let minAge = Infinity
+    for (const i of ages) {
+      if(i > maxAge){maxAge = i}
+      if(i < minAge){minAge = i}
+    }
+    return [maxAge, minAge, maxAge - minAge]
+}
+
+const differenceInAgesALTERNATE = (ages) => {
+    let max = Math.max(...ages),
+        min = Math.min(...ages),
+        difference = max - min
+    return [max, min, difference]
+}

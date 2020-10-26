@@ -1,8 +1,11 @@
-const positiveSum = (arr) => {
-  let response = 0
-  for (const i of arr) {
-    if(i < 0) { return }
-    response += i
+const differenceInAges = (ages) =>{
+  let maxAge = -Infinity
+  let minAge = Infinity
+  for (const i of ages) {
+    if(i > maxAge){ maxAge = i}
+    if(i < minAge){ minAge = i}
   }
-  return response
+  return [maxAge, minAge, maxAge - minAge]
 }
+
+console.log(differenceInAges([1,56,22,76,55]))
