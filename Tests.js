@@ -1,10 +1,8 @@
-const expressionMatter = (a, b, c) => {
-  Math.max(
-    a + b + c,
-    a * b * c,
-    a * (b + c),
-    (a + b) * c,
-    a + b * c,
-    a * b + c,
-  )
+const positiveSum = (arr) => {
+  let response = 0
+  for (const i of arr) {
+    if(i < 0) { return }
+    response += i
+  }
+  return response
 }

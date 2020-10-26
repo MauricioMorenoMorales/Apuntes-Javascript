@@ -121,7 +121,7 @@ helloPromise()
      .then(response => console.log(response))
      .then(() => console.log('hola'))
      .catch(error => console.log(error));
-     
+
 // //      composicion - newPromise()
 // // resolve() - comportamiento al cumplir la promesa
 // // reject() - comportamiento al fallar la promesa
@@ -135,7 +135,7 @@ class calculator {
           this.valueA = 0;
           this.valueB = 0;
      }
-     sumar(valueA,valueB){ 
+     sumar(valueA,valueB){
           this.valueA = valueA;
           this.valueB = valueB;
           return this.valueA + this.valueB;
@@ -213,7 +213,7 @@ const helloWorld = () => {
 const HelloAsync = async () => {
      const hello = await helloWorld();
      //const Hello2 = await helloworld2();
-     console.log(hello);
+     console.log("hello world")
 }
 HelloAsync();
 

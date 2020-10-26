@@ -329,3 +329,53 @@ const derive = (coefficient, exponent) =>
 console.log(derive(7,8)) // => "56x^7"
 console.log(derive(7,8)) // => "45x^8"
 
+//! Retorna las Iniciales de 2 nombres
+
+const abbrevName = (name) => {
+    let nameArray = name.split(' ')
+    return (nameArray[0][0] + "." + nameArray[1][0]).toUpperCase()
+}
+
+//! Retorna la suma interna de todos los elementos de dos arrays
+
+function arrayPlusArray(arr1,arr2){
+    let response = [...arr1, ...arr2].reduce((a, b) => {
+      return a + b
+    }, 0)
+    return response
+  }
+
+//! Filtra valores negativos de una función
+
+function paperwork(n,m){
+    return (n < 1)
+      ? 0
+      : (m < 1)
+        ? 0
+        : n * m
+  }
+
+function paperworkCLEVER(n, m) {
+return n > 0 && m > 0 ? n * m : 0
+}
+
+//! Verifica si un array posee un numero
+
+const check = (array, x) =>
+  (array.includes(x)) ? true : false
+
+console.log(check([66,101], 66))
+
+//! Funcion que retorne la suma de elementos positivos dentro de un array
+
+const positiveSum = (arr) => {
+    let response = 0
+    for(const i of arr){
+        (i < 1)
+            ? response += 0
+            : response += i
+    }
+    return response
+}
+console.log(positiveSum([1,-2,3,4,5]))
+
