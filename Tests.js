@@ -1,11 +1,8 @@
-const differenceInAges = (ages) =>{
-  let maxAge = -Infinity
-  let minAge = Infinity
-  for (const i of ages) {
-    if(i > maxAge){ maxAge = i}
-    if(i < minAge){ minAge = i}
-  }
-  return [maxAge, minAge, maxAge - minAge]
+function getGrade (s1, s2, s3) {
+  avg = (s1+s2+s3)/3;
+  if (avg < 60)  return "F";
+    else if (avg < 70) return "D";
+    else if (avg < 80) return "C";
+    else if (avg < 90) return "B";
+    else return "A";
 }
-
-console.log(differenceInAges([1,56,22,76,55]))

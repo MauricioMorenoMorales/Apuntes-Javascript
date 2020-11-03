@@ -450,3 +450,44 @@ const differenceInAgesALTERNATE = (ages) => {
         difference = max - min
     return [max, min, difference]
 }
+
+// ! ---------------------------Convierte un numero a string---------------------------
+
+var a = 123..toString();
+var a = 123 .toString()
+var a = (123).toString();
+var a = 123 + '';
+
+// ! Retorna solo los valores que ocupen una posicion inpar dentro de un array
+
+const removeEveryOther = (arr) => {
+  let response = []
+  for (let i = 0; i < arr.length; i += 2) {
+    response.push(arr[i])
+  }
+  return response
+}
+
+//! Retorna la suma de varios elementos al cuadrado
+
+const squareSum = (numbers) =>
+  numbers.reduce((sum, number) => (number * number) + sum, 0)
+
+//! Obten el valor de Ascii de un string
+
+const getASCII = (c) => c.charCodeAt(0)
+
+// ! Retorna true a cualquier numero par excepto 2
+
+const divide = (weight) => weight > 2 && weight % 2 == 0
+
+//! Retorna la calificacion  inglesa en base a el promedio de 3 calificaciones
+
+function getGrade (s1, s2, s3) {
+  avg = (s1+s2+s3)/3;
+  if (avg < 60)  return "F";
+    else if (avg < 70) return "D";
+    else if (avg < 80) return "C";
+    else if (avg < 90) return "B";
+    else return "A";
+}
