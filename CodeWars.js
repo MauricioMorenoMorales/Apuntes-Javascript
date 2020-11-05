@@ -525,3 +525,30 @@ function guessBlue(blueStart, redStart, bluePulled, redPulled){
 
 const xor = (a, b) => (a && !b) || (!a && b)
 const xor2 = (a, b) => a != b
+
+// ! Retorna el piso en su numero real no el ingles con sus medidas raras como las millas que asco
+
+const getRealFloor = (n) => {
+  if(n < 1) {return n}
+  if(n >= 1 && n < 13) {return n - 1}
+  if(n > 13) {return n - 2}
+}
+
+const getRealFloorCLEVER = (n) => (n > 13) ? n - 2 : (n > 0) ? n - 1 : n
+
+const getRealFLoorMORECLEVER = (n) => (n < 1) ? n : n - (n < 13 ? 1 : 2)
+
+// ! Recibe un numero y retorna un array inverso con numeros dentro
+
+const digitize = (n) => {
+  const array = n.toString().split('').reverse()
+  let response = []
+  for (const i of array) {
+    response.push(parseInt(i))
+  }
+  return response
+}
+
+function digitizeCLEVER(n) {
+  return String(n).split('').map(Number).reverse()
+}
