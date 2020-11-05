@@ -491,3 +491,37 @@ function getGrade (s1, s2, s3) {
     else if (avg < 90) return "B";
     else return "A";
 }
+
+//! Elimina los todos los ceros al final de un numero
+
+const noBoringZeros = (n) => {
+  while (n % 10 === 0 && n !== 0) {
+    n = n / 10
+  }
+  return n
+}
+
+//! Verifica si tu puntuacion es mayor que la de el promedio de el salon
+
+const betterThanAverage = (classPoints, yourPoints) => {
+  let sum = 0
+  for (const i of classPoints) {
+    sum += i
+  }
+  return (sum / classPoints.length) < yourPoints
+}
+
+// ! Esta funcion no sabria explicarla rapidamente xd
+
+function guessBlue(blueStart, redStart, bluePulled, redPulled){
+  let blueLeft = blueStart - bluePulled
+  let redLeft = redStart - redPulled
+  let allLeft = blueLeft + redLeft
+
+  return blueLeft / allLeft
+}
+
+// ! Has una funcion que haga un xor
+
+const xor = (a, b) => (a && !b) || (!a && b)
+const xor2 = (a, b) => a != b
