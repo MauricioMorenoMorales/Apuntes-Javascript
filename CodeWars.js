@@ -552,3 +552,69 @@ const digitize = (n) => {
 function digitizeCLEVER(n) {
   return String(n).split('').map(Number).reverse()
 }
+
+// ! Retorna este tipo de tabla
+
+const multiTable = () => {
+	let response = ''
+	for (let i = 1; i <= 10; i++) {
+		response += `${i} * ${number} = ${i * number}${(i < 10) ? '\n' : ''}`
+	}
+	return response
+}
+
+const multiTableClever = () => {
+	return [...Array(10)].map((_,i) => `${i+1} * ${n} = ${n * i + n}`).join('\n')
+}
+
+const multiTable = (number) =>
+  [...Array(10)].map((_,i) =>
+    `${(i + 1)} * ${number} = ${(i + 1) * number}${((i + 1) < 10) ? '\n' : ''}`).join('')
+
+//! Calcula si un autobús tiene la cantidad necesaria de pasajeros si es así retorna 0 si no retorna cuantos espacios faltaban
+
+const enoughPassagers = (cap, on, wait) => {
+	(cap <= on + wait) ? -(cap - (on + wait)) : 0
+}
+
+function enoughPassagersCLEVER(cap, on, wait) {
+  return Math.max(wait + on - cap, 0);
+}
+
+//(enough(10, 5, 5), 0);
+//(enough(100, 60, 50), 10);
+//(enough(20, 5, 5), 0);
+
+//! Retorna un array invertido con el numero especificado (n..1)
+
+const reverseSeq = (n) => {
+	let response = ''
+	for (let i = n; i > 0; i--) {
+		response += i
+	}
+	return response
+}
+
+const reverseSeqCLEVER = (n) => Array(n).fill().map((e,i) => n - i)
+
+//! Retorna un numero escrito cuando recibe un int
+
+function switchItUp(number){
+	switch (number) {
+		case 1: return 'One'
+		case 2: return 'Two'
+		case 3: return'Three'
+		case 4: return 'Four'
+		case 5: return 'Five'
+		case 6: return 'Six'
+		case 7: return 'Seven'
+		case 8: return 'Eight'
+		case 9: return 'Nine'
+		default: return 'Cero'
+	}
+}
+
+switchItUpClever = n =>["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"][n]
+
+switchClever2 = n => "Zero,One,Two,Three,Four,Five,Six,Seven,Eight,Nine".split(',')[n]
+

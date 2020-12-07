@@ -20,28 +20,26 @@ class desarrollador extends persona{
      constructor(nombre,apellido,altura){
           super(nombre,apellido,altura)
      }
-     saludar(fn){
-          // var nombre = this.nombre
-          // var apellido = this.apellido
+     saludar(fn){ //-->3 Esta es la función que se llamó y fn = responderSaludo
           console.log(`Hola me llamo ${this.nombre} ${this.apellido} y soy desarrollador/a`)
           if (fn){
                var {nombre, apellido} = this
-               fn(this.nombre,this.apellido,true)
+               fn(nombre,apellido,true)
           }
      }
 }
 
-function responderSaludo(nombre,apellido,esDev = false){
+function responderSaludo(nombre,apellido,esDev = false){ // --> 6 Aqui recibe la orden ejecutada en el paso numero 5 con los parametros y termina la operación
      console.log(`Buen día ${nombre} ${apellido}`)
      if(esDev){
           console.log(`Ah mirá, no sabía que eras desarrollador`)
      }
 }
 
-var felipe = new persona('Felipe','gonzalez',193)
+var felipe = new persona('Felipe','gonzalez',193) //--> 1 Se declara la instancia
 var ernesto = new persona('Ernesto','eslava',186)
 var fernando = new desarrollador('Fernando','bahena',172)
-felipe.saludar(responderSaludo)
+felipe.saludar(responderSaludo) //-->2 Se llama a el metodo saludar dentro de el objeto feliipe y se le pasa el parametro responder saludo
 ernesto.saludar()
 fernando.saludar(responderSaludo)
 
