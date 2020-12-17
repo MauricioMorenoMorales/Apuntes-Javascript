@@ -855,3 +855,41 @@ Solution = {}
 Solution.main = () => {
 	console.log('Hello World!')
 }
+
+//! Retorna determinada cantidad de numeros de un array
+
+const take = (arr, n) => {
+	if ((arr = [])) return []
+	let response = []
+	for (let i = 0; i < n; i++) {
+		response.push(arr[i])
+	}
+	return responsea
+}
+
+function takeClever(arr, n) {
+	return arr.slice(0, n)
+}
+
+//take([0, 1, 2, 3, 5, 8, 13], 3), [0, 1, 2]
+
+const divisibleB
+
+//! Retorna en un array los numeros que son divisibles entre un divisor
+
+const divisibleBy = (numbers, divisor) => numbers.filter(number => number % divisor === 0)
+
+//([1,2,3,4,5,6], 2), [2,4,6]);
+//([1,2,3,4,5,6], 3), [3,6]);
+
+//! Recibe un array y cuenta cuantos elementos tien este
+
+const monkeyCount = n => [...Array(n)].map((_,e) => e + 1)
+
+function monkeyCount(n) {
+  return Array.from({length:n}, (_,i)=>i+1)
+}
+
+function monkeyCount(n) {
+	return [...Array(n+1).keys()].slice(1);
+}
