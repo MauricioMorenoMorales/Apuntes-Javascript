@@ -893,3 +893,80 @@ function monkeyCount(n) {
 function monkeyCount(n) {
 	return [...Array(n+1).keys()].slice(1);
 }
+
+//! Función que calcule las propinas que debes de dejar deacuerdo a una evaluacion de el servicio
+
+const calculateTip = (amount, rating) => {
+	switch (rating.toLowerCase()) {
+		case 'excelent':
+			return Math.ceil((20 * amount) / 100)
+		case 'great':
+			return Math.ceil((15 * amount) / 100)
+		case 'good':
+			return Math.ceil((10 * amount) / 100)
+		case 'poor':
+			return Math.ceil((5 * amount) / 100)
+		case 'terrible':
+			return 0
+		default:
+			return 'Rating not recognised'
+	}
+}
+
+const TIPS = {
+  "terrible": 0.0,
+  "poor": 0.05,
+  "good": 0.1,
+  "great": 0.15,
+  "excellent": 0.2
+};
+
+const calculateTip = (amount, rating) => {
+  rating = rating.toLowerCase();
+  
+  return rating in TIPS ? Math.ceil(TIPS[rating] * amount) : "Rating not recognised";
+};
+
+//! Dibuja una escalera en la consola
+
+const drawStairs = n => {
+	let spaces = ''
+	let response = []
+	for (let i = 1; i <= n; i++) {
+		response.push(`${spaces}I`)
+		spaces += ' '
+	}
+	return response.join('\n')
+}
+
+const drawStairs = n => [...Array(n)].map((_, i) => " ".repeat(i) + "I").join("\n");
+
+function drawStairs(n) {
+  return Array(n).fill("I").map((e,i)=>e.padStart(i+1," ")).join("\n")
+}
+
+console.log(drawStairs(19))
+
+//! Retorna mensaje dependiendo el array pasado
+
+const well = x => {
+	const counter = x.filter(e => e === 'good')
+	if (counter.length >= 3) {
+		return 'I smell a series!'
+	} else if (counter.length >= 1) {
+		return 'Publish!'
+	} else {
+		return 'Fail!'
+	}
+}
+
+const wellClever = x => {
+  const good_count = x.filter(x => x == 'good').length;
+  return good_count < 1 ? 'Fail!' : 
+         good_count < 3 ? 'Publish!' : 'I smell a series!';
+}
+
+// (['bad', 'bad', 'bad']), 'Fail!');
+// (['good', 'bad', 'bad', 'bad', 'bad']), 'Publish!');
+// (['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']), 'I smell a series!');
+
