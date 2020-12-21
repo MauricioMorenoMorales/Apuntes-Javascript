@@ -1,12 +1,35 @@
-const well = x => {
-	const counter = x.filter(e => e === 'good')
-	if (counter.length >= 3) {
-		return 'I semll a series'
-	} else if (counter.length >= 1) {
-		return 'Publish!'
-	} else {
-		return 'Fail!'
-	}
+const howManyDalmatians = number => {
+	var dogs = [
+		'Hardly any',
+		'More than a handful!',
+		"Woah that's a lot of dogs!",
+		'101 DALMATIANS!!!',
+	]
+	return number <= 10
+		? dogs[0]
+		: number <= 50
+		? dogs[1]
+		: number == 101
+		? dogs[3]
+		: dogs[2]
 }
 
-console.log(well(['good', 'bad', 'bad', 'bad', 'bad']))
+console.log(howManyDalmatians(100))
+
+const howManyDalmatians2 = number => {
+	var dogs = [
+		'Hardly any',
+		'More than a handful!',
+		"Woah that's a lot of dogs!",
+		'101 DALMATIANS!!!',
+	]
+
+	var respond =
+		number <= 10
+			? dogs[0]
+			: number <= 50
+			? dogs[1]
+			: (number = 101 ? dogs[3] : dogs[2])
+
+	return respond
+}

@@ -962,7 +962,7 @@ const well = x => {
 
 const wellClever = x => {
   const good_count = x.filter(x => x == 'good').length;
-  return good_count < 1 ? 'Fail!' : 
+  return good_count < 1 ? 'Fail!' :
          good_count < 3 ? 'Publish!' : 'I smell a series!';
 }
 
@@ -970,3 +970,63 @@ const wellClever = x => {
 // (['good', 'bad', 'bad', 'bad', 'bad']), 'Publish!');
 // (['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']), 'I smell a series!');
 
+//! Retorna el resultado de cortar las flores (me ama no me ama)
+
+const phrases = [
+	'I love you',
+	'a little',
+	'a lot',
+	'passionately',
+	'madly',
+	'not at all',
+]
+
+function howMuchILoveYou(n) {
+	 return phrases[(n - 1) % phrases.length] 
+}
+
+const howMuchILoveYou=n=>['not at all','I love you','a little','a lot','passionately','madly'][n%6]
+
+//! Calcula el estado de tu peso
+
+function bmi(weight, height) {
+	let bmi = weight / (height * height)
+	if (bmi <= 18.5) return 'Underweight'
+	if (bmi <= 25) return 'Normal'
+	if (bmi <= 30) return 'Overweight'
+	if (bmi > 30) return 'Obese'
+}
+const bmi = (w, h, bmi = w/h/h) =>  bmi <= 18.5 ? "Underweight" :
+                                    bmi <= 25 ? "Normal" :
+																		bmi <= 30 ? "Overweight" : "Obese";
+
+//! Recibe un numero y devuelvelo como letra
+
+var getChar = c => String.fromCharCode(c);
+
+//! Un if ternario
+
+const describeAge = age =>
+	age <= 12
+		? "You're a(n) kid"
+		: age <= 17
+		? "You're a(n) teenager"
+		: age <= 64
+		? "You're a(n) adult"
+		: "You're a(n) elderly"
+
+const howManyDalmatians = number => {
+	var dogs = [
+		'Hardly any',
+		'More than a handful!',
+		"Woah that's a lot of dogs!",
+		'101 DALMATIANS!!!',
+	]
+	return number <= 10
+		? dogs[0]
+		: number <= 50
+		? dogs[1]
+		: number == 101
+		? dogs[3]
+		: dogs[2]
+}
