@@ -64,12 +64,65 @@ const iceBrickVolume = (
 
 //! Convierte un numero en binario
 
-let toBinary = (n: number): number => +n.toString(2)
+export let toBinary = (n: number): number => +n.toString(2)
 
-const toBinary2 = n => parseInt((n >>> 0).toString(2))
+export const toBinary2 = (n: number) => parseInt((n >>> 0).toString(2))
 
 //! Formatea un imput a moneda
 
-let formatMoney = (amount: number): string => `$${amount.toFixed(2)}`
+export let formatMoney = (amount: number): string => `$${amount.toFixed(2)}`
 
 //formatMoney(3.1) -> 3.10
+
+//! Escapa de un tiburon, llega a el potoon para salvarte
+
+export const shark = (
+	pontoonDistance: number,
+	sharkDistance: number,
+	youSpeed: number,
+	sharkSpeed: number,
+	dolphin: boolean,
+): string =>
+	pontoonDistance / youSpeed <
+	sharkDistance / (dolphin ? sharkSpeed / 2 : sharkSpeed)
+		? 'Alive!'
+		: 'Shark Bait!'
+
+//! Accede a una posicion n dentro de un array y luego exponencia el resultado a la n potencia
+
+export const index = (array: number[], n: number): number => array[n] ** n || -1
+
+//! Encuentra la posición de el lobo y alerta a que obeja va a comerse
+
+export function warnTheSheep(queue: string[]): string {
+	const position = queue.reverse().indexOf('wolf')
+	return position
+		? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!`
+		: 'Pls go away and stop eating my sheep'
+}
+
+export const warnTheSheep2 = (queue: string[]): string => {
+	const position = queue.reverse().findIndex(element => element === 'wolf')
+	return position
+		? `Oi! Sheep number ${position}! You are about to be eaten by a wolf!`
+		: 'Pls go away and stop eating my sheep'
+}
+
+//! Recibe un string y retornalo como Float si es se puede convertir correctamente "No es texto"
+
+export function parseF(s: string): number | null {
+	return isNaN(parseFloat(s)) ? null : parseFloat(s)
+}
+
+//! Retorna true si la suma de los cuadrados de a es mayor a la suma de los cubos de b
+
+export const arrayMadness = (a: number[], b: number[]): boolean =>
+	a.map(e => e ** 2).reduce((previous, current) => previous + current) >
+	b.map(e => e ** 3).reduce((previous, current) => previous + current)
+
+function arrayMadnessClever(a, b) {
+	return (
+		a.reduce((sum, el) => sum + el ** 2, 0) >
+		b.reduce((sum, el) => sum + el ** 3, 0)
+	)
+}
