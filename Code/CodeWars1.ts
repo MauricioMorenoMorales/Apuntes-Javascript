@@ -120,9 +120,18 @@ export const arrayMadness = (a: number[], b: number[]): boolean =>
 	a.map(e => e ** 2).reduce((previous, current) => previous + current) >
 	b.map(e => e ** 3).reduce((previous, current) => previous + current)
 
-function arrayMadnessClever(a, b) {
+export function arrayMadnessClever(a: number[], b: number[]): boolean {
 	return (
 		a.reduce((sum, el) => sum + el ** 2, 0) >
 		b.reduce((sum, el) => sum + el ** 3, 0)
 	)
 }
+
+//! Calcula el tamaño de una caja
+
+const getSize = (w: number, h: number, d: number): number[] => [
+	(w * h + w * d + h * d) * 2,
+	w * h * d,
+]
+
+const isLockNessMonster = (s:) =>
