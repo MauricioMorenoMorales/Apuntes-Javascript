@@ -159,3 +159,16 @@ Toma uno abajo, pasa a tu alrededor, ${
 }
 
 console.log(beer())
+
+//! Filtra todos los elementos que sean true
+
+const countSheeps = (sheeps: boolean[]): number => sheeps.filter(Boolean).length
+
+//! Retorna el nth numero natural por ejemplo escribo un 3 => 4, 100 => 198
+
+const nthEven = n => n * 2 - 2
+
+//! Encuentra un elemento dentro de un array
+
+const findNeddle = (haystack: any[]): string =>
+	`found the needle at position ${haystack.indexOf('needle')}`
