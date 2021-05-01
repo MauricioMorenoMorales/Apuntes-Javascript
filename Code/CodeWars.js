@@ -336,9 +336,13 @@ console.log(derive(7, 8)) // => "45x^8"
 
 //! Retorna las Iniciales de 2 nombres
 
+// Has una función que reciba un string con un nombre conformado de dos palabras y que retorne las iniciales
+//Ejemplo "Stuart Smith" -> "S. S.", "John Addams" -> "J. A."
+
+//Respuesta
 const abbrevName = name => {
 	let nameArray = name.split(' ')
-	return (nameArray[0][0] + '.' + nameArray[1][0]).toUpperCase()
+	return (nameArray[0][0] + '. ' + nameArray[1][0] + '.').toUpperCase()
 }
 
 //! Retorna la suma interna de todos los elementos de dos arrays
@@ -367,6 +371,9 @@ const check = (array, x) => (array.includes(x) ? true : false)
 console.log(check([66, 101], 66))
 
 //! Funcion que retorne la suma de elementos positivos dentro de un array
+
+//Función que recibe un array y cuenta cuantos elementos positivos tiene
+//Ejemplo [1,3,-7,3,-4,-5] -> 3, [1,8,-7,-6,-5,4,5] -> 4
 
 const positiveSum = arr => {
 	let response = 0

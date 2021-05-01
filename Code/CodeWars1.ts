@@ -318,3 +318,59 @@ const devolverLetrasOptimizado = (n: number): string => {
 	}
 	return `${milesimasresponse}${centenasresponse}${decenasresponse}${unidadesresponse}`
 }
+
+//! Retorna la distancia entre dos coordenadas
+
+interface Coordenada {
+	x: number
+	y: number
+}
+const distanceBetweenPoints = (a: Coordenada, b: Coordenada): number =>
+	Math.hypot(a.x - b.x, a.y - b.y)
+
+//! Filtra los elementos que sean "geese" de un array
+
+const gooseFilter = (birds: string[]): string[] => {
+	const geese = [
+		'African',
+		'Roman Tufted',
+		'Toulouse',
+		'Pilgrim',
+		'Steinbacher',
+	]
+	return birds.filter(bird => !geese.includes(bird))
+}
+
+//! Función que tome los numeros mayores y menores de un array
+
+const min = (list: number[]): number => Math.min(...list)
+const max = (list: number[]): number => Math.max(...list)
+
+//! Convierte un bool a un string
+
+const booleanToString = (bool: boolean): string => (bool ? 'true' : 'false')
+
+//! Cuenta ovejas hasta llegar a cierto numero
+
+const countSheep = function (number: number): string {
+	let response = ''
+	for (let i = 1; i <= number; i++) {
+		response += `${i} sheep...`
+	}
+	return response
+}
+
+const countSheepClever = (number: number): string =>
+	[...Array(number).keys()].map(el => `${el + 1} sheep...`).join()
+
+//! Un ejemplo de como hacer subclases
+
+abstract class Human {};
+class Man extends Human {};
+class Woman extends Human {};
+
+class God {
+  static create() {
+    return [new Man(), new Woman()];
+  };
+};
