@@ -1,9 +1,9 @@
-abstract class Human {};
-class Man extends Human {};
-class Woman extends Human {};
-
-class God {
-  static create() {
-    return [new Man(), new Woman()];
-  };
-};
+const pipeFix = (numbers: number[]): number[] => {
+	const start = Math.min(...numbers),
+		end = Math.max(...numbers)
+	let response = []
+	for (let i = start; i <= end; i++) {
+		response.push(i)
+	}
+	return response
+}

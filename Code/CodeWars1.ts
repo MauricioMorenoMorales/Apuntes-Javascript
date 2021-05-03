@@ -374,3 +374,30 @@ class God {
     return [new Man(), new Woman()];
   };
 };
+
+//! Verifica si un array contiene una palabra
+
+const spEng = (sentence: string): boolean =>
+	sentence.toLowerCase().includes('english')
+
+const spEng2 = (sentence: string): boolean => /english/i.test(sentence)
+
+//! Muestra el siguiente color que muestra un semaforo
+
+const updateLight = (current: string): string =>
+	current === 'green' ? 'yellow' : current === 'yellow' ? 'red' : 'green'
+
+//! Recibe un array con numeros, establece el maximo y el minimo y devuelve un array
+//! Con cada uno de los numeros uno a uno dentro de el rango
+
+const pipeFix = (numbers: number[]): number[] => {
+	const start = Math.min(...numbers),
+		end = Math.max(...numbers)
+	let response = []
+	for (let i = start; i <= end; i++) {
+		response.push(i)
+	}
+	return response
+}
+
+//! Crea una clase con valor por defecto
