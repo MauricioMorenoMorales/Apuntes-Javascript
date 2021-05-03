@@ -1,9 +1,7 @@
-const pipeFix = (numbers: number[]): number[] => {
-	const start = Math.min(...numbers),
-		end = Math.max(...numbers)
-	let response = []
-	for (let i = start; i <= end; i++) {
-		response.push(i)
-	}
-	return response
+const defineSuit = function (card: string): string {
+	if (/♣/i.test(card)) return 'clubs'
+	if (/♠/i.test(card)) return 'spades'
+	if (/♦/i.test(card)) return 'diamonds'
+	if (/♥/i.test(card)) return 'hearts'
+	return 'Not defined'
 }

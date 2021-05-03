@@ -365,15 +365,15 @@ const countSheepClever = (number: number): string =>
 
 //! Un ejemplo de como hacer subclases
 
-abstract class Human {};
-class Man extends Human {};
-class Woman extends Human {};
+abstract class Human {}
+class Man extends Human {}
+class Woman extends Human {}
 
 class God {
-  static create() {
-    return [new Man(), new Woman()];
-  };
-};
+	static create() {
+		return [new Man(), new Woman()]
+	}
+}
 
 //! Verifica si un array contiene una palabra
 
@@ -400,4 +400,52 @@ const pipeFix = (numbers: number[]): number[] => {
 	return response
 }
 
-//! Crea una clase con valor por defecto
+//! Retorna en forma de string espaciada el input de arrays
+const toCsvText = (array: number[][]): string =>
+	array.map(el => el.join(',')).join('\n')
+
+console.log(
+	toCsvText([
+		[0, 1, 2, 3, 45],
+		[10, 11, 12, 13, 14],
+		[20, 21, 22, 23, 24],
+		[30, 31, 32, 33, 34],
+	]),
+)
+
+//! Hace una suma de de los elementos dentro de un intervalo, mientras "n" va creciendo
+
+const sumMul = function (n: number, m: number): number | string {
+	if (n > m || m <= 0 || n <= 0) return 'INVALID'
+	let response: number = 0
+	for (let i = n; i < m; i += n) {
+		response += i
+	}
+	return response
+}
+
+//! Verifica si dentro de un string se encuentra cierto simbolo
+
+const defineSuitRegularExpresion = function (card: string): string {
+	if (/♣/i.test(card)) return 'clubs'
+	if (/♠/i.test(card)) return 'spades'
+	if (/♦/i.test(card)) return 'diamonds'
+	if (/♥/i.test(card)) return 'hearts'
+	return 'Not defined'
+}
+
+const defineSuitIncludes = function (card: string): string | void {
+	if (card.includes('♥')) return 'hearts'
+	if (card.includes('♦')) return 'diamonds'
+	if (card.includes('♣')) return 'clubs'
+	if (card.includes('♠')) return 'spades'
+}
+
+const defineSuitObject = function (card: string): string | void {
+	return {
+		'♣': 'clubs',
+		'♦': 'diamonds',
+		'♥': 'hearts',
+		'♠': 'spades',
+	}[card.substr(-1)]
+}
