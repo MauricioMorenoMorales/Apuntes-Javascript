@@ -449,3 +449,33 @@ const defineSuitObject = function (card: string): string | void {
 		'♠': 'spades',
 	}[card.substr(-1)]
 }
+
+//! Retorna el tipo de la suma de dos parametros
+
+type TypeOfSumInput = number | string | boolean | null | undefined
+// const typeOfSum = (a: TypeOfSumInput, b: TypeOfSumInput): any => typeof(a + b)
+
+//! Remplaza los elementos que pueden ser maliciosos por codigo seguro
+
+const htmlspecialchars = (formData: string): string =>
+	formData
+		.replace(/&/g, '&amp;')
+		.replace(/"/g, '&quot;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+
+//! Formas de saber si un parametro es Nan
+
+const isReallyNan = (value: any): boolean =>
+	typeof value === 'number' ? true : false
+
+const isReallyNaN = (val: any): boolean => val != val
+
+// describe("Tests", () => {
+//   it("test", () => {
+// Test.expect(isReallyNaN(37) === false)
+// Test.expect(isReallyNaN('37') === false)
+// Test.expect(isReallyNaN(NaN) === true)
+// Test.expect(isReallyNaN(undefined) === false)
+//   });
+// });
