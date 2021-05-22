@@ -479,3 +479,63 @@ const isReallyNaN = (val: any): boolean => val != val
 // Test.expect(isReallyNaN(undefined) === false)
 //   });
 // });
+
+//! Recibe un array de numeros y retorna un array y strings de los numeros que coincidan con el código ascii
+
+//? Funcional
+const isVow = (input: number[]): (number | string)[] =>
+	input.map((element: number) => {
+		let char: string = String.fromCharCode(element)
+		const hashIf: { [key: string]: any } = {
+			a: 'a',
+			e: 'e',
+			i: 'i',
+			o: 'o',
+			u: 'u',
+		}
+		return hashIf[char] || element
+	})
+//?Imperativa
+const IsVow = function (input: number[]): (string | number)[] {
+	const response: (string | number)[] = []
+	for (var i = 0, l = input.length; i < l; ++i) {
+		var char = String.fromCharCode(input[i])
+		'aeiou'.indexOf(char) !== -1
+			? (response[i] = char)
+			: (response[i] = input[i])
+	}
+	return response
+}
+
+//! Remplaza todas las 'T' de un string por una 'U'
+
+const DNAtoRNA = (input: string): string =>
+	input
+		.split('')
+		.map(letter => (letter === 'T' ? 'U' : letter))
+		.join('')
+
+const DNAtoRNAClever = (input: string): string => input.replace(/T/g, 'U')
+
+//! Retorna un string de 0 y 1 consecutivos del cual su tamaño depende de el input
+
+const stringy = (size: number): string =>
+	[...Array(size)].map((_, index) => (index % 2 === 0 ? 1 : 0)).join('')
+
+const stringyClever = (size: number): string => '10'.repeat(size).slice(0, size)
+
+//! Verifica si la primera y ultima letra de dos strings son iguales
+
+const feast = (beast: string, dish: string): boolean =>
+	beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1]
+
+//! Recibe dos arrays los equipos con sus resultados, y retorna una frase que
+//! Felicite al ganador de la partida
+
+const uefaEuro2016 = function (teams: string[], scores: number[]): string {
+	let winner: string = ''
+	if (scores[0] > scores[1]) winner = `${teams[0]} won!`
+	else if (scores[0] < scores[1]) winner = `${teams[1]} won!`
+	else if (scores[0] == scores[1]) winner = 'teams played draw.'
+	return `At match ${teams[0]} - ${teams[1]}, ${winner}`
+}
