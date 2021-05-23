@@ -1,8 +1,10 @@
-'use strict'
-const uefaEuro2016 = function (teams, scores) {
-	let winner = ''
-	if (scores[0] > scores[1]) winner = `${teams[0]} won!`
-	else if (scores[0] < scores[1]) winner = `${teams[1]} won!`
-	else if (scores[0] == scores[1]) winner = 'teams played draw.'
-	return `At match ${teams[0]} - ${teams[1]}, ${winner}`
-}
+"use strict";
+const repeatIt = function (str, num) {
+    if (typeof str != 'string')
+        return 'Not a string';
+    let response = '';
+    for (let i = 0; i < num; i++) {
+        response = response + str;
+    }
+    return response;
+};
