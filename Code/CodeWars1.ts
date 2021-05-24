@@ -590,7 +590,33 @@ const repeatIt = function (str: any, num: number): string {
 	return response;
 };
 
-const RepeatIt = (str: string | any, num: number ): string =>
-	typeof str == 'string' ? str.repeat(num): 'Not a string'
+const RepeatIt = (str: string | any, num: number): string =>
+	typeof str == 'string' ? str.repeat(num) : 'Not a string';
 
-	
+//TODO remplaza todos los caracteres dentro de un string
+
+const contamination = (text: string, char: string): string =>
+	text.replace(/./g, char);
+
+//TODO regular expresion verifica si unos numeros empiezan con los numeros 1 2 o 3
+
+const validateCode = (input: string): boolean =>
+	/^1/.test(input) || /^2/.test(input) || /^3/.test(input);
+
+const ValidateCode = (input: string): boolean => /^[123]/.test(input);
+
+//TODO Compara 2 numeros sin importar si son tipo string o tipo number
+
+const add = (number1: number | string, number2: number | string): boolean =>
+	+number1 == +number2;
+
+//TODO destructuracion en parametros recibe varios strings y concatenalos en una frase
+const buildString = (...template: Array<string>): string =>
+	`I like ${template.join(',')}`;
+
+//TODO elimina cierta parte de un input
+
+const shortenToDate = (input: string): string =>
+	input.split(' ').slice(0, 3).join(' ').replace(/,/g, '');
+
+const ShortenToDate = (input: string): string => input.split(',')[0];
