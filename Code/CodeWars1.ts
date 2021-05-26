@@ -565,6 +565,7 @@ const WhoIsPlaying = function (input: string): Array<string> {
 };
 
 //TODO Retorna un objeto que incluye el conteo de cuantas letras se repite en un string
+// Cuenta la cantidad de veces que hay una letra
 
 const charFreq = function (input: string): { key: number } | {} {
 	let response: any = {};
@@ -620,3 +621,88 @@ const shortenToDate = (input: string): string =>
 	input.split(' ').slice(0, 3).join(' ').replace(/,/g, '');
 
 const ShortenToDate = (input: string): string => input.split(',')[0];
+
+//TODO Recibe dos nombres y de acuerdo a sus iniciales retorna un nuevo nickname
+// Regex filtrar numeros hash
+
+const aliasGen = function (name: string, surname: string): string {
+	//?The first way to filter the elements with the number this works better
+	if (
+		'0123456789'.indexOf(name[0]) != -1 ||
+		'0123456789'.indexOf(surname[0]) != -1
+	)
+		return 'Your name must start with a letter from A - Z.';
+	//?The second way to filter the names using regex and checking the letters
+	if (!/^[a-z]/i.test(name) && !/^[a-z]/i.test(surname))
+		return 'Your name must start with a letter from A - Z.';
+
+	const formattedName: string = name[0].toUpperCase(),
+		formattedSurname: string = surname[0].toUpperCase(),
+		firstName: { [key: string]: any } = {
+			A: 'Alpha',
+			B: 'Beta',
+			C: 'Cache',
+			D: 'Deus',
+			etc: 'This array continues with all the names',
+		},
+		surName: { [key: string]: any } = {
+			A: 'Analogue',
+			B: 'Bomb',
+			C: 'Catalyst',
+			etc: 'This array continues with all the names',
+		};
+	return `${firstName[formattedName]} ${surName[formattedSurname]}`;
+};
+
+//TODO recibe una moneda y retorna un string con el cambio mostrando todas las unidades de cambio
+//Switch array fill
+
+const changeMe = function (moneyInput: string): string {
+	switch (moneyInput) {
+		case '£5':
+			return [...Array(25).fill('20p')].join(' ');
+		case '£2':
+			return [...Array(10).fill('20p')].join(' ');
+		case '£1':
+			return [...Array(5).fill('20p')].join(' ');
+		case '50p':
+			return '20p 20p 10p';
+		case '20p':
+			return '10p 10p';
+		default:
+			return moneyInput;
+	}
+};
+
+// Alternate if index indexof
+const ChageMe = function (moneyInput: string): string {
+	const acceptedInput = ['£5', '£2', '£1', '50p', '20p'],
+		responses = [
+			[...Array(25).fill('20p')].join(' '),
+			[...Array(10).fill('20p')].join(' '),
+			[...Array(5).fill('20p')].join(' '),
+			'20p 20p 10p',
+			'10p 10p',
+		],
+		indexOfInput = acceptedInput.indexOf(moneyInput);
+	if (indexOfInput == -1) return moneyInput;
+	else return responses[indexOfInput];
+};
+
+//TODO filtra la cantidad de palabras dentro de un string y hace un trim
+// split words and count
+const countWords = (input: string): number =>
+	input.split(/\s+/).filter(e => e).length;
+
+//TODO Elimina el primer y ultimo elemento de un string
+//pop shift string
+const arrayFilterLastAndFirst = function (input: string): string | null {
+	if (input.split(',').length <= 2) return null;
+	const array = input.split(',').filter(e => e);
+	array.pop();
+	array.shift();
+	return array.join(' ');
+};
+//Slice instead pop shift
+const ArrayFilterLastAndFirst = (input: string): string | null =>
+	input.split(',').slice(1, -1).join(' ') || null;
