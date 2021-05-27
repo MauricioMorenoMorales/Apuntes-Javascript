@@ -535,7 +535,10 @@ const feast = (beast: string, dish: string): boolean =>
 //TODO Recibe dos arrays los equipos con sus resultados, y retorna una frase que
 //TODO Felicite al ganador de la partida
 
-const uefaEuro2016 = function (teams: string[], scores: number[]): string {
+const uefaEuro2016 = function (
+	teams: Array<string>,
+	scores: Array<number>,
+): string {
 	let winner: string = '';
 	if (scores[0] > scores[1]) winner = `${teams[0]} won!`;
 	else if (scores[0] < scores[1]) winner = `${teams[1]} won!`;
@@ -706,3 +709,75 @@ const arrayFilterLastAndFirst = function (input: string): string | null {
 //Slice instead pop shift
 const ArrayFilterLastAndFirst = (input: string): string | null =>
 	input.split(',').slice(1, -1).join(' ') || null;
+
+//TODO cuenta la cantidad de letras minusculas que tiene un string
+
+const lowercaseCount = (input: string): number =>
+	(input.match(/[a-z]/g) || []).length;
+
+const LowercaseCount = (input: string): number =>
+	input.replace(/[^a-z]/g, '').length;
+
+const imperativeLowerCaseCount = function (input: string): number {
+	let response = 0;
+	const letterArray = [
+		'a',
+		'b',
+		'c',
+		'd',
+		'e',
+		'f',
+		'g',
+		'h',
+		'i',
+		'j',
+		'k',
+		'l',
+		'm',
+		'n',
+		'o',
+		'p',
+		'q',
+		'r',
+		's',
+		't',
+		'u',
+		'v',
+		'w',
+		'x',
+		'y',
+		'z',
+	];
+	for (let i = 0; i < input.length; i++) {
+		let currentCharacter = input[i];
+		if (letterArray.indexOf(currentCharacter) > -1) response++;
+	}
+	return response;
+};
+
+//TODO llena un array con las potencias de el numero 2
+//Llenar array alternativa
+
+const powersOfTwo = (input: number): Array<number> =>
+	Array.from({ length: input + 1 }, (_, k) => 2 ** k);
+
+//TODO retorna booleano si ambos numeros son distintos (par || impar)
+
+const lovefunc2 = (flower1: number, flower2: number): boolean =>
+	(flower1 % 2 === 0 && flower2 % 2 === 1) ||
+	(flower1 % 2 === 1 && flower1 % 2 === 0)
+		? true
+		: false;
+
+const lovefunc = (flower1: number, flower2: number): boolean =>
+	flower1 % 2 !== flower2 % 2;
+
+const loveFunc = (flower1: number, flower2: number): boolean =>
+	(flower1 + flower2) % 2 === 1;
+
+//TODO retorna el promedio de un array
+// Average reduce array<number>
+
+const find_average = (input: Array<number>): number =>
+	input.reduce((accumulator, currentValue) => accumulator + currentValue) /
+	input.length;
