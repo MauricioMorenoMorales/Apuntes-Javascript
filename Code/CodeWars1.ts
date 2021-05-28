@@ -781,3 +781,37 @@ const loveFunc = (flower1: number, flower2: number): boolean =>
 const find_average = (input: Array<number>): number =>
 	input.reduce((accumulator, currentValue) => accumulator + currentValue) /
 	input.length;
+
+//TODO si el numero es menor a 6 retorna el input, si no retorna el numero menos 6
+// Restas
+
+const sixToast = (input: number): number => (input < 6 ? input : input - 6);
+
+const SixToast = (input: number): number => Math.abs(input - 6);
+
+//TODO retorna una frase dependiendo de los años introducidos
+
+const calculateAge = function (year1: number, year2: number): string {
+	if (year1 === year2) return 'You were born this very year!';
+	if (year1 - year2 === 1) return `You will be born in ${year1 - year2} year`;
+	if (year2 - year1 === 1) return `You are ${year2 - year1} year old.`;
+	if (year1 > year2) return `You will be born in ${year1 - year2} years`;
+	else return `You are ${year2 - year1} years old.`;
+};
+
+const CalculateAge = function (year1: number, year2: number): string {
+	if (year1 === year2) return 'You were born this very year!';
+	const year = Math.abs(year1 - year2) == 1 ? 'year' : 'years';
+	if (year1 > year2) return `You will be born in ${year1 - year2} ${year}`;
+	else return `You are ${year2 - year1} ${year}  old.`;
+};
+
+//TODO Duplica todas las letras dentro de un string
+
+const doubleChar = (input: string): string =>
+	input
+		.split('')
+		.map(letter => letter + letter)
+		.join('');
+
+const DoubleChar = (input: string): string => input.replace(/(.)/g, '$1$1');

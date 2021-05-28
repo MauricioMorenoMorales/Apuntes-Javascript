@@ -1,3 +1,5 @@
-const find_average = (input: Array<number>): number =>
-	input.reduce((accumulator, currentValue) => accumulator + currentValue) /
-	input.length;
+const doubleChar = (input: string): string =>
+	input
+		.split('')
+		.map(letter => letter + letter)
+		.join('');

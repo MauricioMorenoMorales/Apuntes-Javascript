@@ -1,4 +1,6 @@
 'use strict';
-const find_average = input =>
-	input.reduce((accumulator, currentValue) => accumulator + currentValue) /
-	input.length;
+const doubleChar = input =>
+	input
+		.split('')
+		.map(letter => letter + letter)
+		.join('');
