@@ -815,3 +815,49 @@ const doubleChar = (input: string): string =>
 		.join('');
 
 const DoubleChar = (input: string): string => input.replace(/(.)/g, '$1$1');
+
+//TODO Calcula una oferta 3 por uno
+//Matematicas 3x1 tres por uno
+
+const mango = (quantity: number, price: number): number =>
+	price * (quantity - Math.floor(quantity / 3));
+
+//TODO Calcula la edad perro y edad gato
+
+const humanYearsCatYearsDogYears = function (
+	humanYears: number,
+): Array<number> {
+	const CatYears =
+		humanYears === 1 ? 15 : humanYears === 2 ? 24 : 24 + (humanYears - 2) * 4;
+	const DogYears =
+		humanYears === 1 ? 15 : humanYears === 2 ? 24 : 24 + (humanYears - 2) * 5;
+
+	return [humanYears, CatYears, DogYears];
+};
+
+//TODO Retorna la suma de el tamaño de un array con los numeros positivos, y la suma de los negativos
+
+const countPositivesSumNegatives = function (
+	input: Array<number>,
+): Array<number> {
+	if (input.length == 0 || !input) return [];
+	let negativeSum = 0;
+	let positiveArray: Array<number> = [];
+
+	for (let i = 0; i < input.length; i++) {
+		if (input[i] < 0) negativeSum = negativeSum + input[i];
+		if (input[i] > 0) positiveArray.push(input[i]);
+	}
+
+	return [positiveArray.length, negativeSum];
+};
+
+const CountPositivesSumNegatives = (input: Array<number>): Array<number> =>
+	input && input.length
+		? [
+				input.filter(number => number > 0).length,
+				input
+					.filter(number => number < 0)
+					.reduce((accumulator, currentValue) => accumulator + currentValue),
+		  ]
+		: [];
