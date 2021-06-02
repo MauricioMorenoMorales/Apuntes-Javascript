@@ -861,3 +861,66 @@ const CountPositivesSumNegatives = (input: Array<number>): Array<number> =>
 					.reduce((accumulator, currentValue) => accumulator + currentValue),
 		  ]
 		: [];
+
+//TODO Sortea un array
+//Array sort
+
+const mergeArrays = (
+	array1: Array<number>,
+	array2: Array<number>,
+): Array<number> =>
+	Array.from(new Set(array1.concat(array2).sort((a, b) => a - b)));
+
+const MergeArrays = (
+	array1: Array<number>,
+	array2: Array<number>,
+): Array<number> => [...new Set(array1.concat(array2).sort((a, b) => a - b))];
+
+//TODO Verifica si un string termina con determinados caracteres
+//String regex ending
+
+const solutionRegex = (str: string, ending: string): boolean =>
+	new RegExp(ending + '$', 'i').test(str);
+
+const SolutionRegex = (str: string, ending: string): boolean =>
+	str.endsWith(ending);
+
+const SolutionRegexImperative = (str: string, ending: string): boolean =>
+	str.substr(str.length - ending.length, ending.length) == ending;
+
+//TODO Retorna las palabras solo si estas empiezan igual a como termina la palabra anterior
+
+const shiritori = function (words: Array<string>): Array<string> {
+	const response: Array<string> = [];
+	for (const word of words) {
+		if (
+			!word.length ||
+			(response.length && word[0] !== response[response.length - 1].slice(-1))
+		)
+			break;
+		response.push(word);
+	}
+	return response;
+};
+
+//TODO Suma numeros de indice par y multiplicalos por el último elemento de el array
+
+const evenLast = function (input: Array<number>): number {
+	if(input.length === 0) return 0
+	let sum = 0;
+	for (let i = 0; i < input.length; i++) {
+		if (i % 2 === 0) sum += input[i];
+	}
+	return input[input.length - 1] * sum;
+};
+
+const EvenLast = function (input: Array<number>): number {
+	if (input.length === 0) return 0;
+	return (
+		input[input.length - 1] *
+		input.reduce((accumulator, current, index) => {
+			if (index % 2 === 0) return accumulator + current;
+			else return accumulator;
+		})
+	);
+};

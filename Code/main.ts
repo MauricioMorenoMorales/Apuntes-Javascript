@@ -1,14 +1,12 @@
-const countPositivesSumNegatives = function (
-	input: Array<number>,
-): Array<number> {
-	if (input.length == 0 || !input) return [];
-	let negativeSum = 0;
-	let positiveArray: Array<number> = [];
-
-	for (let i = 0; i < input.length; i++) {
-		if (input[i] < 0) negativeSum = negativeSum + input[i];
-		if (input[i] > 0) positiveArray.push(input[i]);
-	}
-
-	return [positiveArray.length, negativeSum];
+const evenLast = function (input: Array<number>): number {
+	if (input.length === 0) return 0;
+	return (
+		input[input.length - 1] *
+		input.reduce((accumulator, current, index) => {
+			if (index % 2 === 0) return accumulator + current;
+			else return accumulator;
+		})
+	);
 };
+
+console.log(evenLast([2, 3, 4, 5]));
