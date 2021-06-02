@@ -906,7 +906,7 @@ const shiritori = function (words: Array<string>): Array<string> {
 //TODO Suma numeros de indice par y multiplicalos por el último elemento de el array
 
 const evenLast = function (input: Array<number>): number {
-	if(input.length === 0) return 0
+	if (input.length === 0) return 0;
 	let sum = 0;
 	for (let i = 0; i < input.length; i++) {
 		if (i % 2 === 0) sum += input[i];
@@ -923,4 +923,14 @@ const EvenLast = function (input: Array<number>): number {
 			else return accumulator;
 		})
 	);
+};
+
+//TODO recibe un array con coordenadas a eliminar y ejecutalas una a una
+
+const lastSurvivor = function (letters: string, coords: Array<number>): string {
+	const response = [...letters];
+	for (const number of coords) {
+		response.splice(number, 1);
+	}
+	return response.join('');
 };
