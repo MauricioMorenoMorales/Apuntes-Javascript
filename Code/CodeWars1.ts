@@ -979,7 +979,8 @@ type MeetingUserData = {
 	continent: string;
 	age: number;
 	language: string;
-	githubAdmin: string;
+	githubAdmin?: string;
+	meal?: string;
 };
 
 const isSameLanguage = (listOfMembers: Array<MeetingUserData>): boolean =>
@@ -992,3 +993,13 @@ const isLanguageAdmin = (
 	listOfMembers.filter(
 		member => member.language === language && member.githubAdmin === 'yes',
 	);
+
+//TODO Retorna un objeto que cuente la cantidad de comidas que tiene una lista
+
+const orderFood = (userList: Array<MeetingUserData>): { key: string } => {
+	let response: any = {};
+	for (const user of userList) {
+		response[user.meal] ? response[user.meal]++ : (response[user.meal] = 1);
+	}
+	return response;
+};

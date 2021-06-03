@@ -6,12 +6,13 @@ type MeetingUserData = {
 	age: number;
 	language: string;
 	githubAdmin: string;
+	meal: string;
 };
 
-const isSameLanguage = (
-	listOfMembers: Array<MeetingUserData>,
-	language: string,
-): Array<MeetingUserData> =>
-	listOfMembers.filter(
-		member => member.language === language && member.githubAdmin === 'yes',
-	);
+const orderFood = (userList: Array<MeetingUserData>): { key: string } => {
+	let response: any = {};
+	for (const user of userList) {
+		response[user.meal] ? response[user.meal]++ : (response[user.meal] = 1);
+	}
+	return response;
+};
