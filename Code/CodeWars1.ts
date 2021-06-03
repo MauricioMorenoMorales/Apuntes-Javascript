@@ -934,3 +934,61 @@ const lastSurvivor = function (letters: string, coords: Array<number>): string {
 	}
 	return response.join('');
 };
+
+//TODO verifica si un array tiene todos los numeros menores a un limite
+
+const smallEnough = function (
+	numberList: Array<number>,
+	limit: number,
+): boolean {
+	for (const number of numberList) {
+		if (number > limit) return false;
+	}
+	return true;
+};
+
+const SmallEnough = (numberList: Array<number>, limit: number): boolean =>
+	Math.max(...numberList) <= limit;
+
+const SmallEnough2 = (numberList: Array<number>, limit: number): boolean =>
+	numberList.every(number => number <= limit);
+
+//TODO idea sobre un schwitch
+
+const profi = function (input: number): string {
+	switch (input % 4) {
+		case 0:
+			return '1';
+		case 1:
+			return 'i';
+		case 2:
+			return '-1';
+		default:
+			return '-i';
+	}
+};
+//Clever
+const pofi = (input: number): string => ['1', 'i', '-1', '-i'][input % 4];
+
+//TODO verifica si en una lista todos los miembros tienen el mismo lenguaje
+
+type MeetingUserData = {
+	firstName: string;
+	lastName: string;
+	country: string;
+	continent: string;
+	age: number;
+	language: string;
+	githubAdmin: string;
+};
+
+const isSameLanguage = (listOfMembers: Array<MeetingUserData>): boolean =>
+	listOfMembers.every(member => member.language === listOfMembers[0].language);
+
+const isLanguageAdmin = (
+	listOfMembers: Array<MeetingUserData>,
+	language: string,
+): Array<MeetingUserData> =>
+	listOfMembers.filter(
+		member => member.language === language && member.githubAdmin === 'yes',
+	);
