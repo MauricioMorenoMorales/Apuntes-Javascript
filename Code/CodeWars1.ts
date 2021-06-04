@@ -1003,3 +1003,69 @@ const orderFood = (userList: Array<MeetingUserData>): { key: string } => {
 	}
 	return response;
 };
+
+//TODO Retorna una interpolación dependiendo el tamaño de los strings
+const shorter_reverse_longer = function (a: string, b: string): string {
+	let short, long;
+	if (a.length > b.length) {
+		long = a;
+		short = b;
+	} else {
+		long = b;
+		short = a;
+	}
+	return `${short}${long.split('').reverse().join('')}${short}`;
+};
+//Invierte los valores
+const Shorter_reverse_longer = function (a: string, b: string): string {
+	if (a.length >= b.length) [a, b] = [b, a];
+	return `${a}${b.split('').reverse().join('')}${a}`;
+};
+
+//TODO Retorna cuantas letras encajan sus posiciones respecto de el alfabeto
+
+const solve = function (input: Array<string>): Array<number> {
+	const letterPosition: string = 'abcdefghijklmnopqrstuvwxyz';
+	let response: Array<number> = [];
+	for (const word of input) {
+		let sumOfLetters = 0;
+		for (let i = 0; i < word.length; i++) {
+			if (word[i].toLocaleLowerCase() === letterPosition[i]) sumOfLetters++;
+		}
+		response.push(sumOfLetters);
+	}
+	return response;
+};
+
+function Solve(input: Array<string>): Array<number> {
+	var alphabeth = 'abcdefghijklmnopqrstuvwxyz';
+	return input.map(
+		word =>
+			word
+				.toLowerCase()
+				.split('')
+				.filter((y, i) => i == alphabeth.indexOf(y)).length,
+	);
+}
+
+//TODO Recibe un string que con palabras describe la operacion a hacer y su numero
+
+const calculate = (input: string): string =>
+	eval(input.replace(/plus/gi, '+').replace(/minus/gi, '-')).toString()
+
+	function Calculate(str: string): string {
+		let numbers = str.split(/plus|minus/);
+		let operations = str.match(/[a-z]+/g);
+		let sum = parseInt(numbers[0]);
+		for(let i = 0, len = operations.length; i < len; i++){
+			switch(operations[i]){
+				case "plus":
+					sum += parseInt(numbers[i+1]);
+					break;
+				case "minus":
+					sum -= parseInt(numbers[i+1]);
+					break;
+			}
+		}
+		return sum+"";
+	}
