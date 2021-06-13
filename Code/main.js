@@ -1,17 +1,10 @@
-"use strict";
-function calculate(str) {
-    let numbers = str.split(/plus|minus/);
-    let operations = str.match(/[a-z]+/g);
-    let sum = parseInt(numbers[0]);
-    for (let i = 0, len = operations.length; i < len; i++) {
-        switch (operations[i]) {
-            case "plus":
-                sum += parseInt(numbers[i + 1]);
-                break;
-            case "minus":
-                sum -= parseInt(numbers[i + 1]);
-                break;
-        }
-    }
-    return sum + "";
-}
+'use strict';
+const getCount = function (input) {
+	let response = 0;
+	for (const letter of input.split('')) {
+		if (/[aeiou]/.test(letter)) {
+			response++;
+		}
+	}
+	return response;
+};

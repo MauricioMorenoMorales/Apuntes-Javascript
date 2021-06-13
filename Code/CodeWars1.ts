@@ -1069,3 +1069,30 @@ const calculate = (input: string): string =>
 		}
 		return sum+"";
 	}
+
+//TODO retorna el minimo y maximo dentro de un array
+
+const highAndLow = function (numbers: string): string {
+	const minimum = Math.min(...numbers.split(' ').map(number => Number(number)));
+	const maximum = Math.max(...numbers.split(' ').map(number => Number(number)));
+	return `${maximum} ${minimum}`;
+};
+//Cada vez que se repita algo tienes que reducirlo
+
+const HighAndLow = function (numbers: string): string {
+	const numbersArray = numbers.split(' ').map(Number);
+	return `${Math.min(...numbersArray)} ${Math.max(...numbersArray)}`;
+};
+
+//TODO cuenta la cantidad de vocales dentro de un string
+
+const getCount = function (input: string): number {
+	let response = 0;
+	for (const letter of input.split('')) {
+		if (/[aeiou]/.test(letter)) {
+			response++;
+		}
+	}
+	return response;
+};
+
