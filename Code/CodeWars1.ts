@@ -1037,8 +1037,8 @@ const solve = function (input: Array<string>): Array<number> {
 	return response;
 };
 
-function Solve(input: Array<string>): Array<number> {
-	var alphabeth = 'abcdefghijklmnopqrstuvwxyz';
+let Solve = function(input: Array<string>): Array<number> {
+	const alphabeth = 'abcdefghijklmnopqrstuvwxyz';
 	return input.map(
 		word =>
 			word
@@ -1053,9 +1053,9 @@ function Solve(input: Array<string>): Array<number> {
 const calculate = (input: string): string =>
 	eval(input.replace(/plus/gi, '+').replace(/minus/gi, '-')).toString()
 
-	function Calculate(str: string): string {
-		let numbers = str.split(/plus|minus/);
-		let operations = str.match(/[a-z]+/g);
+	const Calculate = function(str: string): string {
+		const numbers = str.split(/plus|minus/);
+		const operations = str.match(/[a-z]+/g);
 		let sum = parseInt(numbers[0]);
 		for(let i = 0, len = operations.length; i < len; i++){
 			switch(operations[i]){
@@ -1096,3 +1096,76 @@ const getCount = function (input: string): number {
 	return response;
 };
 
+//TODO Genera un string de una flor recibe su tamaño y repite varios strings
+//repeat fill string
+
+const plant = function (
+	seed: string,
+	water: number,
+	fert: number,
+	temp: number,
+): string {
+	const wood = [...Array(water)].fill('-').join('');
+	if (temp > 30 || temp < 20)
+		return [...Array(water)].fill(wood).join('') + seed;
+	const flower = [...Array(fert)].fill(seed).join('');
+	return [...Array(water)].fill(wood + flower).join('');
+};
+
+const Plant = function (
+	seed: string,
+	water: number,
+	fert: number,
+	temp: number,
+): string {
+	const stem = '-'.repeat(water),
+		flower = seed.repeat(fert);
+	return temp < 20 || temp > 30
+		? stem.repeat(water) + seed
+		: (stem + flower).repeat(water);
+};
+
+//TODO Retorna un texto dependiendo los numeros que recibas
+
+const switcher = function (input: Array<string>): string {
+	const letterValue: any = {
+		'1': 'z',
+		'2': 'y',
+		'3': 'x',
+		'4': 'w',
+		'5': 'v',
+		'6': 'u',
+		'7': 't',
+		'8': 's',
+		'9': 'r',
+		'10': 'q',
+		'11': 'p',
+		'12': 'o',
+		'13': 'n',
+		'14': 'm',
+		'15': 'l',
+		'16': 'k',
+		'17': 'j',
+		'18': 'i',
+		'19': 'h',
+		'20': 'g',
+		'21': 'f',
+		'22': 'e',
+		'23': 'd',
+		'24': 'c',
+		'25': 'b',
+		'26': 'a',
+		'27': '!',
+		'28': '?',
+		'29': ' ',
+	};
+	return [...Array(input.length)]
+		.map((_, index) => input[index])
+		.map(number => letterValue[number])
+		.join('');
+};
+
+const Switcher = function (input: Array<string>): string {
+	const lettersPosition: string = ' zyxwvutsrqponmlkjihgfedcba!? ';
+	return input.map(element => lettersPosition[Number(element)]).join('');
+};

@@ -1,9 +1,6 @@
-const getCount = function (input: string): number {
-	let response = 0;
-	for (const letter of input.split('')) {
-		if (/[aeiou]/.test(letter)) {
-			response++;
-		}
-	}
-	return response;
+const Switcher = function (input: Array<string>): string {
+	const lettersPosition: string = ' zyxwvutsrqponmlkjihgfedcba!? ';
+	return input.map(element => lettersPosition[Number(element)]).join('');
 };
+
+console.log(Switcher(['24', '12', '23', '22', '4', '26', '9', '8']));
