@@ -981,6 +981,7 @@ type MeetingUserData = {
 	language: string;
 	githubAdmin?: string;
 	meal?: string;
+	greeting?: string;
 };
 
 const isSameLanguage = (listOfMembers: Array<MeetingUserData>): boolean =>
@@ -1037,7 +1038,7 @@ const solve = function (input: Array<string>): Array<number> {
 	return response;
 };
 
-let Solve = function(input: Array<string>): Array<number> {
+let Solve = function (input: Array<string>): Array<number> {
 	const alphabeth = 'abcdefghijklmnopqrstuvwxyz';
 	return input.map(
 		word =>
@@ -1046,29 +1047,29 @@ let Solve = function(input: Array<string>): Array<number> {
 				.split('')
 				.filter((y, i) => i == alphabeth.indexOf(y)).length,
 	);
-}
+};
 
 //TODO Recibe un string que con palabras describe la operacion a hacer y su numero
 
 const calculate = (input: string): string =>
-	eval(input.replace(/plus/gi, '+').replace(/minus/gi, '-')).toString()
+	eval(input.replace(/plus/gi, '+').replace(/minus/gi, '-')).toString();
 
-	const Calculate = function(str: string): string {
-		const numbers = str.split(/plus|minus/);
-		const operations = str.match(/[a-z]+/g);
-		let sum = parseInt(numbers[0]);
-		for(let i = 0, len = operations.length; i < len; i++){
-			switch(operations[i]){
-				case "plus":
-					sum += parseInt(numbers[i+1]);
-					break;
-				case "minus":
-					sum -= parseInt(numbers[i+1]);
-					break;
-			}
+const Calculate = function (str: string): string {
+	const numbers = str.split(/plus|minus/);
+	const operations = str.match(/[a-z]+/g);
+	let sum = parseInt(numbers[0]);
+	for (let i = 0, len = operations.length; i < len; i++) {
+		switch (operations[i]) {
+			case 'plus':
+				sum += parseInt(numbers[i + 1]);
+				break;
+			case 'minus':
+				sum -= parseInt(numbers[i + 1]);
+				break;
 		}
-		return sum+"";
 	}
+	return sum + '';
+};
 
 //TODO retorna el minimo y maximo dentro de un array
 
@@ -1168,4 +1169,16 @@ const switcher = function (input: Array<string>): string {
 const Switcher = function (input: Array<string>): string {
 	const lettersPosition: string = ' zyxwvutsrqponmlkjihgfedcba!? ';
 	return input.map(element => lettersPosition[Number(element)]).join('');
+};
+
+//TODO agrega una caracteristica a un objeto
+
+const greetDevelopers = function (
+	usersList: Array<MeetingUserData>,
+): Array<MeetingUserData> {
+	usersList.map(
+		developer =>
+			(developer.greeting = `Hi ${developer.firstName}, what do you like the most about ${developer.language}?`),
+	);
+	return usersList;
 };

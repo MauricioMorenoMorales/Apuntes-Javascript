@@ -1,6 +1,8 @@
-const Switcher = function (input: Array<string>): string {
-	const lettersPosition: string = ' zyxwvutsrqponmlkjihgfedcba!? ';
-	return input.map(element => lettersPosition[Number(element)]).join('');
-};
+const switcheroo = (input: string): string =>
+	input.split('').map(letter => {
+		if(letter === 'a') letter.replace(/a/g, 'b')
 
-console.log(Switcher(['24', '12', '23', '22', '4', '26', '9', '8']));
+console.log(
+	switcheroo('abc'), //bac
+	switcheroo('aaabcccbaaa'), // bbbacccbaaa
+);
