@@ -1,6 +1,6 @@
-"use strict";
-const switcheroo = (input) => input.split('').map(letter => {
-    if (letter === 'a')
-        letter.replace(/a/g, 'b');
-    console.log(switcheroo('abc'), switcheroo('aaabcccbaaa'));
-});
+'use strict';
+const broken = input =>
+	input
+		.split('')
+		.map(number => (number === '0' ? '1' : '0'))
+		.join('');

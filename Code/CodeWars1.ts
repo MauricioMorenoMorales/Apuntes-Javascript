@@ -1182,3 +1182,56 @@ const greetDevelopers = function (
 	);
 	return usersList;
 };
+
+//TODO Retorna un numero formateado con 5 ceros
+
+const solution = function (input: number): string {
+	switch (input.toString().length) {
+		case 1:
+			return `Value is 0000${input}`;
+		case 2:
+			return `Value is 000${input}`;
+		case 3:
+			return `Value is 00${input}`;
+		case 4:
+			return `Value is 0${input}`;
+		default:
+			return `Value is ${input}`;
+	}
+};
+
+const formattingNumbers = function (input: number): string {
+	return 'Value is ' + ('00000' + input).slice(-5);
+};
+
+//TODO Llena un array con ceros dependiendo el tamaño de un segundo string
+
+const flyBy = (lamps: string, drone: string): string =>
+	lamps
+		.split('')
+		.map((_, index) => (index < drone.length ? 'o' : 'x'))
+		.join('');
+
+const FlyBy = (lamps, drone) => [...lamps].fill(`o`, 0, drone.length).join(``);
+
+//TODO Verifica si en una palabra no se repiten las letras
+
+const isIsogram = function (input: string): boolean {
+	let counter: any = {};
+	let response = true;
+	for (const letter of input) {
+		if (counter[letter.toLocaleLowerCase()]) {
+			response = false;
+			break;
+		} else {
+			counter[letter.toLocaleLowerCase()] = 1;
+		}
+	}
+	return response;
+};
+
+const isIsogramRegex = (input: string): boolean => !/(\w).*\1/i.test(input);
+
+const IsIsogram = (input: string): boolean => new Set(input.toUpperCase()).size == input.length
+
+
