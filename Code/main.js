@@ -1,6 +1,3 @@
 'use strict';
-const broken = input =>
-	input
-		.split('')
-		.map(number => (number === '0' ? '1' : '0'))
-		.join('');
+const bump = input =>
+	input.replace(/_/g, '').length < 15 ? 'Woohoo!' : 'Card Dead.';

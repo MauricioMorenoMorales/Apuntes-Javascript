@@ -1232,6 +1232,13 @@ const isIsogram = function (input: string): boolean {
 
 const isIsogramRegex = (input: string): boolean => !/(\w).*\1/i.test(input);
 
-const IsIsogram = (input: string): boolean => new Set(input.toUpperCase()).size == input.length
+const IsIsogram = (input: string): boolean =>
+	new Set(input.toUpperCase()).size == input.length;
 
+//TODO si el input tiene más de 3 puntos entre los dos elementos retorna respuesta
 
+const catMouse = (input: string): string =>
+	input.replace(/[Cm]/g, '').length < 3 ? 'Escaped!' : 'Caught!';
+
+const CatMouse = (input: string): string =>
+	input.length <= 5 ? 'Escaped!' : 'Caught!';
