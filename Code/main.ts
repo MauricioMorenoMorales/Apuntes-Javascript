@@ -1,37 +1,12 @@
-const tapCodeTranslation = function (input: string): string {
-	const dictionary: any = {
-		a: '. . ',
-		b: '. .. ',
-		c: '. ... ',
-		d: '. .... ',
-		e: '. ..... ',
-		f: '.. . ',
-		g: '.. .. ',
-		h: '.. ... ',
-		i: '.. .... ',
-		j: '.. ..... ',
-		k: '. ... ',
-		l: '... . ',
-		m: '... .. ',
-		n: '... ... ',
-		o: '... .... ',
-		p: '... ..... ',
-		q: '.... . ',
-		r: '.... .. ',
-		s: '.... ... ',
-		t: '.... .... ',
-		u: '.... ..... ',
-		v: '..... . ',
-		w: '..... .. ',
-		x: '..... ... ',
-		y: '..... .... ',
-		z: '..... ..... ',
-	};
-	let response: string = '';
-	for (const letter of input) {
-		response = response + dictionary[letter];
+const calc = function (input: string): number {
+	const numbers: Array<string> = [];
+	for (let i = 0; i < input.length; i++) {
+		numbers.push(String(input.charCodeAt(i)));
 	}
-	return response.slice(0, -1);
+	const splittedNumbers = numbers.forEach(number => number.split(''));
+	const changed7 = numbers.map(number => (number === '7' ? '1' : number));
+	console.log(changed7);
+	return changed7.reduce((acc, curr) => Number(curr) + acc, 0);
 };
 
-console.log(tapCodeTranslation('xd'));
+calc('ABC');

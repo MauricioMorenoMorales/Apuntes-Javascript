@@ -1329,3 +1329,28 @@ const TapCodeTranslation = function (input: string): string {
 		.map(letter => dictionary[letter])
 		.join(' ');
 };
+
+//TODO remplaza letras por otras
+
+const DNAStrand = (input: string): string =>
+	input
+		.split('')
+		.map(letter => {
+			if (letter === 'A') return 'T';
+			if (letter === 'T') return 'A';
+			if (letter === 'G') return 'C';
+			if (letter === 'C') return 'G';
+		})
+		.join('');
+
+//? Constante usada por las dos funciones abajo
+const pairs = { A: 'T', T: 'A', C: 'G', G: 'C' };
+
+const DNAStrand2 = (input: string): string =>
+	input
+		.split('')
+		.map(letter => pairs[letter])
+		.join('');
+
+const DNAStrandRegex = (input: string): string =>
+	input.replace(/./g, letter => pairs[letter]);
