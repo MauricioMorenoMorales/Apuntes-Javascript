@@ -1242,3 +1242,90 @@ const catMouse = (input: string): string =>
 
 const CatMouse = (input: string): string =>
 	input.length <= 5 ? 'Escaped!' : 'Caught!';
+
+//TODO Remplaza todos los numeros con "#" menos los ultimos 4
+
+const maskify = (input: string): string =>
+	input
+		.split('')
+		.map((element, index) => (index < input.length - 4 ? '#' : element))
+		.join('');
+
+const Maskify = (input: string): string =>
+	input.slice(0, -4).replace(/./g, '#') + input.slice(-4);
+
+const MaskifyRegex = (input: string): string =>
+	input.replace(/.(?=.{4})/g, '#');
+
+//TODO convierte un input de array en letras formadas por puntos
+
+const tapCodeTranslation = function (input: string): string {
+	const dictionary: any = {
+		a: '. . ',
+		b: '. .. ',
+		c: '. ... ',
+		d: '. .... ',
+		e: '. ..... ',
+		f: '.. . ',
+		g: '.. .. ',
+		h: '.. ... ',
+		i: '.. .... ',
+		j: '.. ..... ',
+		k: '. ... ',
+		l: '... . ',
+		m: '... .. ',
+		n: '... ... ',
+		o: '... .... ',
+		p: '... ..... ',
+		q: '.... . ',
+		r: '.... .. ',
+		s: '.... ... ',
+		t: '.... .... ',
+		u: '.... ..... ',
+		v: '..... . ',
+		w: '..... .. ',
+		x: '..... ... ',
+		y: '..... .... ',
+		z: '..... ..... ',
+	};
+	let response: string = '';
+	for (const letter of input) {
+		response = response + dictionary[letter];
+	}
+	return response.slice(0, -1);
+};
+
+const TapCodeTranslation = function (input: string): string {
+	let dictionary = {
+		a: '. .',
+		b: '. ..',
+		c: '. ...',
+		k: '. ...',
+		d: '. ....',
+		e: '. .....',
+		f: '.. .',
+		g: '.. ..',
+		h: '.. ...',
+		i: '.. ....',
+		j: '.. .....',
+		l: '... .',
+		m: '... ..',
+		n: '... ...',
+		o: '... ....',
+		p: '... .....',
+		q: '.... .',
+		r: '.... ..',
+		s: '.... ...',
+		t: '.... ....',
+		u: '.... .....',
+		v: '..... .',
+		w: '..... ..',
+		x: '..... ...',
+		y: '..... ....',
+		z: '..... .....',
+	};
+	return input
+		.split('')
+		.map(letter => dictionary[letter])
+		.join(' ');
+};
