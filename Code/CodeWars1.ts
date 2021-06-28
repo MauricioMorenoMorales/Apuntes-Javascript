@@ -1126,9 +1126,9 @@ const Plant = function (
 		: (stem + flower).repeat(water);
 };
 
-//TODO Retorna un texto dependiendo los numeros que recibas
+//TODO Retorna un texto dependiendo un array de numeros numeros que recibas
 
-const switcher = function (input: Array<string>): string {
+const switcher = function (input: Array<string> /*<number> */): string {
 	const letterValue: any = {
 		'1': 'z',
 		'2': 'y',
@@ -1346,8 +1346,8 @@ const DNAStrand = (input: string): string =>
 //? Constante usada por las dos funciones abajo
 const pairs = { A: 'T', T: 'A', C: 'G', G: 'C' };
 
-const DNAStrand2 = (input: string): string =>
-	input
+const DNAStrand2 = (parameter: string): string =>
+	parameter
 		.split('')
 		.map(letter => pairs[letter])
 		.join('');
