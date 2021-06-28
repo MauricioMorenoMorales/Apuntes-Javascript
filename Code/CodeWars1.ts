@@ -1354,3 +1354,128 @@ const DNAStrand2 = (parameter: string): string =>
 
 const DNAStrandRegex = (input: string): string =>
 	input.replace(/./g, letter => pairs[letter]);
+
+//TODO Verifica si dos flechas se saludan dentro de un string "->--<--<->->"
+
+const countSalutes = function (hallway: string): number {
+	let right = 0;
+	let salutes = 0;
+	for (const element of hallway) {
+		if (element === '>') right += 1;
+		else if (element === '<') salutes += 2 * right;
+	}
+	return salutes;
+};
+
+const CountSalutesImperative = function (hallway: string): number {
+	hallway.replace(/-/g, '');
+	let response = 0;
+	for (let i = 0; i < hallway.length; i++) {
+		if (hallway[i] === '>') {
+			for (let j = i + 1; j < hallway.length; j++) {
+				if (hallway[i] == '<') response += 2;
+			}
+		}
+	}
+	return response;
+};
+
+const CountSalutes = (hallway: string) =>
+	2 *
+	[...hallway].reduce(
+		(accumulator, curr, indx, arr) =>
+			accumulator +
+			(curr === '>' ? arr.slice(indx).filter(curr => curr === '<').length : 0),
+		0,
+	);
+
+//TODO Cuenta la cantidad de circulos que tiene cada letra y retorna el premio
+
+const olympicRing = function (parameter: string): string {
+	const output = [...parameter]
+		.map(element =>
+			'qeopadgbQROPAD'.includes(element) ? 1 : element === 'B' ? 2 : 0,
+		)
+		.reduce((acc: number, curr: number) => acc + curr, 0);
+	return (
+		['Not even a medal!', 'Not even a medal!', 'Bronze!', 'Silver!'][output] ||
+		'Gold!'
+	);
+};
+
+//TODO Remplaza ciertas partes de un string y lo retorna capitalizado
+
+const gordon = function (parameter: string): string {
+	const dictionary: any = {
+		a: '@',
+		e: '*',
+		i: '*',
+		o: '*',
+		u: '*',
+	};
+	return [...parameter]
+		.map(
+			letter =>
+				dictionary[letter.toLocaleLowerCase()] || letter.toLocaleUpperCase(),
+		)
+		.join('')
+		.split(' ')
+		.map(word => word + '!!!!')
+		.join(' ');
+};
+
+const gordonRegex = (parameter: string): string =>
+	parameter
+		.toUpperCase()
+		.replace(/w+/g, '$&!!!!')
+		.replace(/[AEIOU]/g, vowel => (vowel === 'A' ? '@' : '*'));
+
+//TODO Mueve las letras 10 niveles arriba de su posicion en el alfabeto
+
+const moveTen = function (parameter: string): string {
+	const dictionary: any = {
+		a: 'k',
+		b: 'l',
+		c: 'm',
+		d: 'n',
+		e: 'o',
+		f: 'p',
+		g: 'q',
+		h: 'r',
+		i: 's',
+		j: 't',
+		k: 'u',
+		l: 'v',
+		m: 'w',
+		n: 'x',
+		o: 'y',
+		p: 'z',
+		q: 'a',
+		r: 'b',
+		s: 'c',
+		t: 'd',
+		u: 'e',
+		v: 'f',
+		w: 'g',
+		x: 'h',
+		y: 'i',
+		z: 'j',
+	};
+	return parameter.replace(/./g, letter => dictionary[letter]);
+};
+
+const MoveTen = function (parameter: string): string {
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz',
+		response = 'klmnopqrstuvwxyzabcdefghij';
+	return parameter.replace(
+		/[a-z]/g,
+		letter => response[alphabet.indexOf(letter)],
+	);
+};
+
+//TODO Verifica que todas las letras dentro de un string no se repitan
+
+let hasUniqueChars = (parameter: string): boolean =>
+	new Set(parameter).size === parameter.length;
+
+let HasUniqueChars = (parameter: string): boolean => !/(.).*\1/.test(parameter);
