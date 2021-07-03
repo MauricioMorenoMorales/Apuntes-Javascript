@@ -1479,3 +1479,30 @@ let hasUniqueChars = (parameter: string): boolean =>
 	new Set(parameter).size === parameter.length;
 
 let HasUniqueChars = (parameter: string): boolean => !/(.).*\1/.test(parameter);
+
+//TODO Retorna un objeto que cuente cuantas veces se repite un lenguaje en otro objeto
+
+const countLanguages = (list: Array<MeetingUserData>) =>
+	list.reduce((responseObject: any, curr: MeetingUserData) => {
+		curr.language in responseObject
+			? responseObject[curr.language]++
+			: (responseObject[curr.language] = 1);
+		return responseObject;
+	}, {});
+
+const CountLanguages = function (list: Array<MeetingUserData>) {
+	let response = {};
+	list.forEach(
+		member =>
+			(response[member.language] = (response[member.language] || 0) + 1),
+	);
+	return response;
+};
+
+//TODO Verifica si almenos un miembro usa ruby
+
+const isRubyComing = (list: Array<MeetingUserData>) =>
+	list.filter(member => member.language === 'Ruby').length > 0;
+
+const IsRubyComing = (list: Array<MeetingUserData>) =>
+	list.some(member => (member.language = 'Ruby'));
