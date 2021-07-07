@@ -1506,3 +1506,40 @@ const isRubyComing = (list: Array<MeetingUserData>) =>
 
 const IsRubyComing = (list: Array<MeetingUserData>) =>
 	list.some(member => (member.language = 'Ruby'));
+
+//TODO Ordena una lista con inputs tipo '100G' '200T' '1kg' etc
+
+const arrange = function (parameter: Array<string>): Array<string> {
+	const sorted = (word: string) => {
+		if (word.replace(/[0-9]/gi, '') === 'KG')
+			return Number(word.slice(0, -2)) * 1;
+		else if (word.replace(/[0-9]/gi, '') === 'T')
+			return Number(word.slice(0, -2)) * 1000;
+		else return Number(word.slice(0, -1)) * 0.001;
+	};
+	return parameter.sort((a, b) => sorted(a) - sorted(b));
+};
+
+//TODO Cuenta cuantas palabras estan compuestas exclusivamente de unas letras ademas de no repetirse
+
+const shifter = function (parameter: string): number {
+	if (!parameter) return 0;
+	let response = 0;
+	let register: any = {};
+	const filteredWords = parameter.split(' ').filter(word => {
+		if (word in register) {
+			return false;
+		} else {
+			register[word] = true;
+			return true;
+		}
+	});
+	for (const word of filteredWords) {
+		const filteredWord = word.replace(/[HINOSXZMW]/gi, '');
+		if (filteredWord.length === 0) response++;
+	}
+	return response;
+};
+
+const Shifter = (parameter: string): number =>
+	new Set(parameter.match(/\b[HINOSXZMW]+\b/g)).size;
