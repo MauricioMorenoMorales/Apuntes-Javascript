@@ -1,6 +1,6 @@
 "use strict";
-const headSmash = ($) => {
-    if ($ == [])
-        return 'Gym is empty';
-    return $.map(element => element.replace(/O/g, ' '));
-};
+const crap = (arrayParameter, bags, cap) => (arrayParameter + '').includes('D')
+    ? 'Dog!!'
+    : (arrayParameter + '').split('@').length - 1 <= bags * cap
+        ? 'Clean'
+        : 'Cr@p';

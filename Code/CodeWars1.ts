@@ -1543,3 +1543,60 @@ const shifter = function (parameter: string): number {
 
 const Shifter = (parameter: string): number =>
 	new Set(parameter.match(/\b[HINOSXZMW]+\b/g)).size;
+
+//TODO Cuenta elementos en un array y retorna respuesta dependiendo el conteo
+
+const crap = function (
+	arrayParameter: Array<Array<string>>,
+	bags: number,
+	cap: number,
+) {
+	let shit = 0,
+		dog = false;
+	for (const item of arrayParameter) {
+		for (const subitem of item) {
+			if (subitem === '@') shit++;
+			if (subitem === 'D') {
+				dog = true;
+				break;
+			}
+		}
+	}
+	if (dog) return 'Dog!!';
+	return shit > bags * cap ? 'Cr@p' : 'Clean';
+};
+
+const Crap = (
+	arrayParameter: Array<Array<string>>,
+	bags: number,
+	cap: number,
+) =>
+	(arrayParameter + '').includes('D')
+		? 'Dog!!'
+		: (arrayParameter + '').split('@').length - 1 <= bags * cap
+		? 'Clean'
+		: 'Cr@p';
+
+const CrapAlternative = function (
+	arrayParameter: Array<Array<string>>,
+	bags: number,
+	cap: number,
+) {
+	const yard = arrayParameter.reduce((acc, curr) => acc.concat(curr));
+	return yard.includes('D')
+		? 'Dog!!'
+		: yard.filter(element => element === '@').length <= bags * cap
+		? 'Clean'
+		: 'Cr@p';
+};
+
+//TODO Ordena las palabras alfabeticamente por su letra final
+
+const last = (parameter: string): Array<string> =>
+	parameter
+		.split(' ')
+		.sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1));
+
+const Last = (words: string): Array<string> =>
+	words.split(' ').sort((a, b) => a.slice(-1).localeCompare(b.slice(-1)));
+
