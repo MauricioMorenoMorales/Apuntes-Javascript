@@ -1600,3 +1600,27 @@ const last = (parameter: string): Array<string> =>
 const Last = (words: string): Array<string> =>
 	words.split(' ').sort((a, b) => a.slice(-1).localeCompare(b.slice(-1)));
 
+//TODO Remplaza las primeras letras de dos palabras "node_modules" -> "mode_nodules"
+
+const spoonerize = function (parameter: string): string {
+	const words = parameter.split(' ');
+	return [
+		words[1][0] + words[0].slice(1),
+		words[0][0] + words[1].slice(1),
+	].join(' ');
+};
+
+const spoonerizeRegex = (parameter: string): string =>
+	parameter.replace(/^(.)(.* )(.)(.*)$/, '$3$2$1$4');
+
+//TODO Remplaza las vocales por su posicion dentro de el string
+
+const vowel2index = (parameter: string): string =>
+	[...parameter]
+		.map((letter, index) =>
+			letter.match(/[aeiou]/gi) ? `${index + 1}` : letter,
+		)
+		.join('');
+
+const Vowel2index = (parameter: string): string =>
+	parameter.replace(/[aeiou]/gi, (_, i) => i + 1)

@@ -1,10 +1,6 @@
-const crap = (
-	arrayParameter: Array<Array<string>>,
-	bags: number,
-	cap: number,
-) =>
-	(arrayParameter + '').includes('D')
-		? 'Dog!!'
-		: (arrayParameter + '').split('@').length - 1 <= bags * cap
-		? 'Clean'
-		: 'Cr@p';
+const vowel2index = (parameter: string): string =>
+	[...parameter]
+		.map((letter, index) =>
+			letter.match(/[aeiou]/gi) ? `${index + 1}` : letter,
+		)
+		.join('');
