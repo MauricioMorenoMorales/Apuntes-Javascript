@@ -1623,4 +1623,75 @@ const vowel2index = (parameter: string): string =>
 		.join('');
 
 const Vowel2index = (parameter: string): string =>
-	parameter.replace(/[aeiou]/gi, (_, i) => i + 1)
+	parameter.replace(/[aeiou]/gi, (_, i) => i + 1);
+
+//TODO Introduce una letra enmedio de un string
+
+const middleMe = function (
+	numberOfLetters: number,
+	middleLetter: string,
+	repeatedString: string,
+): string {
+	if (numberOfLetters % 2 === 1) return middleLetter;
+	let response: Array<string> = [];
+	for (let i = 0; i < numberOfLetters + 1; i++) {
+		if (i === numberOfLetters / 2) response.push(middleLetter);
+		else response.push(repeatedString);
+	}
+	return response.join('');
+};
+
+const MiddleMe = (
+	numberOfLetters: number,
+	middleLetter: string,
+	repeatedString: string,
+) =>
+	numberOfLetters % 2
+		? middleLetter
+		: `${repeatedString.repeat(
+				numberOfLetters / 2,
+		  )}${middleLetter}${repeatedString.repeat(numberOfLetters / 2)}`;
+
+//TODO Retorna la suma de los numeros de un cumpleaños, cada numero debe ser menor a 10
+
+const lifePathNumberMal = function (parameter: string): number {
+	//! Mal
+	const numbers = parameter.split('-'),
+		year = numbers[0],
+		month = numbers[1],
+		day = numbers[2];
+
+	const yearNumbers = year.split('').map(Number),
+		monthNumbers = month.split('').map(Number),
+		dayNumbers = day.split('').map(Number);
+
+	const yearSum =
+		yearNumbers.reduce((prev, curr) => prev + curr, 0) > 9
+			? String(yearNumbers.reduce((prev, curr) => prev + curr, 0))
+					.split('')
+					.map(Number)
+					.reduce((prev, curr) => prev + curr, 0)
+			: yearNumbers.reduce((prev, curr) => prev + curr, 0);
+	const monthSum = monthNumbers.reduce((prev, curr) => prev + curr, 0);
+	const daySum = monthNumbers.reduce((prev, curr) => prev + curr, 0);
+
+	return yearSum + monthSum + daySum;
+};
+
+const lifePathNumber = function (parameter: string): number {
+	let [year, month, day] = parameter.split('-');
+	year = moreThanTwoDigitsSum(String(year).split('').map(Number));
+	month = moreThanTwoDigitsSum(String(month).split('').map(Number));
+	day = moreThanTwoDigitsSum(String(day).split('').map(Number));
+	return moreThanTwoDigitsSum([year, month, day].map(Number));
+};
+
+const moreThanTwoDigitsSum = function (parameter: Array<number>) {
+	if (parameter.length === 1) return parameter[0];
+	const total = parameter.reduce((prev, curr) => prev + curr, 0);
+	if (total < 10) return total;
+	return moreThanTwoDigitsSum(String(total).split('').map(Number));
+};
+
+const lifePAthNumberRegex = (parameter: string): number =>
+	parameter.replace(/\D/g, '') % 9 || 9;
