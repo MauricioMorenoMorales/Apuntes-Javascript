@@ -1694,4 +1694,77 @@ const moreThanTwoDigitsSum = function (parameter: Array<number>) {
 };
 
 const lifePAthNumberRegex = (parameter: string): number =>
-	parameter.replace(/\D/g, '') % 9 || 9;
+	Number(parameter.replace(/\D/g, '')) % 9 || 9;
+
+//! Cuenta la cantidad de letras dentro de un array y determina que lado gana
+//switch if map
+
+const alphabetWar = function (parameter: string): string {
+	let right = 0;
+	let left = 0;
+	for (const letter of [...parameter]) {
+		switch (letter) {
+			case 'w':
+				left += 4;
+			case 'p':
+				left += 3;
+			case 'b':
+				left += 2;
+			case 's':
+				left += 1;
+			case 'm':
+				right += 4;
+			case 'q':
+				right += 3;
+			case 'd':
+				right += 2;
+			case 'z':
+				right += 1;
+		}
+	}
+	if (right === left) return "Let's fight again!";
+	return right >= left ? 'Right side wins!' : 'Left side wins';
+};
+
+const AlphabetWar = function (parameter: string): string {
+	const map = { w: -4, p: -3, b: -2, s: -1, m: 4, q: 3, d: 2, z: 1 };
+	const result = [...parameter].reduce(
+		(acc, curr) => acc + (map[curr] || 0),
+		0,
+	);
+	return result
+		? `${result < 0 ? 'Left' : 'Right'} side Wins!`
+		: "Let's fight again!";
+};
+
+const AlphabetWarAlternative = function (parameter: string): string {
+	let right = {};
+	right['m'] = 4;
+	right['q'] = 3;
+	right['d'] = 2;
+	right['z'] = 1;
+	let left = {};
+	left['w'] = 4;
+	left['p'] = 3;
+	left['b'] = 2;
+	left['s'] = 1;
+	let sumRight = 0;
+	let sumLeft = 0;
+
+	for (const letter of [...parameter]) {
+		if (right[parameter[letter]]) {
+			sumRight += right[parameter[letter]];
+		}
+		if (left[parameter[letter]]) {
+			sumLeft += left[parameter[letter]];
+		}
+	}
+
+	if (sumRight > sumLeft) {
+		return 'Right side wins!';
+	}
+	if (sumRight < sumLeft) {
+		return 'Left side wins!';
+	}
+	return "Let's fight again!";
+};
