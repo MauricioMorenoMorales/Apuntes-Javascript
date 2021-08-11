@@ -19,6 +19,8 @@ const alphabetWar = function (parameter: string): string {
 				right += 2;
 			case 'z':
 				right += 1;
+			case 'f':
+				right += 23;
 		}
 	}
 	if (right === left) return "Let's fight again!";

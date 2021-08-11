@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/*La clase al principio solamente tiene el nombre y el alcohol no la marca,
+		si agregas nuevos atributos a el constructor de Cerveza tendrías que actualizar
+		todos los elementos que dependan de usar la clase Cerveza*/
+		class Cerveza {
+			constructor(nombre, alcohol, marca) {
+				this.nombre = nombre;
+				this.cerveza = alcohol;
+				this.marca = marca;//? Esto se agregó después y tendria que ser actualizado en todos sitios
+				/*Los cambios se harian solamente dentro de los containers*/
+			}
+		}
+
+		class CantineroMalHecho {
+			constructor(nombre, nombreCerveza, alcohol, marca) {
+				this.nombre = nombre;
+				this.cerveza = new Cerveza(nombreCerveza, alcohol, marca);
+			}
+			servir() {
+				console.log(`${this.nombre} sirviendo la cerveza ${this.cerveza.nombre}`);
+			}
+		}
+
+		class Cantinero {
+			constructor(nombre, cerveza) {
+				this.nombre = nombre;
+				this.cerveza = cerveza;
+			}
+			servir() {
+				console.log(`${this.nombre} sirviendo la cerveza ${this.cerveza.nombre}`);
+			}
+		}
+
+		const cantineroMalHecho = new CantineroMalHecho(
+			'Pepe',
+			'Erdinger',
+			20,
+			'Erdinger',
+		);
+
+		// cantineroMalHecho.servir() esto no funcionara
+
+		const cantinero = new Cantinero(
+			'Pedro',
+			new Cerveza('Erdinger', 20, 'Erdinger'),
+		);
+		cantinero.servir();
+
+		class News {
+			constructor(url, extraParameter) {
+				this.url = url;
+				this.extraParameter = extraParameter
+
+			}
+
+			async get() {
+				let posts = await fetch(this.url)
+					.then(response => response.json())
+					.then(json => json);
+				return posts;
+			}
+		}
+
+		class Writer {
+			constructor(news) {
+				this.news = news;
+			}
+
+			async show() {
+				this.posts = await this.news.get();
+				this.posts.forEach(element => {
+					console.log(element.title);
+				});
+			}
+		}
+
+		let news = new News('https://jsonplaceholder.typicode.com/todos/', 2);
+		let writer = new Writer(news);
+		writer.show();
+
+	</script>
+	<p>
+		Para comprender más como usar y aun así no cambiar todas las instancias
+		investiga el patron de diseño contenedores de dependencias
+	</p>
+</body>
+
+</html>
