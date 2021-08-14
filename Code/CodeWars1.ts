@@ -1,5 +1,7 @@
 //TODO Condiverte numeros a estring los suma y los devuelve como string
 
+import { isConstructorDeclaration } from 'typescript';
+
 const sumStr = (a: string, b: string): string =>
 	String(Number(a === '' ? '0' : a) + Number(b === '' ? '0' : b));
 
@@ -1768,3 +1770,68 @@ const AlphabetWarAlternative = function (parameter: string): string {
 	}
 	return "Let's fight again!";
 };
+
+const historiador = 'federico navarrete';
+
+//! Elimina palabras repetidas
+//object register
+
+const removeDuplicateWords = (parameter: string): string => {
+	let repeatedWordRegister: any = {};
+	return parameter
+		.split(' ')
+		.filter(word => {
+			if (word in repeatedWordRegister) {
+				return false;
+			} else {
+				repeatedWordRegister[word] = true;
+				return true;
+			}
+		})
+		.join(' ');
+};
+
+const RemoveDuplicateWordsArray = (parameter: string): string => {
+	let filteredWords: Array<string> = [];
+	parameter
+		.split(' ')
+		.forEach(word => !filteredWords.includes(word) && filteredWords.push(word));
+	return filteredWords.join(' ');
+};
+
+const RemoveDuplicateWordsClever = (parameter: string): string =>
+	[...new Set(parameter.split(' '))].join(' ');
+
+//! Invierte solamente las consonates de case "upper || lower"
+
+const swapVowelCase = (parameter: string): string =>
+	[...parameter]
+		.map(letter => {
+			if (letter.match(/[aeiou]/g)) {
+				return letter.toLocaleUpperCase();
+			} else if (letter.match(/[AEIOU]/g)) {
+				return letter.toLocaleLowerCase();
+			} else {
+				return letter;
+			}
+		})
+		.join('');
+
+const swapVowelCaseClever = (parameter: string): string => {
+	const swapper = (letter: string) =>
+		letter === letter.toLowerCase() ? letter.toLowerCase() : letter.toUpperCase;
+
+	return [...parameter]
+		.map(letter => (letter.match(/[aeiou]/gi) ? swapper(letter) : letter))
+		.join(' ');
+};
+
+//!Remplaza las b por a o a por b
+//Dictionary
+const swticheroo = (parameter: string): string => {
+	const dictionary: any = { a: 'b', b: 'a' };
+	return [...parameter].map(letter => dictionary[letter] || letter).join('');
+};
+
+const switcherooRegex = (parameter: string): string =>
+	parameter.replace(/[ab]/g, letter => (letter == 'a' ? 'b' : 'a'));

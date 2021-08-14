@@ -33,6 +33,8 @@
 		}
 
 		class Cantinero {
+			/*En el constructor {...cerveza} recibe toda una nueva instancia de cerveza 
+			en vez de cada uno de sus componentes*/
 			constructor(nombre, cerveza) {
 				this.nombre = nombre;
 				this.cerveza = cerveza;
@@ -81,6 +83,7 @@
 				this.posts = await this.news.get();
 				this.posts.forEach(element => {
 					console.log(element.title);
+					console.log("probando esta wea ")
 				});
 			}
 		}
