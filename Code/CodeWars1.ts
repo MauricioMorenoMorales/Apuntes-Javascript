@@ -1921,3 +1921,5 @@ const Capitals = (word: string): Array<number> =>
 			curr.toUpperCase() === curr ? acc.concat(index) : acc,
 		[],
 	);
+
+//!
