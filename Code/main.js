@@ -1,5 +1,3 @@
-'use strict';
-const swticheroo = parameter => {
-	const dictionary = { a: 'b', b: 'a' };
-	return [...parameter].map(letter => dictionary[letter] || letter).join('');
-};
+"use strict";
+const getMiddle = (parameter) => parameter.substr(Math.ceil(-1 + parameter.length / 2), parameter.length % 2 === 0 ? 2 : 1);
+console.log(getMiddle('test'), getMiddle('middle'));

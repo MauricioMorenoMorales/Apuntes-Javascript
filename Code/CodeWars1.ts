@@ -1835,3 +1835,18 @@ const swticheroo = (parameter: string): string => {
 
 const switcherooRegex = (parameter: string): string =>
 	parameter.replace(/[ab]/g, letter => (letter == 'a' ? 'b' : 'a'));
+
+//! Retorna las letras enmedio de un string
+
+const getMiddle = (parameter: string): string => {
+	const middle = parameter.length / 2;
+	return parameter.length % 2
+		? parameter.charAt(Math.floor(middle))
+		: parameter.slice(middle - 1, middle + 2);
+};
+
+const GetMiddle = (parameter: string): string =>
+	parameter.substr(
+		Math.ceil(parameter.length / 2 - 1),
+		parameter.length % 2 === 0 ? 2 : 1,
+	);
