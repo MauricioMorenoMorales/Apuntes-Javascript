@@ -1,7 +1,9 @@
-const getMiddle = (parameter: string): string =>
-	parameter.substr(
-		Math.ceil(-1 + parameter.length / 2),
-		parameter.length % 2 === 0 ? 2 : 1,
-	);
-
-console.log(getMiddle('test'), getMiddle('middle'));
+const capitals = (word: string): Array<number> | any => {
+	const response: Array<number> = [];
+	word.split('').forEach((letter, index) => {
+		if (letter.toUpperCase() === letter) {
+			response.push(index);
+		}
+	});
+	return response;
+};

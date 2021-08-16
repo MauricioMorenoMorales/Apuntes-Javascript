@@ -1,3 +1,10 @@
-"use strict";
-const getMiddle = (parameter) => parameter.substr(Math.ceil(-1 + parameter.length / 2), parameter.length % 2 === 0 ? 2 : 1);
-console.log(getMiddle('test'), getMiddle('middle'));
+'use strict';
+const capitals = word => {
+	const response = [];
+	word.split('').forEach((letter, index) => {
+		if (letter.toUpperCase() === letter) {
+			response.push(index);
+		}
+	});
+	return response;
+};

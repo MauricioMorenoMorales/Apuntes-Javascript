@@ -1850,3 +1850,74 @@ const GetMiddle = (parameter: string): string =>
 		Math.ceil(parameter.length / 2 - 1),
 		parameter.length % 2 === 0 ? 2 : 1,
 	);
+
+//! Retorna un string completo con cada palabra capitalizada
+
+const capitalizing = (parameter: string): string =>
+	parameter
+		.split(' ')
+		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(' ');
+
+const CapitalizingRegex = (parameter: string): string =>
+	parameter.replace(/(^|\s)[a-z]/g, word => word.toUpperCase());
+
+//! Verifica que un string sea un pin de no mas de 4 o 6 digitos
+
+const validatePIN = (pin: string): boolean => {
+	if (pin.replace(/[^0-9]/gi, '').length !== pin.length) return false;
+	if (pin.length === 4 || pin.length === 6) return true;
+	else return false;
+};
+
+const validatePINRegex = (pin: string): boolean => /^(\d{4}|\d{6})$/.test(pin);
+
+//! Verifica si con las letras de el test se puede escribir la palabra original
+
+const isAnagram = function (test: string, original: string): boolean {
+	let testWordCounter: Array<string> = [],
+		originalWordCounter: Array<string> = [];
+
+	[...test].forEach(letter => testWordCounter.push(letter.toLocaleLowerCase()));
+	[...original].forEach(letter =>
+		originalWordCounter.push(letter.toLocaleLowerCase()),
+	);
+
+	const sortedTestWordCounter = testWordCounter.sort().join(''),
+		sortedOriginalWordCounter = originalWordCounter.sort().join('');
+
+	return (
+		testWordCounter.sort().join('') === originalWordCounter.sort().join('')
+	);
+};
+
+const isAnagramClever = function (test: string, original: string): boolean {
+	const sortedTest = test.toLowerCase().split('').sort().join(''),
+		sortedOriginal = original.toLowerCase().split('').sort().join('');
+	return sortedTest == sortedOriginal;
+};
+
+//! Elimina todo lo que venga después de "#"
+
+const removeUrlAnchor = (url: string): string => url.split('#')[0];
+
+const removeUrlAnchorRegex = (url: string): string => url.replace(/#.*/gi, '');
+
+//! Retorna un array con las posiciones de las letras capitalizadas
+
+const capitals = (word: string): Array<number> => {
+	const response: Array<number> = [];
+	word.split('').forEach((letter, index) => {
+		if (letter.toUpperCase() === letter) {
+			response.push(index);
+		}
+	});
+	return response;
+};
+
+const Capitals = (word: string): Array<number> =>
+	[...word].reduce(
+		(acc, curr, index) =>
+			curr.toUpperCase() === curr ? acc.concat(index) : acc,
+		[],
+	);
