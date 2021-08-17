@@ -1922,4 +1922,76 @@ const Capitals = (word: string): Array<number> =>
 		[],
 	);
 
-//!
+//! Incompleto, verifica si se puede verificar si una fecha es mayor que otra
+
+const checkCoupon = function (
+	enteredCode: string,
+	correctCode: string,
+	currentDate: string,
+	expirationDate: string,
+): boolean | any {
+	console.log(enteredCode, correctCode, currentDate, expirationDate);
+	if (enteredCode !== correctCode) return false;
+	const [currentMonthDate, currentYear] = currentDate.split(',');
+	const [expirationMonthDate, expirationYear] = expirationDate.split(',');
+	if (Number(currentYear) > Number(expirationYear)) {
+		return false;
+	}
+	const monthValue: any = {
+		january: 0,
+		february: 31,
+		march: 60,
+		april: 91,
+		may: 121,
+		june: 152,
+		july: 182,
+		august: 213,
+		september: 243,
+		october: 273,
+		november: 304,
+		december: 334,
+	};
+	const [currentMonth, currentDay] = currentMonthDate.split(' '),
+		[expirationMonth, expirationDay] = currentMonthDate.split(' ');
+
+	console.log(Number(currentDay), Number(expirationDay));
+
+	return (
+		monthValue[currentMonth.toLowerCase()] + Number(currentDay) <=
+		monthValue[expirationMonth.toLowerCase()] + Number(expirationDay)
+	);
+};
+
+console.log(
+	checkCoupon('123', '123', 'September 5, 2015', 'October 1, 2014'),
+	checkCoupon('123', '123', 'November 5, 2014', 'October 1, 2014'),
+	checkCoupon('123a', '123', 'September 5, 2014', 'October 1, 2014'),
+);
+//https://www.codewars.com/kata/539de388a540db7fec000642/solutions
+
+//! Cambia el case de las palabras dependiendo su index
+
+const capitalize = (parameter: string): Array<string> => [
+	parameter.replace(/./g, (word, index) =>
+		index & 1 ? word.toLowerCase() : word.toUpperCase(),
+	),
+	parameter.replace(/./g, (word, index) =>
+		index % 2 ? word.toUpperCase() : word.toLowerCase(),
+	),
+];
+
+//! Verifica que numero es más largo (digitos) pero tambien que el numero sea más largo
+const findLongest = (parameter: Array<number>): number => {
+	let response = '';
+	for (const number of parameter) {
+		if (String(number).length > response.length && number > Number(response)) {
+			response = String(number);
+		}
+	}
+	return Number(response);
+};
+
+const FindLongest = (parameter: Array<number>): number =>
+	parameter.reduce((res, curr) =>
+		String(res).length < String(curr).length ? curr : res,
+	);
