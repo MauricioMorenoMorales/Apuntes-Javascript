@@ -1995,3 +1995,15 @@ const FindLongest = (parameter: Array<number>): number =>
 	parameter.reduce((res, curr) =>
 		String(res).length < String(curr).length ? curr : res,
 	);
+
+//! REGEX verifica si un string es solamente una letra
+
+const isALetter = letter => /^[a-z]$/i.test(letter);
+
+//! REGEX elimina todos los caracteres que no sean numeros
+
+var FilterString = function (value) {
+	return parseInt(value.replace(/[^\d]/g, ''));
+};
+
+const FilterString2 = value => +value.replace(/\D/g, '');
