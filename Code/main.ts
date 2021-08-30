@@ -1,15 +1,22 @@
-const solve = (firstParameter: string, secondParameter: string): string => {
-	const a = [...firstParameter].sort();
-	const b = [...secondParameter].sort();
-	let response: Array<string> = [];
-	for (let i = 0; i < a.length || i < b.length; i++) {
-		if (a[i] !== b[i]) {
-			response.push(a[i]);
-			response.push(b[i]);
-		}
-	}
-	return response.join('');
+const uniqueLetters = (
+	firstParameter: string,
+	secondParameter: string,
+): string => {
+	const setA = new Set(firstParameter);
+	const setB = new Set(firstParameter);
+
+	return [...(firstParameter + secondParameter)]
+		.filter(letter => !setA.has(letter) || !setB.has(letter))
+		.join('');
 };
 
-// Completar
-//https://www.codewars.com/kata/5a262cfb8f27f217f700000b/train/javascript
+const UniqueLetters = (
+	firstParameter: string,
+	secondParameter: string,
+): string =>
+	[...(firstParameter + secondParameter)]
+		.filter(
+			letter =>
+				!firstParameter.includes(letter) || !secondParameter.includes(letter),
+		)
+		.join('');

@@ -1,13 +1,15 @@
-"use strict";
-const solve = (firstParameter, secondParameter) => {
-    const a = [...firstParameter].sort();
-    const b = [...secondParameter].sort();
-    let response = [];
-    for (let i = 0; i < a.length || i < b.length; i++) {
-        if (a[i] !== b[i]) {
-            response.push(a[i]);
-            response.push(b[i]);
-        }
-    }
-    return response.join('');
+'use strict';
+const uniqueLetters = (firstParameter, secondParameter) => {
+	const setA = new Set(firstParameter);
+	const setB = new Set(firstParameter);
+	return [...(firstParameter + secondParameter)]
+		.filter(letter => !setA.has(letter) || !setB.has(letter))
+		.join('');
 };
+const UniqueLetters = (firstParameter, secondParameter) =>
+	[...(firstParameter + secondParameter)]
+		.filter(
+			letter =>
+				!firstParameter.includes(letter) || !secondParameter.includes(letter),
+		)
+		.join('');
