@@ -1,6 +1,5 @@
-const solution = (stringInput: string, ending: string): boolean => {
-	if (ending === '') return false;
-	return stringInput.slice(-ending.length) === ending;
-};
-
-console.log(solution('abc', 'b'));
+const solve = (parameter: string): number =>
+	parameter
+		.split(/[a-z]/gi)
+		.map(Number)
+		.reduce((acc, curr) => Math.max(acc, curr), 0);

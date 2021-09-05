@@ -2032,3 +2032,65 @@ const UniqueLetters = (
 				!firstParameter.includes(letter) || !secondParameter.includes(letter),
 		)
 		.join('');
+
+//! REGEX Separa un string en chunks de el tamaño de "spacingLength"
+
+const splitInParts = (parameter: string, spacingLength: number) =>
+	parameter
+		.replace(/(.)/g, (letter, _, index) =>
+			(index + 1) % spacingLength === 0 ? `${letter} ` : letter,
+		)
+		.trim();
+
+const SplitInPartsRegex = (parameter: string, partLength: number) =>
+	parameter.replace(new RegExp(`(.{${partLength}})(?!$)`, 'g'), '$1 ');
+
+//! Cuenta cuanto es el maximo numero de vocales seguidas dentro de un string
+//Reduce
+
+const maxNumberOfVowels = (parameter: string): number => {
+	let counter: Array<string> = [];
+	let response = 0;
+	for (const letter of parameter) {
+		if (letter.match(/[aeiou]/)) {
+			counter.push(letter);
+			if (response < counter.length) response = counter.length;
+		} else {
+			counter = [];
+		}
+	}
+	return response;
+};
+
+const MaxNumberOfVowels = (parameter: string): number =>
+	parameter
+		.split(/[^aeiou]/gi)
+		.reduce((acc, curr) => Math.max(acc, curr.length), 0);
+
+//! Retorna la altura de una pantalla recibe el ancho y el ratio
+
+const findScreenHeight1 = (width: number, ratio: string): string => {
+	const ratioNumbers: Array<number> = ratio.split(':').map(Number);
+	const height: number = (width * ratioNumbers[1]) / ratioNumbers[0];
+	return `${width}*${height}`;
+};
+
+const findScreenHeight2 = (width: number, ratio: string): string => {
+	const [widthRatio, heightRatio] = ratio.split(':').map(Number);
+	const height: number = (width * heightRatio) / widthRatio;
+	return `${width}*${height}`;
+};
+
+const FindScreenHeight = (
+	width: number,
+	ratio: string,
+	[widthRatio, heightRatio] = ratio.split(':').map(Number),
+): string => `${width}x${(width * heightRatio) / widthRatio}`;
+
+//! Elimina las letras de un string solo dejando los numeros y retorna el mas grande
+
+const largestNumberInsideAstring = (parameter: string): number =>
+	parameter
+		.split(/[a-z]/gi)
+		.map(Number)
+		.reduce((acc, curr) => Math.max(acc, curr), 0);
