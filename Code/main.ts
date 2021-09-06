@@ -1,5 +1,16 @@
-const solve = (parameter: string): number =>
-	parameter
-		.split(/[a-z]/gi)
-		.map(Number)
-		.reduce((acc, curr) => Math.max(acc, curr), 0);
+const insertDash = (
+	parameter: number,
+	formattedParameter = [...String(parameter)],
+): any =>
+	formattedParameter
+		.map((stringNumber, index) => {
+			const currentNumber = Number(stringNumber);
+			if (
+				currentNumber % 2 === 1 &&
+				Number(formattedParameter[index]) % 2 === 1
+			) {
+				return `${currentNumber}-`;
+			}
+			return `${currentNumber}`;
+		})
+		.join('');

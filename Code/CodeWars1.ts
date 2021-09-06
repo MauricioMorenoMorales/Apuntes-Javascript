@@ -2094,3 +2094,25 @@ const largestNumberInsideAstring = (parameter: string): number =>
 		.split(/[a-z]/gi)
 		.map(Number)
 		.reduce((acc, curr) => Math.max(acc, curr), 0);
+
+//! REGEX Separa con un "-" los numeros nones que estén juntos
+
+const insertDash = (
+	parameter: number,
+	formattedParameter = [...parameter.toString()],
+): string =>
+	formattedParameter
+		.map((stringNumber, index) => {
+			const currentNumber = Number(stringNumber);
+			if (
+				currentNumber % 2 === 1 &&
+				Number(formattedParameter[index + 1]) % 2 === 1
+			) {
+				return `${currentNumber}-`;
+			}
+			return `${currentNumber}`;
+		})
+		.join('');
+
+const InsertDash = (parameter: number): string =>
+	parameter.toString().replace(/([13579])(?=[13579])/g, '$1-');
