@@ -2116,3 +2116,112 @@ const insertDash = (
 
 const InsertDash = (parameter: number): string =>
 	parameter.toString().replace(/([13579])(?=[13579])/g, '$1-');
+
+//! Retorna respuesta con el primer usuario encontrado
+
+const getFirstPython = (
+	list: Array<MeetingUserData>,
+	filteredList = list.filter(element => element.language === 'Python'),
+): string | any =>
+	filteredList.length === 0
+		? 'There will be no Python developers'
+		: `${filteredList[0].firstName}, ${filteredList[0].country}`;
+
+const GetFirstPython = (
+	list: Array<MeetingUserData>,
+	firstUser = list.find(element => element.language === 'Python'),
+) =>
+	firstUser
+		? `${firstUser.firstName}, ${firstUser.country}`
+		: 'There will be no Python developers';
+
+//! Cuenta la cantidad de letras en una palabra devolviendo un string
+// "a:*, b:***, c:*"
+
+const getStrings = (city: string): string => {
+	city = city.toLowerCase();
+	let object: any = {};
+	let response = [];
+
+	for (const letter of [...city]) {
+		if (letter in object) {
+			object[letter] += '*';
+		} else {
+			object[letter] = '*';
+		}
+	}
+
+	for (let key in object) {
+		if (key !== ' ') {
+			response.push(`${key}:${object[key]}`);
+		}
+	}
+	return response.join(',');
+};
+
+//! Cuenta los digitos y letras dentro de un string
+
+const countLettersAndDigits = (input: string): number =>
+	[...input].reduce(
+		(acc, curr) => (/[a-z0-9]/gi.test(curr) ? acc + 1 : acc),
+		0,
+	);
+
+const CountLettersAndDigits = (input: string): number =>
+	input.replace(/[^a-z0-9]/gi, '').length;
+
+//! Sortea los nombres organizando los apellidos
+
+const sortReindeer = (reindeerNames: Array<string>): Array<string> =>
+	reindeerNames.sort((a, b) => a.split(' ')[1].localeCompare(b.split(' ')[0]));
+
+const SortReindeer = (reindeerNames: Array<string>): Array<string> =>
+	reindeerNames.sort((a, b) =>
+		a.split(' ')[1] > b.split(' ')[1]
+			? 1
+			: a.split(' ')[1] < b.split(' ')[1]
+			? -1
+			: 0,
+	);
+
+//! Forma de hacer un for con un reduce
+
+const golfScoreCalculator = (parList: string, scoreList: string): number => {
+	let counter = 0;
+	for (let i = 0; i < scoreList.length; i++) {
+		counter = counter + Number(scoreList[i]) - Number(parList[i]);
+	}
+	return counter;
+};
+
+const GolfScoreCalculator = (parList: string, scoreList: string): number =>
+	[...scoreList].reduce(
+		(result, score, index) =>
+			(result += Number(score) - Number(parList[index])),
+		0,
+	);
+
+//! Cuenta la cantidad de veces que se repite un grupo de palabras
+
+const sumOfABeach = (
+	parameter: string,
+	beachFiltered = parameter.replace(/beach/gi, ''),
+	waterFiltered = parameter.replace(/water/gi, ''),
+	fishFiltered = parameter.replace(/fish/gi, ''),
+	sunFiltered = parameter.replace(/sun/gi, ''),
+	sandFiltered = parameter.replace(/sand/gi, ''),
+): number => {
+	let counter = 0;
+	counter = counter + Math.floor((parameter.length - waterFiltered.length) / 4);
+	counter = counter + Math.floor((parameter.length - beachFiltered.length) / 5);
+	counter = counter + Math.floor((parameter.length - fishFiltered.length) / 4);
+	counter = counter + Math.floor((parameter.length - sunFiltered.length) / 3);
+	counter = counter + Math.floor((parameter.length - sandFiltered.length) / 4);
+	return counter;
+};
+
+const SumOfABeach = (beach: string): number =>
+	(beach.match(/sand|water|fish|sun/gi) || []).length;
+
+const SumOfABeach2 = (beach: string): number =>
+	beach.split(/sand|water|fish|sun/gi).length - 1;
