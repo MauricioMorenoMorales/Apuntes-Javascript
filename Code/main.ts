@@ -1,22 +1,9 @@
-const sumOfABeach = (
-	parameter: string,
-	beachFiltered = parameter.replace(/beach/gi, ''),
-	waterFiltered = parameter.replace(/water/gi, ''),
-	fishFiltered = parameter.replace(/fish/gi, ''),
-	sunFiltered = parameter.replace(/sun/gi, ''),
-	sandFiltered = parameter.replace(/sand/gi, ''),
-): number => {
-	let counter = 0;
-	counter = counter + Math.floor((parameter.length - waterFiltered.length) / 4);
-	counter = counter + Math.floor((parameter.length - beachFiltered.length) / 5);
-	counter = counter + Math.floor((parameter.length - fishFiltered.length) / 4);
-	counter = counter + Math.floor((parameter.length - sunFiltered.length) / 3);
-	counter = counter + Math.floor((parameter.length - sandFiltered.length) / 4);
-	return counter;
-};
+const createArrayOfTiers = (
+	number: number,
+	stringNumber = number.toString(),
+): Array<string> =>
+	[...Array(stringNumber.length)].map((_, index) =>
+		stringNumber.substr(0, index + 1),
+	);
 
-console.log(
-	sumOfABeach(
-		'saNdsandwaterwAterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwatersandsandwaterwaterfishfishsunsunsandwater',
-	),
-);
+console.log(createArrayOfTiers(2017));

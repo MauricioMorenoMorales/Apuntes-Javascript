@@ -2225,3 +2225,37 @@ const SumOfABeach = (beach: string): number =>
 
 const SumOfABeach2 = (beach: string): number =>
 	beach.split(/sand|water|fish|sun/gi).length - 1;
+
+//! Encuentra si la primera vez que encuentras una x es sucedida por otras 2 x "xxx"
+//Difficult
+
+const tripleXRegex = (parameter: string): boolean =>
+	/^[^x]*xxx/.test(parameter);
+
+const tripleX = (
+	parameter: string,
+	firstPosition = parameter.indexOf('x'),
+): boolean => firstPosition > -1 && firstPosition === parameter.indexOf('xxx');
+
+const TripleX = (
+	parameter: string,
+	firstXPosition = parameter.indexOf('x'),
+): boolean => parameter.substr(firstXPosition + 1, 2) === 'xx';
+
+//! Ve invirtiendo los numeros "1234" => "4321" => "4123" => "4132"
+// Difficult
+
+const flipNumber = (number: string): string =>
+	number.length < 2
+		? number
+		: number.slice(-1) + number[0] + flipNumber(number.slice(1, -1));
+
+const FlipNumber = (parameter: string): string => {
+	let response = [];
+	let chars = [...parameter];
+	while (chars.length) {
+		response.push(chars.reverse().shift());
+	}
+	return response.join('');
+};
+
