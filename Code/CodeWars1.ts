@@ -2259,3 +2259,44 @@ const FlipNumber = (parameter: string): string => {
 	return response.join('');
 };
 
+//! Crea un array que tenga el numero de forma creciente
+//? (2017) => [ '2', '20', '201', '2017' ]
+
+const createArrayOfTiers = (
+	number: number,
+	stringNumber = number.toString(),
+): Array<string> =>
+	[...Array(stringNumber.length)].map((_, index) =>
+		stringNumber.substr(0, index + 1),
+	);
+
+const CreateArraysOfTiers = (num: number) => {
+	let prev = '';
+	return [...(num + '')].map(value => {
+		return (prev += value);
+	});
+};
+
+//! Crea un contador de consonantes y vocales
+
+interface ConsonantsVowelsCounter {
+	vowels: number;
+	consonants: number;
+}
+
+const countVowelsCounter = (words: string): ConsonantsVowelsCounter => {
+	console.log(words);
+	let response: ConsonantsVowelsCounter = {
+		vowels: 0,
+		consonants: 0,
+	};
+	if (typeof words !== 'string') return response;
+	for (const letter of words) {
+		if (/[aeiou]/gi.test(letter)) {
+			response.vowels++;
+		} else if (/[b-df-hj-np-tv-z]/gi.test(letter)) {
+			response.consonants++;
+		}
+	}
+	return response;
+};

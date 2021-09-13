@@ -1,9 +1,7 @@
-const createArrayOfTiers = (
-	number: number,
-	stringNumber = number.toString(),
-): Array<string> =>
-	[...Array(stringNumber.length)].map((_, index) =>
-		stringNumber.substr(0, index + 1),
-	);
-
-console.log(createArrayOfTiers(2017));
+const initializeNames = (name: string, nameArray = name.split(' ')): string =>
+	nameArray.length > 2
+		? `${nameArray[0]} ${nameArray
+				.slice(1, -1)
+				.map(element => `${element[0].toUpperCase()}. `)
+				.join('')} ${nameArray[nameArray.length - 1]}`
+		: name;
