@@ -2321,3 +2321,38 @@ const initializeNamesImperative = (
 	}
 	return nameArray.join(' ');
 };
+
+//! Cuenta que en un array haya el mismo numero de letras "abc" -> true "aabb" -> true
+
+const validateWord = (words: string): boolean | void => {
+	let counter: any = {};
+	let lastValue;
+	for (const letter of words.toLowerCase()) {
+		letter in counter ? counter[letter]++ : (counter[letter] = 1);
+		lastValue = counter[letter];
+	}
+	let response = true;
+	for (const key in counter) {
+		if (counter[key] !== lastValue) {
+			response = false;
+			break;
+		}
+	}
+	return response;
+};
+
+const ValidateWord = (
+	words: string,
+	formattedWords = words.toLowerCase(),
+): boolean => formattedWords.length % new Set(formattedWords).size === 0;
+
+const validateWord2 = (
+	words: string,
+	formattedWords = words.toLowerCase(),
+): boolean => {
+	let counter: any = {};
+	for (const letter of words.toLowerCase()) {
+		letter in counter ? counter[letter]++ : (counter[letter] = 1);
+	}
+	return new Set(Object.values(counter)).size == 1;
+};
