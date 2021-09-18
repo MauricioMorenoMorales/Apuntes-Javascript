@@ -2356,3 +2356,54 @@ const validateWord2 = (
 	}
 	return new Set(Object.values(counter)).size == 1;
 };
+
+//! Verifica si todas las palabras dentro de un array terminan con la misma letra
+
+const isFlush = (cards: Array<string>): boolean => {
+	let response: boolean = true;
+	for (const card of cards) {
+		if (card.slice(-1) !== cards[0].slice(-1)) {
+			response = false;
+			break;
+		}
+	}
+	return response;
+};
+
+const IsFlush = (cards: Array<string>): boolean =>
+	cards.every(card => card.slice(-1) === cards[0].slice(-1));
+
+//! Regex elimina solamente los signos de exclamación que están al final de una palabra
+
+const remove = s => s.replace(/\b!+/g, '');
+
+const remove3 = s => s.replace(/(\w)!+/g, '$1');
+
+//! String.match recibe un array identifica los numeros y sumalos
+
+const sumFromString = (words: string): number =>
+	words
+		.split(/[^0-9]/gi)
+		.filter(element => element !== '')
+		.map(Number)
+		.reduce((acc, cur) => acc + cur, 0);
+
+const SumFromString = (words: string): number =>
+	(words.match(/\d+/g) || []).map(Number).reduce((a, b) => a + b, 0);
+
+//! regex verifica que un numero sea un codigo postal ruso
+
+const zipvalidate = (
+	postcode: string,
+	filteredPostCode = postcode.replace(/[^0-9]/gi, ''),
+	invalidNumbers = ['0', '5', '7', '8', '9'],
+): boolean =>
+	!postcode ||
+	postcode.length !== 6 ||
+	postcode.length !== filteredPostCode.length ||
+	invalidNumbers.includes(postcode[0])
+		? false
+		: true;
+
+const Zipvalidate = (postcode: string): boolean =>
+	/^[12345]\d{5}$/.test(postcode);
