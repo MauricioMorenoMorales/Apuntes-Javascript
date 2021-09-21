@@ -2407,3 +2407,26 @@ const zipvalidate = (
 
 const Zipvalidate = (postcode: string): boolean =>
 	/^[12345]\d{5}$/.test(postcode);
+
+//! Retorna un array que devuelva una misma palabra con varios ordenes
+//? "abcd" => ["abcd", "bcda", "cdab", "dabc"]
+//Difficult
+
+const scrollingText = (text: string): Array<string> =>
+	[...text].map((_, index) => text.slice(index) + text.slice(0, index));
+
+const ScrollingText = (text: string): Array<string> => {
+	let response: Array<string> = [];
+	for (let i = 0; i < text.length; i++) {
+		response.push(text.slice(i) + text.slice(0, i));
+	}
+	return response;
+};
+
+//! verifica si un string tiene mayusculas y minusculas y numberos
+
+const password = (parameter: string): boolean =>
+	parameter.length >= 8 &&
+	/[a-z]/.test(parameter) &&
+	/[A-Z]/.test(parameter) &&
+	/\d/.test(parameter);
