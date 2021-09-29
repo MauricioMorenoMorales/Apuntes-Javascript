@@ -77,3 +77,32 @@ const isPangram = (sentence) => {
 };
 const isPangramClever = (sentence) => [...'abcdefghijklmnopqrstuvwxyz'].every(letter => sentence.toLowerCase().includes(letter));
 const isPangramCleverRegex = (sentence) => (sentence.match(/([a-z])(?!.*\1)/gi) || []).length === 26;
+const twoFollowedLetters = (text) => (text + '_').match(/.{2}/g) || [];
+const countSmileys = (faces) => faces
+    .filter(face => !face.includes('o') || !face.includes('_'))
+    .filter(face => face.length === 3)
+    .filter(face => face.includes('D') || face.includes(')'))
+    .filter(face => face.includes(':') || face.includes(';')).length;
+const countSmileysRegex = (faces) => faces.filter(face => /[:;]{1}[-~]?[)D]{1}/.test(face)).length;
+const towerBuilder = (floors) => [...Array(floors)].map((_, index) => ' '.repeat(floors - 1 - index) +
+    '*'.repeat(index * 2 + 1) +
+    ' '.repeat(floors - 1 - index));
+const highestWordValue = (words, wordsValues = words
+    .split(' ')
+    .map(word => [...word].reduce((acc, curr) => (acc += Number(curr.charCodeAt(0) - 96)), 0))) => words.split(' ')[wordsValues.indexOf(Math.max(...wordsValues))];
+const desCamelCaser = (text) => [...text]
+    .map(letter => (letter === letter.toUpperCase() ? ` ${letter}` : letter))
+    .join('');
+const desCamelCaserRegex = (text) => text.replace(/[A-Z]/g, ' $1');
+const waveMal = (word) => [...Array(word.length).fill(word)].map((word, index) => word.substring(0, index) +
+    word[index].toUpperCase() +
+    word.substring(index + 1, word.length));
+const wave = (str) => {
+    let result = [];
+    str.split("").forEach((char, index) => {
+        if (/[a-z]/.test(char)) {
+            result.push(str.slice(0, index) + char.toUpperCase() + str.slice(index + 1));
+        }
+    });
+    return result;
+};

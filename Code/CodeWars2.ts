@@ -142,3 +142,82 @@ const isPangramClever = (sentence: string): boolean =>
 
 const isPangramCleverRegex = (sentence: string): boolean =>
 	(sentence.match(/([a-z])(?!.*\1)/gi) || []).length === 26;
+
+//! Regex localiza dos letras seguidas
+const twoFollowedLetters = (text: string): Array<string> =>
+	(text + '_').match(/.{2}/g) || [];
+
+//! Verifica que cada elemento dentro de un array sea una carita feliz
+
+const countSmileys = (faces: Array<string>): number =>
+	faces
+		.filter(face => !face.includes('o') || !face.includes('_'))
+		.filter(face => face.length === 3)
+		.filter(face => face.includes('D') || face.includes(')'))
+		.filter(face => face.includes(':') || face.includes(';')).length;
+
+const countSmileysRegex = (faces: Array<string>): number =>
+	faces.filter(face => /[:;]{1}[-~]?[)D]{1}/.test(face)).length;
+
+//! COnstruye un array que haga una piramide por parametro recibe el numero de pisos
+
+const towerBuilder = (floors: number): Array<string> =>
+	[...Array(floors)].map(
+		(_, index) =>
+			' '.repeat(floors - 1 - index) +
+			'*'.repeat(index * 2 + 1) +
+			' '.repeat(floors - 1 - index),
+	);
+
+/*[
+	'     *     ',
+	'    ***    ',
+	'   *****   ',
+	'  *******  ',
+	' ********* ',
+	'***********'
+]*/
+
+//! Cada letra vale su posición en el alfabeto cuenta el valor de cada palabra y devuelve la palabra con mayor puntuacion
+
+const highestWordValue = (
+	words: string,
+	wordsValues = words
+		.split(' ')
+		.map(word =>
+			[...word].reduce(
+				(acc, curr) => (acc += Number(curr.charCodeAt(0) - 96)),
+				0,
+			),
+		),
+): string => words.split(' ')[wordsValues.indexOf(Math.max(...wordsValues))];
+
+//! Separa las palabras dentro de un camelcase
+
+const desCamelCaser = (text: string): string =>
+	[...text]
+		.map(letter => (letter === letter.toUpperCase() ? ` ${letter}` : letter))
+		.join('');
+
+const desCamelCaserRegex = (text: string): string =>
+	text.replace(/[A-Z]/g, ' $1');
+
+//! Retorna una hola pero ignora los espacios "hol a" => ["Hol a", "hOl a", "hoL a", "hol A"]
+
+const waveMal = (word: string): Array<string> | any =>
+	[...Array(word.length).fill(word)].map(
+		(word, index) =>
+			word.substring(0, index) +
+			word[index].toUpperCase() +
+			word.substring(index + 1, word.length),
+	);
+
+const wave = (str: string): Array<string> => {
+	let result: Array<string> = [];
+	str.split("").forEach((char, index) => {
+			if (/[a-z]/.test(char)) {
+					result.push(str.slice(0, index) + char.toUpperCase() + str.slice(index + 1));
+			}
+	});
+	return result;
+}
