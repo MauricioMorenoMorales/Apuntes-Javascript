@@ -62,3 +62,18 @@ const alphabetPosition = (text) => text
     .split('')
     .map(letter => letter.charCodeAt(0) - 64)
     .join(' ');
+const filterEmptyStrings = (parameter) => parameter.filter(Boolean);
+const songDecoder = (song) => song.split('WUB').filter(Boolean).join(' ');
+const isPangram = (sentence) => {
+    const letterRegister = [...sentence.replace(/[^a-z]/gi, '')].reduce((counter, letter) => {
+        letter in counter ? counter[letter]++ : (counter[letter] = 1);
+        return counter;
+    }, {});
+    let letterCounter = 0;
+    for (const key in letterRegister) {
+        letterCounter++;
+    }
+    return letterCounter >= 26;
+};
+const isPangramClever = (sentence) => [...'abcdefghijklmnopqrstuvwxyz'].every(letter => sentence.toLowerCase().includes(letter));
+const isPangramCleverRegex = (sentence) => (sentence.match(/([a-z])(?!.*\1)/gi) || []).length === 26;

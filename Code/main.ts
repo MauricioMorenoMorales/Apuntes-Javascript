@@ -1,18 +1,11 @@
-const duplicateEncode2 = (
-	word: string,
-	register = word
-		.toLowerCase()
-		.split('')
-		.reduce((responseObject: any, letter) => {
-			letter in responseObject
-				? responseObject[letter]++
-				: (responseObject[letter] = 1);
-			return responseObject;
-		}, {}),
-): string =>
-	word
-		.toLowerCase()
-		.split('')
-		.map(letter => (register[letter] >= 2 ? ')' : '('))
-		.join('');
+const solution = (letters: string): Array<string> | any => {
+	const hasUnderScore = letters.length % 2 ? letters : `${letters}_`;
+	let response = [];
+	for (let i = 0; i < letters.length; i + 2) {
+		response.push(`${letters[i]}${letters[i + 1]}`);
+	}
+	return response;
+};
 
+console.log(solution('abc'));
+console.log('xd');

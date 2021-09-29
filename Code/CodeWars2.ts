@@ -107,3 +107,38 @@ const alphabetPosition = (text: string): string =>
 		.split('')
 		.map(letter => letter.charCodeAt(0) - 64)
 		.join(' ');
+
+//! Elimina empty strings dentro de un array
+
+const filterEmptyStrings = (parameter: Array<string>): Array<string> =>
+	parameter.filter(Boolean);
+
+//! Elimina palabras consecutivas dentro de un string "un patrón"
+
+const songDecoder = (song: string): string =>
+	song.split('WUB').filter(Boolean).join(' ');
+
+//! Verifica que en una sentencia se encuentren todas las letras de el abecedario
+
+const isPangram = (sentence: string): boolean | any => {
+	const letterRegister = [...sentence.replace(/[^a-z]/gi, '')].reduce(
+		(counter: any, letter) => {
+			letter in counter ? counter[letter]++ : (counter[letter] = 1);
+			return counter;
+		},
+		{},
+	);
+	let letterCounter = 0;
+	for (const key in letterRegister) {
+		letterCounter++;
+	}
+	return letterCounter >= 26;
+};
+
+const isPangramClever = (sentence: string): boolean =>
+	[...'abcdefghijklmnopqrstuvwxyz'].every(letter =>
+		sentence.toLowerCase().includes(letter),
+	);
+
+const isPangramCleverRegex = (sentence: string): boolean =>
+	(sentence.match(/([a-z])(?!.*\1)/gi) || []).length === 26;
