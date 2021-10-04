@@ -1,20 +1,13 @@
 'use strict';
-const toWeirdCase2 = words =>
-	[...words]
-		.map((letter, index) =>
-			index % 2 ? letter.toLowerCase() : letter.toUpperCase(),
-		)
-		.join('');
-const toWeirdCase = words =>
-	words
-		.split(' ')
-		.map(word =>
-			[...word]
-				.map((letter, index) =>
-					index % 2 ? letter.toLowerCase() : letter.toUpperCase(),
-				)
-				.join(''),
-		)
-		.join(' ');
-console.log(toWeirdCase('hola amigos'));
-console.log(toWeirdCase('holaamigos'));
+function cleanString(parameter) {
+	return [...parameter].reduce(
+		(response, current) =>
+			current === '#' ? response.slice(0, -1) : response + current,
+		'',
+	);
+}
+console.log(
+	cleanString('abc#d##c'),
+	cleanString('abc####d##c#'),
+	cleanString('12345####123##12345#'),
+);

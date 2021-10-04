@@ -214,10 +214,51 @@ const waveMal = (word: string): Array<string> | any =>
 
 const wave = (str: string): Array<string> => {
 	let result: Array<string> = [];
-	str.split("").forEach((char, index) => {
-			if (/[a-z]/.test(char)) {
-					result.push(str.slice(0, index) + char.toUpperCase() + str.slice(index + 1));
-			}
+	str.split('').forEach((char, index) => {
+		if (/[a-z]/.test(char)) {
+			result.push(
+				str.slice(0, index) + char.toUpperCase() + str.slice(index + 1),
+			);
+		}
 	});
 	return result;
-}
+};
+
+//! REGEX Convierte un string a camel case
+
+const camelCaser = (text: string): string =>
+	text.trim().replace(/(?:^|\s+)(\w)/g, (_, c) => c.toUpperCase());
+
+//! Retorna un diamante hecho con un string
+
+const diamond = (size: number): string | null => {
+	if (size % 2 === 0 || size < 1) return null;
+	let iteration: number = 0;
+	let add: string;
+	//Generates the first iteration with the longest row
+	let center: string = generateLine(iteration, size);
+	// Start itering adding 2 to the counter
+	while ((iteration += 2) < size) {
+		add = generateLine(iteration / 2, size - iteration);
+		center = add + center + add;
+	}
+	return center;
+};
+
+const generateLine = (spaces: any, stars: any): string =>
+	' '.repeat(spaces) + '*'.repeat(stars) + '\n';
+
+//! REGEX verifica si un string es una ip
+
+const isValidIP = (ip: string): boolean =>
+	4 ===
+	ip
+		.split('.')
+		.filter(Boolean)
+		.filter(number => !/[^0-9]/gi.test(number))
+		.filter(number => !(number.length > 1 && number[0] === '0'))
+		.map(Number)
+		.filter(number => number <= 255).length;
+
+const isValidIPRegex = (ip: string): boolean =>
+	/^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(ip);

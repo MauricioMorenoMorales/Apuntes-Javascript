@@ -99,10 +99,33 @@ const waveMal = (word) => [...Array(word.length).fill(word)].map((word, index) =
     word.substring(index + 1, word.length));
 const wave = (str) => {
     let result = [];
-    str.split("").forEach((char, index) => {
+    str.split('').forEach((char, index) => {
         if (/[a-z]/.test(char)) {
             result.push(str.slice(0, index) + char.toUpperCase() + str.slice(index + 1));
         }
     });
     return result;
 };
+const camelCaser = (text) => text.trim().replace(/(?:^|\s+)(\w)/g, (_, c) => c.toUpperCase());
+const diamond = (size) => {
+    if (size % 2 === 0 || size < 1)
+        return null;
+    let iteration = 0;
+    let add;
+    let center = generateLine(iteration, size);
+    while ((iteration += 2) < size) {
+        add = generateLine(iteration / 2, size - iteration);
+        center = add + center + add;
+    }
+    return center;
+};
+const generateLine = (spaces, stars) => ' '.repeat(spaces) + '*'.repeat(stars) + '\n';
+const isValidIP = (ip) => 4 ===
+    ip
+        .split('.')
+        .filter(Boolean)
+        .filter(number => !/[^0-9]/gi.test(number))
+        .filter(number => !(number.length > 1 && number[0] === '0'))
+        .map(Number)
+        .filter(number => number <= 255).length;
+const isValidIPRegex = (ip) => /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(ip);
