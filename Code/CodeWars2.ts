@@ -262,3 +262,6 @@ const isValidIP = (ip: string): boolean =>
 
 const isValidIPRegex = (ip: string): boolean =>
 	/^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(ip);
+
+console.log('probar este tipo de cosas')
+

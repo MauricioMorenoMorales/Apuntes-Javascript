@@ -129,3 +129,4 @@ const isValidIP = (ip) => 4 ===
         .map(Number)
         .filter(number => number <= 255).length;
 const isValidIPRegex = (ip) => /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(ip);
+console.log('probar este tipo de cosas');
