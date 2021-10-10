@@ -2430,28 +2430,3 @@ const password = (parameter: string): boolean =>
 	/[a-z]/.test(parameter) &&
 	/[A-Z]/.test(parameter) &&
 	/\d/.test(parameter);
-
-//! Convierte un numero romano a numero arabigo
-
-const romanNumbers = (
-	romanNumber: string,
-	conversion: { [key: string]: number } = {
-		M: 1000,
-		CM: 900,
-		D: 500,
-		CD: 400,
-		C: 100,
-		XC: 90,
-		L: 50,
-		XL: 40,
-		X: 10,
-		IX: 9,
-		V: 5,
-		IV: 4,
-		I: 1,
-	},
-): number =>
-	romanNumber
-		.match(/CM|CD|XC|XL|IX|IV|\w/g)!
-		.reduce((sum, current) => sum + (conversion[current] || 0), 0);
-

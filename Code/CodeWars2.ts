@@ -263,5 +263,92 @@ const isValidIP = (ip: string): boolean =>
 const isValidIPRegex = (ip: string): boolean =>
 	/^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(ip);
 
-console.log('probar este tipo de cosas')
+console.log('probar este tipo de cosas');
 
+//! Convierte un numero romano a numero arabigo
+
+const romanNumbers = (
+	romanNumber: string,
+	conversion: { [key: string]: number } = {
+		M: 1000,
+		CM: 900,
+		D: 500,
+		CD: 400,
+		C: 100,
+		XC: 90,
+		L: 50,
+		XL: 40,
+		X: 10,
+		IX: 9,
+		V: 5,
+		IV: 4,
+		I: 1,
+	},
+): number =>
+	romanNumber
+		.match(/CM|CD|XC|XL|IX|IV|\w/g)!
+		.reduce((sum, current) => sum + (conversion[current] || 0), 0);
+
+const romanNumbersImperative = (
+	romanNumber: string,
+	conversion: { [key: string]: number } = {
+		M: 1000,
+		D: 500,
+		C: 100,
+		L: 50,
+		X: 10,
+		V: 5,
+		I: 1,
+	},
+): any => {
+	let sum = 0;
+	for (let i = 0; i < romanNumber.length; i++) {
+		if (conversion[romanNumber[i]] < conversion[romanNumber[i + 1]]) {
+			sum += conversion[romanNumber[i + 1]] - conversion[romanNumber[i]];
+			i++;
+		} else {
+			sum += conversion[romanNumber[i]];
+		}
+	}
+	return sum;
+};
+
+//! REGEX Valida un formato telefonico "(123) 456-7890"
+
+const validPhoneNumber = (phoneNumber: string): boolean => {
+	const hasParenthesis = phoneNumber[0] === '(' && phoneNumber[4] === ')',
+		hasSpace = phoneNumber[5] === ' ',
+		hasDash = phoneNumber[9] === '-',
+		hasLength = phoneNumber.length === 14;
+	return hasParenthesis && hasSpace && hasDash && hasLength;
+};
+
+const validPhoneNumberRegex = (phoneNumber: string): boolean =>
+	/^\(\d{3}\) \d{3}\-\d{4}$/.test(phoneNumber);
+
+const ValidPhoneNumberRegex = (phoneNumber: string): boolean =>
+	/^(\(...\))\s(...)-(....)$/.test(phoneNumber);
+
+const $ValidPhoneNumberRegex = (phoneNumber: string): boolean =>
+	/^\([1-9]\d{2}\)\s\d{3}[\s|-]\d{4}$/.test(phoneNumber);
+
+//! Retorna las vocales remplazadas por su posición en aeiou
+
+const letterValues: { [key: string]: string } = {
+	a: '1',
+	e: '2',
+	i: '3',
+	o: '4',
+	u: '5',
+};
+
+const encode = (text: string): string =>
+	text.replace(/./gi, letter => letterValues[letter] || letter);
+
+const decode = (text: string): string =>
+	text.replace(
+		/./gi,
+		letter =>
+			Object.keys(letterValues).find(key => letterValues[key] === letter) ||
+			letter,
+	);

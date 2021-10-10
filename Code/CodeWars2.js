@@ -130,3 +130,58 @@ const isValidIP = (ip) => 4 ===
         .filter(number => number <= 255).length;
 const isValidIPRegex = (ip) => /^(([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])(\.(?!$)|$)){4}$/.test(ip);
 console.log('probar este tipo de cosas');
+const romanNumbers = (romanNumber, conversion = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1,
+}) => romanNumber
+    .match(/CM|CD|XC|XL|IX|IV|\w/g)
+    .reduce((sum, current) => sum + (conversion[current] || 0), 0);
+const romanNumbersImperative = (romanNumber, conversion = {
+    M: 1000,
+    D: 500,
+    C: 100,
+    L: 50,
+    X: 10,
+    V: 5,
+    I: 1,
+}) => {
+    let sum = 0;
+    for (let i = 0; i < romanNumber.length; i++) {
+        if (conversion[romanNumber[i]] < conversion[romanNumber[i + 1]]) {
+            sum += conversion[romanNumber[i + 1]] - conversion[romanNumber[i]];
+            i++;
+        }
+        else {
+            sum += conversion[romanNumber[i]];
+        }
+    }
+    return sum;
+};
+const validPhoneNumber = (phoneNumber) => {
+    const hasParenthesis = phoneNumber[0] === '(' && phoneNumber[4] === ')', hasSpace = phoneNumber[5] === ' ', hasDash = phoneNumber[9] === '-', hasLength = phoneNumber.length === 14;
+    return hasParenthesis && hasSpace && hasDash && hasLength;
+};
+const validPhoneNumberRegex = (phoneNumber) => /^\(\d{3}\) \d{3}\-\d{4}$/.test(phoneNumber);
+const ValidPhoneNumberRegex = (phoneNumber) => /^(\(...\))\s(...)-(....)$/.test(phoneNumber);
+const $ValidPhoneNumberRegex = (phoneNumber) => /^\([1-9]\d{2}\)\s\d{3}[\s|-]\d{4}$/.test(phoneNumber);
+const letterValues = {
+    a: '1',
+    e: '2',
+    i: '3',
+    o: '4',
+    u: '5',
+};
+const encode = (text) => text.replace(/./gi, letter => letterValues[letter] || letter);
+const decode = (text) => text.replace(/./gi, letter => Object.keys(letterValues).find(key => letterValues[key] === letter) ||
+    letter);
