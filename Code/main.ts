@@ -1,1 +1,0 @@
-const validPhoneNumberRegex1

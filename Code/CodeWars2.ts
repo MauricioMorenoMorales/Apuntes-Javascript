@@ -352,3 +352,64 @@ const decode = (text: string): string =>
 			Object.keys(letterValues).find(key => letterValues[key] === letter) ||
 			letter,
 	);
+
+//! Encripta un texto de tal forma que los indices pares esten primero y despues los nones
+
+// encrypt("012345", 1)  =>  "135024"
+// encrypt("012345", 2)  =>  "135024"  ->  "304152"
+// encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
+
+// encrypt("01234", 1)  =>  "13024"
+// encrypt("01234", 2)  =>  "13024"  ->  "32104"
+// encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
+
+const simpleEncriytion = (
+	text: string,
+	numberOfRepetitions: number,
+): string => {
+	if (!text || numberOfRepetitions <= 0) return text;
+	let firstPart = '';
+	let secondPart = '';
+	[...text].forEach((letter, index) =>
+		index % 2 == 0 ? (secondPart += letter) : (firstPart += letter),
+	);
+	return simpleEncriytion(firstPart + secondPart, --numberOfRepetitions);
+};
+
+const simpleDecrypt = (encryptedText: string, numberOfRepetitions: number) => {
+	if (!encryptedText || numberOfRepetitions <= 0) return encryptedText;
+	const answer = new Array(encryptedText.length);
+	while (numberOfRepetitions--) {
+		let j = 0;
+		for (let i = 1; i < answer.length; i += 2) answer[i] = encryptedText[j++];
+		for (let i = 0; i < answer.length; i += 2) answer[i] = encryptedText[j++];
+		encryptedText = answer.join('');
+	}
+	return encryptedText;
+};
+
+//! REGEX Haz una función de encryptamiento
+const encryptThis = (text: string): string =>
+	text
+		.split(' ')
+		.map(
+			word =>
+				[
+					'',
+					word[0].charCodeAt(0),
+					word[0].charCodeAt(0) + word[word.length - 1],
+				][word.length] ||
+				word[0].charCodeAt(0) +
+					word[word.length - 1] +
+					word.slice(2, word.length - 1) +
+					word[1],
+		)
+		.join(' ');
+const encryptThisRegex = (text: string): string =>
+	text
+		.split(' ')
+		.map(
+			word => word.replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`),
+			//! error tipado .replace(/^\w/, word.charCodeAt(0))
+		)
+		.join(' ');
