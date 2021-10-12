@@ -413,3 +413,19 @@ const encryptThisRegex = (text: string): string =>
 			//! error tipado .replace(/^\w/, word.charCodeAt(0))
 		)
 		.join(' ');
+
+//! Regex recibe un numero y agrega guiones a cada numero none
+
+const dashatize = (parameter: number): string =>
+	String(parameter)
+		.replace(/([13579])/g, '-$1-')
+		.replace(/--+/g, '-')
+		.replace(/(^-|-$)/g, '');
+
+const $dashatize = (num: number): string =>
+	isNaN(num)
+		? 'NaN'
+		: num
+				.toString()
+				.match(/([13579]|[02468]+)/g)
+				.join('-');
