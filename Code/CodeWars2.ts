@@ -429,3 +429,7 @@ const $dashatize = (num: number): string =>
 				.toString()
 				.match(/([13579]|[02468]+)/g)
 				.join('-');
+
+//? Revisa esto https://www.codewars.com/kata/5375f921003bf62192000746/solutions
+
+const creatingSomeFunctions = parameter => parameter.split('')

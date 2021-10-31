@@ -1,12 +1,4 @@
+const abbreviate = (text: string) =>
+	text.split()
 
-
-
-
-
-
-
-
-
-while (i--) {
-	
-}
+console.log(abbreviate("internationalization"))
