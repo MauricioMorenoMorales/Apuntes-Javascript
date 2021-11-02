@@ -432,4 +432,28 @@ const $dashatize = (num: number): string =>
 
 //? Revisa esto https://www.codewars.com/kata/5375f921003bf62192000746/solutions
 
-const creatingSomeFunctions = parameter => parameter.split('')
+const creatingSomeFunctions = parameter => parameter.split('');
+
+//? Filtra los elementos que se repitan consecutivamente dentro de un iterable
+
+const uniqueInOrder = (iterable: string | Array<number>): Array<any> =>
+	[...iterable]
+		.map((element, index, array) =>
+			element === array[index - 1] ? '' : element,
+		)
+		.filter(Boolean);
+
+const uniqueInOrderClever = (iterable: string | Array<number>): Array<any> =>
+	[...iterable].filter((element, index, array) => element !== array[index - 1]);
+
+//! Retorna el numero que sea distinto a los demas numeros dentro de un array odd or even
+//? [1,5,7,2,9] => 3 || [2,4,1,6,8] => 2
+
+const iqTest = (numbers: string): number => {
+	let parsedNumbers = numbers.split(' ').map(Number);
+	const odd = parsedNumbers.filter(element => element % 2 === 1);
+	const even = parsedNumbers.filter(element => element % 2 === 0);
+	return odd.length < even.length
+		? parsedNumbers.indexOf(odd[0] + 1)
+		: parsedNumbers.indexOf(even[0] + 1);
+};
