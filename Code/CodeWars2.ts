@@ -457,3 +457,114 @@ const iqTest = (numbers: string): number => {
 		? parsedNumbers.indexOf(odd[0] + 1)
 		: parsedNumbers.indexOf(even[0] + 1);
 };
+
+//! Verifica cuantas veces tiene que dividirse un numero y multiplicarse por si mismo hasta conseguir un digito
+
+// prettier-ignore
+const persistenceRecursive = (
+	parameter: number,
+	iteration: number = 0,
+	currentNumber: string = String(parameter),
+	multipliedDigits: number = currentNumber
+		.split('')
+		.reduce(
+			(acc, curr, index) => (index === 0 ? Number(curr) : acc * Number(curr)),
+			0,
+		),
+): number =>
+	(parameter < 10) ? iteration :
+	(multipliedDigits < 10) ? iteration + 1
+	: persistenceRecursive(multipliedDigits, iteration + 1)
+
+const persistenceImperative = (parameter: number): number => {
+	let iterations = 0;
+	let multipliedNumber = `${parameter}`;
+
+	while (multipliedNumber.length > 1) {
+		iterations++;
+		multipliedNumber = multipliedNumber
+			.split('')
+			.map(Number)
+			.reduce((acc, curr) => acc * Number(curr))
+			.toString();
+	}
+
+	return iterations;
+};
+
+// prettier-ignore
+const persistenceRecursiveClever = (
+	parameter: number,
+	stringParameter = String(parameter),
+): number =>
+	stringParameter.length > 1
+		? 1 +
+			persistenceRecursiveClever(
+				stringParameter
+					.split('')
+					.map(Number)
+					.reduce((a, b) => a * b),
+			)
+		: 0;
+
+//! Obten el binerio de un numero y cuenta la cantidad de 1s que tiene
+
+const $countBits = (number: number): number =>
+	number
+		.toString(2)
+		.split('')
+		.filter(bit => bit !== '0').length;
+
+const countBitsClever = (number: number): number =>
+	number.toString(2).split('0').join('').length;
+
+//! Verifica si un numero es narcisista o no
+
+const $narcissistic = (value: number, stringValue = String(value)): boolean =>
+	[...stringValue]
+		.map(number => Number(number) ** stringValue.length)
+		.reduce((acc, curr) => acc + curr) === value;
+
+// prettier-ignore
+const narcissisticClever = (value: number): boolean =>
+	value
+		.toString()
+		.split('')
+		.map(Number)
+		.map((element, _, array) => element ** array.length)
+		.reduce((acc, curr) => acc + curr)
+		=== value;
+
+//! verifica si haces un paseo de 10 minutos y retornas al lugar de inicio
+
+const isValidWalkFunctional = (
+	walk: Array<string>,
+	north = walk.filter(item => item === 'n').length,
+	south = walk.filter(item => item === 's').length,
+	east = walk.filter(item => item === 'e').length,
+	west = walk.filter(item => item === 'w').length,
+) => walk.length === 10 && north === south && east === west;
+
+const isValidWalkImperative = (walk: Array<string>): boolean => {
+	let dx = 0;
+	let dy = 0;
+	let dt = walk.length;
+
+	for (const element of walk) {
+		switch (element) {
+			case 'n':
+				dy--;
+				break;
+			case 's':
+				dy++;
+				break;
+			case 'w':
+				dx--;
+				break;
+			case 'e':
+				dx++;
+				break;
+		}
+	}
+	return dt === 10 && dx === 0 && dy === 0;
+};
