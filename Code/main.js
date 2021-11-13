@@ -1,8 +1,3 @@
-'use strict';
-const isValidWalk = (
-	walk,
-	north = walk.filter(item => item === 'n').length,
-	south = walk.filter(item => item === 's').length,
-	east = walk.filter(item => item === 'e').length,
-	west = walk.filter(item => item === 'w').length,
-) => walk.length === 10 && north === south && east === west;
+"use strict";
+const testing = (value) => value * (value + 1);
+console.log(testing(1), testing(2), testing(3), testing(4), testing(5), testing(6));
