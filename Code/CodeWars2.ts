@@ -568,3 +568,97 @@ const isValidWalkImperative = (walk: Array<string>): boolean => {
 	}
 	return dt === 10 && dx === 0 && dy === 0;
 };
+
+//! Decodifica un codigo morse
+// const decodeMorse = (morseCode: string): string | void =>
+// 	morseCode
+// 		.split(/   | /)
+// 		.map(letter => MORSE_CODE[letter] || ' ')
+// 		.join('');
+
+//! REtorna el elemento que es diferente a todos lo demas
+
+const findUniq = (arr: Array<number>): number => {
+	let register: any = {};
+	let response = 0;
+	for (const number of arr) {
+		number in register ? register[number]++ : (register[number] = 1);
+	}
+	for (const key in register) {
+		if (register[key] === 1) response = Number(key);
+	}
+	return response;
+};
+
+const findUniqAlt = (arr: Array<number>): number | undefined => {
+	arr.sort((a, b) => a - b);
+	return arr[0] == arr[1] ? arr.pop() : arr[0];
+};
+
+const $findUniq = (arr: Array<number>): number | undefined =>
+	arr.find(number => arr.indexOf(number) === arr.lastIndexOf(number));
+
+//! Verifica que ambos arrays contengan los mismos numeros, uno con los numeros normales y el array2 con los numeros ** 2
+const comp = (array1: Array<number>, array2: Array<number>): boolean => {
+	if (!array1 || !array2) return false;
+	array1.sort((a, b) => a - b);
+	array2.sort((a, b) => a - b);
+	let response = true;
+	for (let i = 0; i < array2.length; i++) {
+		if (array1[i] ** 2 !== array2[i]) response = false;
+	}
+	return response;
+};
+
+const $comp = (array1: Array<number>, array2: Array<number>): boolean => {
+	if (!array1 || !array2) return false;
+	array1.sort((a, b) => a - b);
+	array2.sort((a, b) => a - b);
+	return array1
+		.map(number => number * number)
+		.every((element, index) => element === array2[index]);
+};
+
+//! Verifica si un numero es primo o no
+
+const isPrime = (value: number): boolean => {
+	if (value < 2) return false;
+	const limit = Math.sqrt(value);
+	for (let i = 0; i < limit; i++) {
+		if (value % i === 0) return false;
+	}
+	return true;
+};
+
+const isPrimeClever = (value: number): boolean => {
+	for (let i = 0; i < Math.sqrt(value); i++) {
+		if (value % i === 0) return false;
+	}
+	return value > 1;
+};
+
+const $isPrimeClever = (value: number): boolean => {
+	for (let i = 0; i < value ** 0.5; i++) {
+		if (value % i === 0) return false;
+	}
+	return value > 1;
+};
+
+//! Investiga que numero genera tal area
+// https://www.codewars.com/kata/5592e3bd57b64d00f3000047/javascript
+
+const findNb = (value: number): number => {
+	let n = 0;
+	while (value > 0) value -= (++n) ** 3;
+	return value ? -1 : n;
+};
+
+const $findNb = (value: number): number => {
+	let n = 0;
+	let sum = 0;
+	while (sum < value) {
+		n++;
+		sum += Math.pow(n, 3);
+	}
+	return sum === value ? n : -1;
+};
